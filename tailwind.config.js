@@ -3,12 +3,18 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens: {
-      MS: "768px",
-      XM: "1024px",
-      LM: "1134px",
-      L: "1225px",
-      ML: "1351px",
-      XL: "1591px",
+      // MS: "768px",
+      // XM: "1024px",
+      // LM: "1134px",
+      // L: "1225px",
+      // ML: "1351px",
+      // XL: "1591px",
+      MS: { min: "0", max: "768px" },
+      XM: { min: "769px", max: "1024px" },
+      LM: [{ max: "1133px" }, { min: "1025px", max: "1133px" }],
+      L: { min: "1134px", max: "1224px" },
+      ML: { min: "1225px", max: "1350px" },
+      XL: { min: "1351px" },
     },
     minHeight: {
       "height-content": "calc(100vh - 90px)",
@@ -21,6 +27,7 @@ export default {
       purple: {
         "bg-layout": "#170f23",
         "bg-side-bar": "rgb(255 255 255 / 5%)",
+        "bg-sidebar-res": "rgb(42, 33, 58)",
         "bg-active-items": "rgba(255, 255, 255, 0.1)",
       },
     },

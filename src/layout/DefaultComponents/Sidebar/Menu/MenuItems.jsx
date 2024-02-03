@@ -13,10 +13,10 @@ function MenuItems({ data }) {
                         location.pathname === items.path
                             ? 'bg-purple-bg-active-items border-purple-bd-color'
                             : 'border-transparent'
-                    }`}
+                    } LM:border-0`}
                 >
                     <NavLink
-                        className={`flex py-[12px] px-[21px] ${
+                        className={`flex justify-start LM:justify-center py-[12px] px-[21px] ${
                             location.pathname === items.path
                                 ? 'text-purple-text-primary'
                                 : ' text-purple-text-secondary'
@@ -25,7 +25,7 @@ function MenuItems({ data }) {
                     >
                         <div className="flex gap-[12px] items-center">
                             {items.icon}
-                            <p className="text-[14px] font-medium">{items.title}</p>
+                            <p className="LM:hidden text-[14px] font-medium whitespace-nowrap">{items.title}</p>
                         </div>
                     </NavLink>
                 </div>
