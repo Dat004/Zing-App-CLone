@@ -1,5 +1,5 @@
 export const DiscoveryIcon = (className, width = '24px', height = '24px') => (
-    <svg className={className} width={width} height={height} viewBox="0 0 24 24" fill="currentColor">
+    <svg style={{ width: width, height: height }} viewBox="0 0 24 24" fill="currentColor">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -9,7 +9,7 @@ export const DiscoveryIcon = (className, width = '24px', height = '24px') => (
     </svg>
 );
 export const CDChartIcon = (className, width = '24px', height = '24px') => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <svg style={{ width: width, height: height }} viewBox="0 0 24 24" fill="currentColor">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -20,7 +20,7 @@ export const CDChartIcon = (className, width = '24px', height = '24px') => (
     </svg>
 );
 export const RadioIcon = (className, width = '24px', height = '24px') => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <svg style={{ width: width, height: height }} viewBox="0 0 24 24" fill="currentColor">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -30,7 +30,7 @@ export const RadioIcon = (className, width = '24px', height = '24px') => (
     </svg>
 );
 export const LibraryIcon = (className, width = '24px', height = '24px') => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <svg style={{ width: width, height: height }} viewBox="0 0 24 24" fill="currentColor">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -40,7 +40,7 @@ export const LibraryIcon = (className, width = '24px', height = '24px') => (
     </svg>
 );
 export const ChartsIcon = (className, width = '24px', height = '24px') => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <svg style={{ width: width, height: height }} viewBox="0 0 24 24" fill="currentColor">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -50,7 +50,7 @@ export const ChartsIcon = (className, width = '24px', height = '24px') => (
     </svg>
 );
 export const CategoriesIcon = (className, width = '24px', height = '24px') => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <svg style={{ width: width, height: height }} viewBox="0 0 24 24" fill="none">
         <rect
             x="3"
             y="3"
@@ -88,37 +88,11 @@ export const CategoriesIcon = (className, width = '24px', height = '24px') => (
     </svg>
 );
 export const TopIcon = (className, width = '24px', height = '24px') => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <rect
-            x="3"
-            y="3"
-            width="7.57895"
-            height="7.57895"
-            rx="1.89474"
-            stroke="currentColor"
-            strokeOpacity="0.8"
-            strokeWidth="1.5"
-        ></rect>
-        <rect
-            x="13.4211"
-            y="3"
-            width="7.57895"
-            height="7.57895"
-            rx="3.78947"
-            stroke="currentColor"
-            strokeOpacity="0.8"
-            strokeWidth="1.5"
-        ></rect>
+    <svg style={{ width: width, height: height }} viewBox="0 0 24 24" fill="none">
         <path
-            d="M7.02442 20.7272C6.89558 20.7751 6.68337 20.7751 6.55453 20.7272C5.45558 20.3321 3 18.6835 3 15.8893C3 14.6558 3.94358 13.6579 5.10695 13.6579C5.79663 13.6579 6.40674 14.0092 6.78947 14.552C7.17221 14.0092 7.78611 13.6579 8.472 13.6579C9.63537 13.6579 10.5789 14.6558 10.5789 15.8893C10.5789 18.6835 8.12337 20.3321 7.02442 20.7272Z"
-            stroke="currentColor"
-            strokeOpacity="0.8"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        ></path>
-        <path
-            d="M14.3684 13.7475L14.3684 20.6735C14.3684 20.819 14.5256 20.9102 14.6519 20.838L20.7121 17.375C20.8394 17.3023 20.8394 17.1188 20.7121 17.046L14.6519 13.583C14.5256 13.5109 14.3684 13.6021 14.3684 13.7475Z"
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M12 17L7.01888 19.6187C6.65207 19.8116 6.22335 19.5001 6.29341 19.0916L7.24472 13.5451L3.21491 9.61699C2.91815 9.32773 3.08191 8.82374 3.49202 8.76415L9.06107 7.95491L11.5516 2.90849C11.735 2.53687 12.265 2.53687 12.4484 2.90849L14.9389 7.95491L20.508 8.76415C20.9181 8.82374 21.0818 9.32773 20.7851 9.61699L16.7553 13.5451L17.7066 19.0916C17.7766 19.5001 17.3479 19.8116 16.9811 19.6187L12 17Z"
             stroke="currentColor"
             strokeOpacity="0.8"
             strokeWidth="1.5"
@@ -126,7 +100,7 @@ export const TopIcon = (className, width = '24px', height = '24px') => (
     </svg>
 );
 export const PlusIcon = (className, width = '24px', height = '24px') => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <svg style={{ width: width, height: height }} viewBox="0 0 24 24" fill="currentColor">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -142,3 +116,5 @@ export const PlusIcon = (className, width = '24px', height = '24px') => (
         ></path>
     </svg>
 );
+
+export const PlayCircleIcon = () => <i class="icon ic-20-Play-Outline"></i>;

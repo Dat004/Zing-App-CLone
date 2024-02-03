@@ -10,10 +10,35 @@ export default {
       ML: "1351px",
       XL: "1591px",
     },
+    minHeight: {
+      "height-content": "calc(100vh - 90px)",
+    },
+    backgroundImage: {
+      "dark-logo": "url('./src/assets/images/LogoDark.svg')",
+      purple: {},
+    },
+    backgroundColor: {
+      purple: {
+        "bg-layout": "#170f23",
+        "bg-side-bar": "rgb(255 255 255 / 5%)",
+        "bg-active-items": "rgba(255, 255, 255, 0.1)",
+      },
+    },
+    borderColor: {
+      transparent: "transparent",
+      purple: {
+        "bd-color": "#9b4de0",
+        "bd-separator-color": "rgba(255, 255, 255, 0.1)",
+      },
+    },
     colors: {
-      light: {},
+      purple: {
+        "text-primary": "#FFF",
+        "text-secondary": "#DADADA",
+        "text-navigation": "#dadada",
+      },
       default: {},
-      darks: {},
+      light: {},
     },
     opacity: {
       0: "0",
@@ -23,9 +48,7 @@ export default {
       80: "0.8",
       100: "1",
     },
-    fontFamily: {
-
-    },
+    fontFamily: {},
     extend: {},
   },
   plugins: [],
