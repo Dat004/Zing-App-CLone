@@ -16,6 +16,9 @@ export default {
       ML: { min: "1225px", max: "1350px" },
       XL: { min: "1351px" },
     },
+    flex: {
+      '1': '1 1 100%',
+    },
     minHeight: {
       "height-content": "calc(100vh - 90px)",
     },
