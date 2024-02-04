@@ -1,7 +1,9 @@
+import logoTitle from './LogoTitle.png';
+import userClient from './UserClient.png';
+
 const images = {
-    imgTitle: require('./LogoTitle.png'),
-    logoDark: require('./LogoDark.svg').default,
-    logo: require('./Logo.svg').default,
+    logoTitle,
+    userClient,
 }
 
 export default images;
