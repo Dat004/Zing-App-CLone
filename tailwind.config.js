@@ -18,6 +18,7 @@ export default {
     },
     flex: {
       'auto': '1 1 auto',
+      'fit': '0 0 100%',
       '1': '1 1 100%',
     },
     minHeight: {
@@ -45,10 +46,12 @@ export default {
       },
     },
     colors: {
+      "link-text-hover": "#c273ed",
       purple: {
         "text-primary": "#FFF",
         "text-secondary": "#DADADA",
         "text-navigation": "#dadada",
+        "text-items": "rgba(255, 255, 255, 0.5)",
         "text-form": "rgb(238, 238, 238)",
         "text-btn-download": "rgb(194, 115, 237)",
         "text-btn-setting": "rgb(218, 218, 218)",
