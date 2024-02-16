@@ -48,6 +48,7 @@ function Search() {
                         onChange={handleChangeValue}
                         onClick={() => setIsFocus(true)}
                         onBlur={() => setIsFocus(false)}
+
                         value={searchValue}
                         type="text"
                         spellCheck={false}

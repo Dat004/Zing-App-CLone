@@ -1,4 +1,5 @@
 import Header from '../DefaultComponents/Header';
+import MusicPlayer from '../DefaultComponents/PlayerVideo';
 import Sidebar from '../DefaultComponents/Sidebar';
 
 function DefaultLayout({ children }) {
@@ -7,6 +8,7 @@ function DefaultLayout({ children }) {
             <Sidebar />
             <Header />
             <div className="min-h-height-content pt-[70px]">{children}</div>
+            <MusicPlayer />
         </div>
     );
 }
