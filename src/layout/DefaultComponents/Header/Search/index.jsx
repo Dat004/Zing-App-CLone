@@ -37,7 +37,7 @@ function Search() {
                     isFocus ? 'bg-purple-bg-wrapper rounded-b-none' : 'bg-purple-bg-active-items'
                 }`}
             >
-                <button className="flex items-center justify-center w-[30px] h-[30px] mx-[6px]">
+                <button className="flex items-center justify-center w-[30px] h-[30px] mx-[6px]" type='button'>
                     <FiSearch className="text-[20px] text-purple-text-secondary" />
                 </button>
                 <div className="flex flex-1 items-center leading-[32px]">

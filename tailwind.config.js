@@ -27,6 +27,8 @@ export default {
     backgroundImage: {},
     backgroundColor: {
       transparent: "transparent",
+      "bg-slider": "rgb(89,85,96)",
+      "bg-current-slider": "#FFF",
       purple: {
         "bg-layout": "#170f23",
         "bd-player": "rgb(19, 12, 28)",
@@ -50,6 +52,7 @@ export default {
         "text-secondary": "#DADADA",
         "text-navigation": "#dadada",
         "text-items": "rgba(255, 255, 255, 0.5)",
+        "text-actions": "#FFF",
         "text-form": "rgb(238, 238, 238)",
         "text-btn-download": "rgb(194, 115, 237)",
         "text-btn-setting": "rgb(218, 218, 218)",

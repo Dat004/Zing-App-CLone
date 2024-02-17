@@ -3,7 +3,6 @@ import TippyHeadless from '@tippyjs/react/headless';
 
 function Tippy({
     children,
-    visible = false,
     interactive = false,
     trigger = '',
     hideOnClick = false,
@@ -39,7 +38,6 @@ function Tippy({
 
 Tippy.propTypes = {
     children: PropTypes.node.isRequired,
-    visible: PropTypes.bool,
     interactive: PropTypes.bool,
     trigger: PropTypes.string,
     hideOnClick: PropTypes.bool,
