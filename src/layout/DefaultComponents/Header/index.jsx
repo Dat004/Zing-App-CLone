@@ -2,6 +2,7 @@ import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import { GoGear } from 'react-icons/go';
 
 import { DownLoadToPCIcon } from '../../../components/CustomIcon';
+import TippyBox from '../../../components/Tippy/TippyBox';
 import images from '../../../assets/images';
 import Search from './Search';
 
@@ -27,11 +28,13 @@ function Header() {
                             <DownLoadToPCIcon /> Tải bản Windows
                         </span>
                     </button>
-                    <button className="flex p-[10px] rounded-full bg-purple-bg-active-items">
-                        <span className="flex items-center text-[14px] text-purple-text-btn-setting leading-[20px]">
-                            <GoGear className="text-[20px]" />
-                        </span>
-                    </button>
+                    <TippyBox content="Cài đặt" placement="bottom" arrow offset={[0, 10]}>
+                        <button className="flex p-[10px] rounded-full bg-purple-bg-active-items">
+                            <span className="flex items-center text-[14px] text-purple-text-btn-setting leading-[20px]">
+                                <GoGear className="text-[20px]" />
+                            </span>
+                        </button>
+                    </TippyBox>
                     <button className="rounded-full">
                         <span className="flex w-[40px] h-[40px] object-contain">
                             <img className="w-full h-full rounded-[50%] object-cover" src={images.userClient} alt="" />

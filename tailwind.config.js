@@ -27,6 +27,7 @@ export default {
     backgroundImage: {},
     backgroundColor: {
       transparent: "transparent",
+      "bg-tippy": "#333",
       "bg-slider": "rgb(89,85,96)",
       "bg-current-slider": "#FFF",
       purple: {
@@ -47,6 +48,7 @@ export default {
     },
     colors: {
       "link-text-hover": "#c273ed",
+      "text-tippy": "#fff",
       purple: {
         "text-primary": "#FFF",
         "text-secondary": "#DADADA",

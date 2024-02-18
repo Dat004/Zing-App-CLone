@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { PiLayout, PiMicrophoneStageLight } from 'react-icons/pi';
 import { MdMusicVideo } from 'react-icons/md';
 import { RiPlayList2Fill } from 'react-icons/ri';
@@ -5,8 +6,8 @@ import { SlVolume2, SlVolumeOff } from 'react-icons/sl';
 
 import ActionsMusic from '../../../components/ActionsMusic/index,';
 import CardMusic from '../../../components/CardMusic';
+import TippyBox from '../../../components/Tippy/TippyBox';
 import BarController from './BarController';
-import { useState } from 'react';
 import InputSlider from '../../../components/InputSlider';
 
 function MusicPlayer() {
@@ -30,15 +31,21 @@ function MusicPlayer() {
                 </div>
                 <div className="flex items-center justify-end w-[30%]">
                     <div className="flex items-center pr-[20px] mr-[20px] border-r border-r-purple-bd-separator-color">
-                        <button className="flex items-center justify-center w-[32px] h-[32px] mx-[2px] bg-transparent hover:bg-purple-bg-active-items rounded-[50%] text-purple-text-actions">
-                            <MdMusicVideo className="text-[20px]" />
-                        </button>
-                        <button className="flex items-center justify-center w-[32px] h-[32px] mx-[2px] bg-transparent hover:bg-purple-bg-active-items rounded-[50%] text-purple-text-actions">
-                            <PiMicrophoneStageLight className="text-[20px]" />
-                        </button>
-                        <button className="flex items-center justify-center w-[32px] h-[32px] mx-[2px] bg-transparent hover:bg-purple-bg-active-items rounded-[50%] text-purple-text-actions">
-                            <PiLayout className="text-[20px]" />
-                        </button>
+                        <TippyBox content="MV" placement="top" arrow offset={[0, 10]}>
+                            <button className="flex items-center justify-center w-[32px] h-[32px] mx-[2px] bg-transparent hover:bg-purple-bg-active-items rounded-[50%] text-purple-text-actions">
+                                <MdMusicVideo className="text-[20px]" />
+                            </button>
+                        </TippyBox>
+                        <TippyBox content="Xem lời bài hát" placement="top" arrow offset={[0, 10]}>
+                            <button className="flex items-center justify-center w-[32px] h-[32px] mx-[2px] bg-transparent hover:bg-purple-bg-active-items rounded-[50%] text-purple-text-actions">
+                                <PiMicrophoneStageLight className="text-[20px]" />
+                            </button>
+                        </TippyBox>
+                        <TippyBox content="Chế độ cửa sổ" placement="top" arrow offset={[0, 10]}>
+                            <button className="flex items-center justify-center w-[32px] h-[32px] mx-[2px] bg-transparent hover:bg-purple-bg-active-items rounded-[50%] text-purple-text-actions">
+                                <PiLayout className="text-[20px]" />
+                            </button>
+                        </TippyBox>
                         <div className="flex items-center">
                             <button
                                 className="flex items-center justify-center w-[32px] h-[32px] mx-[2px] bg-transparent hover:bg-purple-bg-active-items rounded-[50%] text-purple-text-actions"
@@ -60,9 +67,11 @@ function MusicPlayer() {
                         </div>
                     </div>
                     <div>
-                        <button className="flex items-center justify-center h-[30px] px-[5px] bg-purple-bg-active-items rounded-[4px] text-purple-text-actions">
-                            <RiPlayList2Fill className="text-[18px]" />
-                        </button>
+                        <TippyBox content="Danh sách phát" placement="top" arrow offset={[0, 10]}>
+                            <button className="flex items-center justify-center h-[30px] px-[5px] bg-purple-bg-active-items rounded-[4px] text-purple-text-actions">
+                                <RiPlayList2Fill className="text-[18px]" />
+                            </button>
+                        </TippyBox>
                     </div>
                 </div>
             </div>
