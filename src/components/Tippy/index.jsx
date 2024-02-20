@@ -3,8 +3,10 @@ import TippyHeadless from '@tippyjs/react/headless';
 
 function Tippy({
     children,
+    visible = false,
+    onClickOutside = () => {},
     interactive = false,
-    trigger = '',
+    trigger = 'mouseenter',
     hideOnClick = false,
     offset = [],
     placement = 'auto',
@@ -16,9 +18,9 @@ function Tippy({
 }) {
     return (
         <TippyHeadless
+            visible={visible}
+            onClickOutside={onClickOutside}
             interactive={interactive}
-            trigger={trigger}
-            hideOnClick={hideOnClick}
             offset={offset}
             placement={placement}
             animation={animation}
@@ -27,7 +29,7 @@ function Tippy({
             zIndex={zIndex}
             render={(attrs) => (
                 <div tabIndex="-1" {...attrs}>
-                    {renderComponent ? renderComponent : <div></div>}
+                    {renderComponent}
                 </div>
             )}
         >

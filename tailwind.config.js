@@ -3,12 +3,6 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens: {
-      // MS: "768px",
-      // XM: "1024px",
-      // LM: "1134px",
-      // L: "1225px",
-      // ML: "1351px",
-      // XL: "1591px",
       MS: { min: "0", max: "768px" },
       XM: [{ max: "1024px" }, { min: "769px", max: "1024px" }],
       LM: [{ max: "1133px" }, { min: "1025px", max: "1133px" }],
@@ -27,6 +21,9 @@ export default {
     backgroundImage: {},
     backgroundColor: {
       transparent: "transparent",
+      "plus-bg": "rgb(142, 76, 255)",
+      "premium-bg": "rgb(220, 165, 25)",
+      "purple-color": "rgb(155, 77, 224)",
       "bg-tippy": "#333",
       "bg-slider": "rgb(89,85,96)",
       "bg-current-slider": "#FFF",
@@ -47,10 +44,14 @@ export default {
       },
     },
     colors: {
+      "title-package-color": "rgb(20, 20, 20)",
+      "plus-color": "rgb(142, 76, 255)",
+      "premium-color": "rgb(220, 165, 25)",
+      "white-color": "#fff",
       "link-text-hover": "#c273ed",
       "text-tippy": "#fff",
       purple: {
-        "text-primary": "#FFF",
+        "text-primary": "rgb(255, 255, 255)",
         "text-secondary": "#DADADA",
         "text-navigation": "#dadada",
         "text-items": "rgba(255, 255, 255, 0.5)",
@@ -60,7 +61,9 @@ export default {
         "text-btn-setting": "rgb(218, 218, 218)",
       },
       default: {},
-      light: {},
+      light: {
+        "text-primary": "rgb(50, 50, 61)",
+      },
     },
     opacity: {
       0: "0",

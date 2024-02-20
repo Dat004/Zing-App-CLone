@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import Tippy from '@tippyjs/react/headless';
-import { RiArrowDownSFill } from 'react-icons/ri';
 
 function TippyBox({
     children,
