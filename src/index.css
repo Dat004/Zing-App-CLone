@@ -24,7 +24,6 @@ a {
 p,
 a,
 span {
-    /* max-width: 90%; */
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -40,4 +39,9 @@ span {
     input[type="range"]::-webkit-slider-runnable-track {
         @apply appearance-none h-full w-full bg-transparent;
     }
+}
+
+.tippy-box {
+    font-size: 11px;
+    line-height: 1.3;
 }

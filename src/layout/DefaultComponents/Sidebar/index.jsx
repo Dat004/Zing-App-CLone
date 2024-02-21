@@ -32,7 +32,7 @@ function Sidebar({ className }) {
             <footer
                 className={`fixed bottom-[90px] left-0 w-[240px] px-[24px] ${
                     isExtend ? 'px-0' : 'LM:w-[70px] LM:p-0 LM:border-0'
-                } h-[54px] border-t-[1px] border-purple-bd-separator-color`}
+                } h-[54px] border-t-[1px] border-purple-bd-primary-color`}
             >
                 <div
                     className={`flex LM:justify-center items-center h-full text-purple-text-navigation font-medium text-[14px]`}

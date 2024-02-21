@@ -1,10 +1,12 @@
 import { DATA_MENU_TOP, DATA_MENU_BOTTOM_CLIENT } from './DataMenuSideBar';
-import { DATA_SUB_PACKAGE } from './DataUser';
+import { DATA_SUB_PACKAGE, DATA_MENU_SETTINGS, DATA_OPTIONS_CURRENT_MUSIC } from './DataUser';
 
 const DATAS = {
     DATA_MENU_TOP,
     DATA_MENU_BOTTOM_CLIENT,
     DATA_SUB_PACKAGE,
+    DATA_MENU_SETTINGS,
+    DATA_OPTIONS_CURRENT_MUSIC,
 };
 
 export default DATAS;

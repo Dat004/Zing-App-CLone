@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import TippyHeadless from '@tippyjs/react/headless';
+import { forwardRef } from 'react';
 
-function Tippy({
+const Tippy = forwardRef(({
     children,
     visible = false,
     onClickOutside = () => {},
@@ -14,29 +15,34 @@ function Tippy({
     delay = [],
     arrow = false,
     zIndex = '9999',
+    maxWidth = '',
     renderComponent,
-}) {
+}, ref) => {
     return (
-        <TippyHeadless
-            visible={visible}
-            onClickOutside={onClickOutside}
-            interactive={interactive}
-            offset={offset}
-            placement={placement}
-            animation={animation}
-            delay={delay}
-            arrow={arrow}
-            zIndex={zIndex}
-            render={(attrs) => (
-                <div tabIndex="-1" {...attrs}>
-                    {renderComponent}
-                </div>
-            )}
-        >
-            {children}
-        </TippyHeadless>
+        <div>
+            <TippyHeadless
+                visible={visible}
+                onClickOutside={onClickOutside}
+                interactive={interactive}
+                offset={offset}
+                placement={placement}
+                animation={animation}
+                delay={delay}
+                arrow={arrow}
+                zIndex={zIndex}
+                maxWidth={maxWidth}
+                ref={ref}
+                render={(attrs) => (
+                    <div tabIndex="-1" {...attrs}>
+                        {renderComponent}
+                    </div>
+                )}
+            >
+                {children}
+            </TippyHeadless>
+        </div>
     );
-}
+});
 
 Tippy.propTypes = {
     children: PropTypes.node.isRequired,

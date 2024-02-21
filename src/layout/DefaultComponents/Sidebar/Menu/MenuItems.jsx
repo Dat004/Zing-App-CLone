@@ -12,7 +12,7 @@ function MenuItems({ data, isExtend }) {
                     key={items.title}
                     className={`border-l-[3px] ${
                         location.pathname === items.path
-                            ? 'bg-purple-bg-active-items border-purple-bd-color'
+                            ? 'bg-purple-bg-active-items border-purple-bd-purple-color'
                             : 'border-transparent'
                     } ${isExtend ? '' : 'LM:border-l-0'}`}
                 >
