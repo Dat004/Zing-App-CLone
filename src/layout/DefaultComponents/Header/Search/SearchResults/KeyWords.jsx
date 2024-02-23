@@ -9,47 +9,47 @@ function KeyWords({ data, keyWords, isRelate = false }) {
     return (
         <>
             <ul>
-                <li className="list-none py-[8px] px-[10px] rounded-[4px] overflow-hidden hover:bg-purple-bg-active-items">
-                    <Link className="flex items-center gap-[10px] text-purple-text-primary">
-                        <IconContent className="text-[16px] text-purple-text-items" />
-                        <span className="text-[14px] font-normal">nhạc tết</span>
-                    </Link>
-                </li>
-                <li className="list-none py-[8px] px-[10px] rounded-[4px] overflow-hidden hover:bg-purple-bg-active-items">
-                    <Link className="flex items-center gap-[10px] text-purple-text-primary">
-                        <IconContent className="text-[16px] text-purple-text-items" />
-                        <span className="text-[14px] font-normal">si mê</span>
-                    </Link>
-                </li>
-                <li className="list-none py-[8px] px-[10px] rounded-[4px] overflow-hidden hover:bg-purple-bg-active-items">
-                    <Link className="flex items-center gap-[10px] text-purple-text-primary">
-                        <IconContent className="text-[16px] text-purple-text-items" />
-                        <span className="text-[14px] font-normal">trái đất ôm mặt trời</span>
-                    </Link>
-                </li>
-                <li className="list-none py-[8px] px-[10px] rounded-[4px] overflow-hidden hover:bg-purple-bg-active-items">
-                    <Link className="flex items-center gap-[10px] text-purple-text-primary">
-                        <IconContent className="text-[16px] text-purple-text-items" />
-                        <span className="text-[14px] font-normal">chị đẹp đạp gió rẽ sóng</span>
-                    </Link>
-                </li>
-                <li className="list-none py-[8px] px-[10px] rounded-[4px] overflow-hidden hover:bg-purple-bg-active-items">
-                    <Link className="flex items-center gap-[10px] text-purple-text-primary">
-                        <IconContent className="text-[16px] text-purple-text-items" />
-                        <span className="text-[14px] font-normal">tò tí te</span>
-                    </Link>
-                </li>
-                <li className="list-none py-[8px] px-[10px] rounded-[4px] overflow-hidden hover:bg-purple-bg-active-items">
-                    <Link className="flex items-center gap-[10px] text-purple-text-primary">
-                        <IconContent className="text-[16px] text-purple-text-items" />
-                        <span className="text-[14px] font-normal">dân chơi sao phải khóc</span>
-                    </Link>
-                </li>
+                {data
+                    ? data.keywords.map((items) => {
+                          let sameWords;
+                          let words;
+
+                          if (keyWords) {
+                              sameWords = items.keyword.substring(0, keyWords.length);
+                              words = items.keyword.substring(keyWords.length);
+                          }
+
+                          return (
+                              <li
+                                  key={items?.keyword}
+                                  className="list-none py-[8px] px-[10px] rounded-[4px] overflow-hidden hover:bg-purple-bg-active-items"
+                              >
+                                  <Link className="flex items-center gap-[10px] text-purple-text-primary">
+                                      <IconContent className="text-[16px] text-purple-text-items" />
+                                      {keyWords ? (
+                                          <>
+                                              <span className="text-[14px] font-bold">
+                                                  {sameWords}
+                                                  {words && <span className="text-[14px] font-normal">{words}</span>}
+                                              </span>
+                                          </>
+                                      ) : (
+                                          <>
+                                              <span className="text-[14px] font-normal">{items?.keyword}</span>
+                                          </>
+                                      )}
+                                  </Link>
+                              </li>
+                          );
+                      })
+                    : null}
             </ul>
             {isRelate && (
                 <Link className="flex items-center gap-[10px] py-[8px] px-[10px] text-purple-text-primary rounded-[4px] overflow-hidden hover:bg-purple-bg-active-items">
                     <IconContent className="text-[16px] text-purple-text-items" />
-                    <span className="text-[14px] font-normal">Tìm kiếm "{keyWords}"</span>
+                    <span className="text-[14px] font-normal">
+                        Tìm kiếm<span className="ml-[4px] font-bold">"{keyWords}"</span>
+                    </span>
                 </Link>
             )}
         </>
@@ -57,7 +57,7 @@ function KeyWords({ data, keyWords, isRelate = false }) {
 }
 
 KeyWords.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.object,
     keyWords: PropTypes.string,
     isRelate: PropTypes.bool,
 };

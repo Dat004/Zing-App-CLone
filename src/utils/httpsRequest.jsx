@@ -1,29 +1,39 @@
 import axios from "axios";
 
-export const request = axios.create({
+export const defaultRequest = axios.create({
     baseURL: 'https://server-tau-six.vercel.app/api/',
 });
 
-export const getRequest = (path, options) => {
-    const reponse = request.get(path, options);
+export const customRequest = axios.create({
+    baseURL: 'https://ac.zingmp3.vn/v1/web/',
+});
+
+export const getRequest = async (path, options) => {
+    const reponse = await defaultRequest.get(path, options);
     
     return reponse;
 };
 
-export const postRequest = (path, data, options) => {
-    const reponse = request.post(path, data, options);
+export const getCustomRequest = async (path, options) => {
+    const reponse = await customRequest.get(path, options);
+    
+    return reponse;
+};
+
+export const postRequest = async (path, data, options) => {
+    const reponse = await defaultRequest.post(path, data, options);
 
     return reponse;
 };
 
-export const deleteRequest = (path, options) => {
-    const reponse = request.delete(path, options);
+export const deleteRequest = async (path, options) => {
+    const reponse = await defaultRequest.delete(path, options);
 
     return reponse;
 };
 
-export const patchRequest = (path, data, options) => {
-    const reponse = request.patch(path, data, options);
+export const patchRequest = async (path, data, options) => {
+    const reponse = await defaultRequest.patch(path, data, options);
 
     return reponse;
 };

@@ -1,19 +1,40 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 import { AiOutlineClose } from 'react-icons/ai';
-import { TfiSearch } from "react-icons/tfi";
+import { TfiSearch } from 'react-icons/tfi';
 
+import { useDebounce } from '../../../../hooks';
+import DATAS from '../../../../tempData';
 import PopperWrapper from '../../../../components/Popper';
 import SearchResults from './SearchResults';
 import KeyWords from './SearchResults/KeyWords';
 import Results from './SearchResults/Results';
 import Button from '../../../../components/Button';
+import apiService from '../../../../apiProvider';
 
 function Search() {
+    const DATA_SEARCH_SUGGESTIONS = DATAS.DATA_SEARCH_SUGGESTIONS;
+
     const inputRef = useRef();
 
     const [searchValue, setSearchValue] = useState('');
+    const [suggestionDataSearch, setSuggestionDataSearch] = useState([]);
     const [isFocus, setIsFocus] = useState(false);
+
+    const debounce = useDebounce(searchValue, 500);
+
+    useEffect(() => {
+        if (!debounce) {
+            setSuggestionDataSearch([]);
+
+            return;
+        }
+        (async () => {
+            const data = await apiService.suggestionSearchApi(debounce);
+
+            setSuggestionDataSearch(data.data.items);
+        })();
+    }, [debounce]);
 
     const handleChangeValue = (e) => {
         const value = e.target.value;
@@ -64,7 +85,11 @@ function Search() {
                 <div className="absolute top-[40px] left-0 w-full">
                     <PopperWrapper className="py-[13px] px-[10px] rounded-b-[20px]">
                         <SearchResults titleHeader={searchValue ? 'Từ khóa liên quan' : 'Đề xuất cho bạn'}>
-                            <KeyWords isRelate={searchValue ? true : false} keyWords={searchValue}></KeyWords>
+                            <KeyWords
+                                data={searchValue ? suggestionDataSearch[0] : DATA_SEARCH_SUGGESTIONS}
+                                isRelate={searchValue ? true : false}
+                                keyWords={searchValue}
+                            ></KeyWords>
                         </SearchResults>
                         <SearchResults
                             className="mt-[10px] pt-[10px] border-t-[1px] border-t-purple-bd-primary-color"
