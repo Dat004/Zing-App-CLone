@@ -178,7 +178,9 @@ function Header() {
                         renderComponent={<MENU_USER />}
                     >
                         <Button rounded onClick={() => setIsShow((state) => ({ ...state, menuUser: !state.menuUser }))}>
-                            <Image widthImg="38px" heightImg="38px" bdRadius="50%" src={images.userClient} />
+                            <span className='w-[38px] h-[38px]'>
+                                <Image rounded src={images.userClient} />
+                            </span>
                         </Button>
                     </Tippy>
                     {/* <MenuWrapper menuItems={<MENU_USER />}>

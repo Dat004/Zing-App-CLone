@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 function SearchResults({ children, className, titleHeader = 'Đề xuất cho bạn' }) {
     return (
         <div className={className}>
-            <header className="px-[10px] pb-[10px] text-[14px] font-bold text-purple-text-primary">
+            <header className="px-[10px] pb-[8px] text-[14px] font-bold text-purple-text-primary">
                 <p>{titleHeader}</p>
             </header>
             {children}

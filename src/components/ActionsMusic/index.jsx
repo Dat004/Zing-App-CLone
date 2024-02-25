@@ -3,24 +3,30 @@ import { useState } from 'react';
 import { PiHeartBold } from 'react-icons/pi';
 import { TfiMoreAlt } from 'react-icons/tfi';
 import { FiDownload } from 'react-icons/fi';
-import { MdBlockFlipped } from "react-icons/md";
+import { MdBlockFlipped } from 'react-icons/md';
 import { LuListMusic } from 'react-icons/lu';
+import classNames from 'classnames';
 
 import TippyBox from '../Tippy/TippyBox';
 import Tippy from '../Tippy';
 import PopperWrapper from '../Popper';
 import DATAS from '../../tempData';
-import CardMusic from '../CardMusic';
+import CardMusic from '../CardImage';
 import Button from '../Button';
 
 function ActionsMusic({
     dataMenu,
+    className,
     widthBtn = '26px',
     heightBtn = '26px',
     isAddLibrary = false,
     isAddPlaylist = false,
 }) {
     const DATA_OPTIONS_CURRENT_MUSIC = DATAS.DATA_OPTIONS_CURRENT_MUSIC;
+
+    const actionsMusicClasses = classNames('flex items-center', {
+        [className]: className,
+    });
 
     const [showMenu, setShowMenu] = useState(false);
 
@@ -32,23 +38,23 @@ function ActionsMusic({
                         <CardMusic widthImg="40px" heightImg="40px" isHoverArtist isHoverName />
                     </div>
                     <div className="flex justify-between mx-[15px] mt-[15px] mb-[10px] bg-purple-bg-active-items rounded-[8px]">
-                        <Button className='flex-col items-center !justify-normal flex-1 max-w-[80px] py-[8px] text-purple-text-primary text-[10px] rounded-[8px]'>
-                            <span className='mb-[4px] text-[16px]'>
+                        <Button className="flex-col items-center !justify-normal flex-1 max-w-[80px] py-[8px] text-purple-text-primary text-[10px] rounded-[8px]">
+                            <span className="mb-[4px] text-[16px]">
                                 <FiDownload />
                             </span>
-                            <span className='leading-[14px]'>Tải xuống</span>
+                            <span className="leading-[14px]">Tải xuống</span>
                         </Button>
-                        <Button className='flex-col items-center !justify-normal flex-1 max-w-[80px] py-[8px] text-purple-text-primary text-[10px] rounded-[8px]'>
-                            <span className='mb-[4px] text-[16px]'>
+                        <Button className="flex-col items-center !justify-normal flex-1 max-w-[80px] py-[8px] text-purple-text-primary text-[10px] rounded-[8px]">
+                            <span className="mb-[4px] text-[16px]">
                                 <LuListMusic />
                             </span>
-                            <span className='leading-[14px]'>Lời bài hát</span>
+                            <span className="leading-[14px]">Lời bài hát</span>
                         </Button>
-                        <Button className='flex-col items-center !justify-normal flex-1 max-w-[80px] py-[8px] text-purple-text-primary text-[10px] rounded-[8px]'>
-                            <span className='mb-[4px] text-[16px]'>
+                        <Button className="flex-col items-center !justify-normal flex-1 max-w-[80px] py-[8px] text-purple-text-primary text-[10px] rounded-[8px]">
+                            <span className="mb-[4px] text-[16px]">
                                 <MdBlockFlipped />
                             </span>
-                            <span className='leading-[14px]'>Chặn</span>
+                            <span className="leading-[14px]">Chặn</span>
                         </Button>
                     </div>
                     <ul>
@@ -75,7 +81,7 @@ function ActionsMusic({
     };
 
     return (
-        <div className="flex items-center">
+        <div className={actionsMusicClasses}>
             {isAddLibrary && (
                 <TippyBox content="Thêm vào thư viện" placement="top" arrow offset={[0, 10]}>
                     <Button
@@ -83,7 +89,7 @@ function ActionsMusic({
                         style={{ width: widthBtn, height: heightBtn }}
                         className="mx-[3px] !text-purple-text-actions"
                     >
-                        <PiHeartBold className="text-[16px]" />
+                        <span className='flex items-center justify-center w-full h-full'><PiHeartBold className="text-[16px]" /></span>
                     </Button>
                 </TippyBox>
             )}
@@ -101,9 +107,9 @@ function ActionsMusic({
                         rounded
                         onClick={() => setShowMenu(true)}
                         style={{ width: widthBtn, height: heightBtn }}
-                        className="mx-[3px] !text-purple-text-actions"
+                        className="mx-[3px] px-[4px] !text-purple-text-actions"
                     >
-                        <TfiMoreAlt />
+                        <span className='flex items-center justify-center w-full h-full'><TfiMoreAlt /></span>
                     </Button>
                 </Tippy>
             </TippyBox>

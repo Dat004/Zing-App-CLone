@@ -15,7 +15,8 @@ body {
 
 button,
 input,
-a {
+a,
+img {
     display: block;
     outline: none;
     border: none;
@@ -26,17 +27,18 @@ a,
 span {
     white-space: nowrap;
     text-overflow: ellipsis;
+    max-width: 100%;
     overflow: hidden;
 }
 
 @layer components {
-    input[type="range"] {
+    input[type='range'] {
         @apply appearance-none bg-transparent cursor-pointer;
     }
-    input[type="range"]::-webkit-slider-thumb {
+    input[type='range']::-webkit-slider-thumb {
         @apply appearance-none w-[16px] h-[16px] rounded-full bg-transparent cursor-pointer;
     }
-    input[type="range"]::-webkit-slider-runnable-track {
+    input[type='range']::-webkit-slider-runnable-track {
         @apply appearance-none h-full w-full bg-transparent;
     }
 }

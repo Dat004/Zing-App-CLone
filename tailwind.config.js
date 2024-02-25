@@ -15,6 +15,12 @@ export default {
       fit: "0 0 100%",
       1: "1 1 100%",
     },
+    size: {
+      'small': '40px',
+      'medium': '60px',
+      'large': '200px',
+      'larger': '300px',
+    },
     minHeight: {
       "height-content": "calc(100vh - 90px)",
     },
@@ -35,6 +41,7 @@ export default {
         "bg-sidebar-res": "rgb(42, 33, 58)",
         "bg-active-items": "rgba(255, 255, 255, 0.1)",
         "bg-separate-items": "rgba(255, 255, 255, 0.1)",
+        "bg-layer": "rgba(0, 0, 0, 0.5)",
       },
     },
     borderColor: {

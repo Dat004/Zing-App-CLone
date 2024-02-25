@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { LuTrendingUp } from 'react-icons/lu';
-import { FiSearch } from 'react-icons/fi';
+import { TfiSearch } from 'react-icons/tfi';
 
-function KeyWords({ data, keyWords, isRelate = false }) {
-    let IconContent = isRelate ? FiSearch : LuTrendingUp;
+function KeyWords({ data, keyWords = '', isRelate = false }) {
+    let IconContent = isRelate ? TfiSearch : LuTrendingUp;
 
     return (
         <>
             <ul>
                 {data
-                    ? data.keywords.map((items) => {
+                    ? data.map((items) => {
                           let sameWords;
                           let words;
 
@@ -57,7 +57,7 @@ function KeyWords({ data, keyWords, isRelate = false }) {
 }
 
 KeyWords.propTypes = {
-    data: PropTypes.object,
+    data: PropTypes.array,
     keyWords: PropTypes.string,
     isRelate: PropTypes.bool,
 };

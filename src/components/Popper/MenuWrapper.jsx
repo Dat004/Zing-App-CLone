@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { useMenu } from '../../hooks';
 import PopperWrapper from '.';
 import Tippy from '../Tippy';
 
