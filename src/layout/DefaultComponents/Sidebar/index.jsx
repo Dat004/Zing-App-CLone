@@ -5,7 +5,7 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import { LogoDarkIcon, LogoPrimaryIcon, PlusIcon } from '../../../components/CustomIcon';
 import Menu from './Menu';
 
-function Sidebar({ className }) {
+function Sidebar() {
     const [isExtend, setIsExtend] = useState(false);
 
     const handleResizeSidebar = () => {
@@ -14,7 +14,7 @@ function Sidebar({ className }) {
 
     return (
         <aside
-            className={`${className} relative min-h-height-content max-h-full w-[240px] L:bg-purple-bg-side-bar transition-all ${
+            className={`relative min-h-height-content max-h-full w-[240px] L:bg-purple-bg-side-bar transition-all ${
                 isExtend ? 'bg-purple-bg-sidebar-res' : 'LM:w-[70px] LM:bg-purple-bg-sidebar-res'
             } z-[99]`}
         >

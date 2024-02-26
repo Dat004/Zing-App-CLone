@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import Image from '../Image';
 
-function CardMusic({ src, className, rounded = false, small = false, medium = false, large = false, larger = false }) {
+function CardImage({ src, className, rounded = false, small = false, medium = false, large = false, larger = false }) {
     const cardClasses = classNames('overflow-hidden', {
         [className]: className,
         'size-small': small,
@@ -15,17 +15,15 @@ function CardMusic({ src, className, rounded = false, small = false, medium = fa
     });
 
     return (
-        <div>
-            <section className={cardClasses}>
-                <span className="block h-full w-full">
-                    <Image rounded={rounded} className="rounded-[4px]" src={src} />
-                </span>
-            </section>
-        </div>
+        <section className={cardClasses}>
+            <span className="block h-full w-full">
+                <Image rounded={rounded} className="rounded-[4px]" src={src} />
+            </span>
+        </section>
     );
 }
 
-CardMusic.propTypes = {
+CardImage.propTypes = {
     data: PropTypes.object,
     className: PropTypes.string,
     small: PropTypes.bool,
@@ -34,4 +32,4 @@ CardMusic.propTypes = {
     larger: PropTypes.bool,
 };
 
-export default CardMusic;
+export default CardImage;
