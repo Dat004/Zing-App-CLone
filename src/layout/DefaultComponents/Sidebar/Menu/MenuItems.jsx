@@ -1,10 +1,10 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { MdOutlinePlayCircle } from "react-icons/md";
+import { MdOutlinePlayCircle } from 'react-icons/md';
 
 function MenuItems({ data, isExtend }) {
-    const location  = useLocation();
-
+    const location = useLocation();
+    
     return (
         <Fragment>
             {data.map((items) => (

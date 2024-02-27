@@ -29,9 +29,9 @@ export default {
         999: 999,
       },
       transitionProperty: {
-        "opacity": "opacity",
-        "transform": "transform",
-        "zIndex": "zIndex"
+        opacity: "opacity",
+        transform: "transform",
+        zIndex: "zIndex",
       },
       // gri,
       size: {
@@ -44,9 +44,13 @@ export default {
         "height-content": "calc(100vh - 90px)",
         "height-wrapper": "calc(100% - 158px)",
       },
-      backgroundImage: {},
+      backgroundImage: {
+        "linear-loading":
+          "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)",
+      },
       backgroundColor: {
         transparent: "transparent",
+        "bg-loading": "rgba(255, 255, 255, 0.1)",
         "plus-bg": "rgb(142, 76, 255)",
         "premium-bg": "rgb(220, 165, 25)",
         "purple-bg": "rgb(155, 77, 224)",
