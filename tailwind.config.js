@@ -17,6 +17,22 @@ export default {
         fit: "0 0 100%",
         1: "1 1 100%",
       },
+      zIndex: {
+        1: 1,
+        5: 5,
+        10: 10,
+        20: 20,
+        25: 25,
+        50: 50,
+        75: 75,
+        100: 100,
+        999: 999,
+      },
+      transitionProperty: {
+        "opacity": "opacity",
+        "transform": "transform",
+        "zIndex": "zIndex"
+      },
       // gri,
       size: {
         small: "40px",
