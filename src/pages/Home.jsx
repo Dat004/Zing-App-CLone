@@ -3,19 +3,21 @@ import SliderBanner from '../components/SliderBanner';
 import apiService from '../apiProvider';
 
 function Home() {
-    const [dataHome, setDataHome] = useState({});
+    const [dataHome, setDataHome] = useState({
+        banner: [],
+    });
 
     useEffect(() => {
         (async () => {
             const data = await apiService.homeApi();
 
-            console.log(data);
+            setDataHome((state) => ({ ...state, banner: data?.data?.items[0] }));
         })();
     }, []);
 
     return (
         <div className="w-full h-full mt-[70px]">
-            <SliderBanner />
+            <SliderBanner data={dataHome.banner?.items} />
         </div>
     );
 }

@@ -21,7 +21,7 @@ function Sidebar() {
             <div className={`fixed top-0 flex justify-start items-center w-[240px] h-[70px] pl-[28px] pr-[25px] ${isExtend ? '' : 'LM:w-[70px] LM:p-0 LM:justify-center'}`}>
                 <Link to="/" className={`flex justify-start ${isExtend ? '' : 'LM:justify-center'} items-center w-full h-full`}>
                     <div className={`block ${isExtend ? '' : 'LM:hidden'}`}>
-                        <LogoDarkIcon />
+                        <LogoDarkIcon />    
                     </div>
                     <div className={`hidden ${isExtend ? '' : 'LM:block'}`}>
                         <LogoPrimaryIcon />
