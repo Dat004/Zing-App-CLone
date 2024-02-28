@@ -8,7 +8,10 @@ export default {
         MS: [{ min: "0", max: "768px" }],
         XM: [{ max: "1024px" }, { min: "769px", max: "1024px" }],
         LM: [{ max: "1133px" }, { min: "1025px", max: "1133px" }],
-        L: [{ min: "1134px" }, { min: "1134px", max: "1224px" }],
+        L: [
+          { max: "1224px" },
+          { min: "1134px", max: "1224px" },
+        ],
         ML: { min: "1225px", max: "1350px" },
         XL: { min: "1351px" },
       },

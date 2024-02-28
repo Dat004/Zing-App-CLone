@@ -14,8 +14,8 @@ function Sidebar() {
 
     return (
         <aside
-            className={`relative min-h-height-content max-h-full w-[240px] L:bg-purple-bg-side-bar transition-all ${
-                isExtend ? 'bg-purple-bg-sidebar-res' : 'LM:w-[70px] LM:bg-purple-bg-sidebar-res'
+            className={`relative min-h-height-content max-h-full w-[240px] bg-purple-bg-side-bar transition-all ${
+                isExtend ? 'LM:bg-purple-bg-sidebar-res' : 'LM:w-[70px] LM:bg-purple-bg-sidebar-res'
             } z-[99]`}
         >
             <div className={`fixed top-0 flex justify-start items-center w-[240px] h-[70px] pl-[28px] pr-[25px] ${isExtend ? '' : 'LM:w-[70px] LM:p-0 LM:justify-center'}`}>

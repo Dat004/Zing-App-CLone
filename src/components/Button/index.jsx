@@ -27,8 +27,8 @@ const Button = forwardRef(
         };
         const buttonClasses = classNames('flex items-center justify-center text-purple-text-primary', {
             [className]: className,
-            'border border-purple-bd-purple-color bg-purple-bg rounded-[100px]': primary,
-            'border border-purple-bd-primary-color bg-transparent rounded-[100px]': outline,
+            'border border-solid border-purple-bd-purple-color bg-purple-bg rounded-[100px]': primary,
+            'border border-solid border-purple-bd-primary-color bg-transparent rounded-[100px]': outline,
             'bg-transparent border-none rounded-[50%] hover:bg-purple-bg-active-items': rounded,
             'min-w-[144px]': large,
             'min-w-[120px]': medium,

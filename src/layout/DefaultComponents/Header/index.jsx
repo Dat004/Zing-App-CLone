@@ -126,7 +126,7 @@ function Header() {
     };
 
     return (
-        <header className="fixed left-[240px] LM:left-[70px] right-0 top-0 h-[70px] min-w-[660px]">
+        <header className="fixed left-[240px] LM:left-[70px] right-0 top-0 h-[70px] min-w-[660px] z-100">
             <section className="flex items-center justify-between gap-[10px] h-full px-[59px] XM:px-[29px]">
                 {/* <div className='flex items-center justify-between w-full'> */}
                 <div className="flex items-center flex-auto">

@@ -80,7 +80,7 @@ function SliderBanner({ data = [] }) {
             <div className="pt-[32px]">
                 <section
                     style={{ height: height + 'px' }}
-                    className="group/banners flex relative XM:mx-[-12px] mx-[-15px] mb-[20px]"
+                    className="group/banners flex relative XM:mx-[-12px] mx-[-15px] mb-[20px] overflow-hidden"
                 >
                     {data.length > 0 ? (
                         <Fragment>
