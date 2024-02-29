@@ -7,8 +7,8 @@ function DefaultLayout({ children }) {
         <div className="flex bg-purple-bg-layout">
             <Sidebar />
             <Header />
-            <div className="relative flex-auto min-h-height-content">
-                <main className="absolute inset-0 w-full h-full XM:px-[29px] px-[59px]">{children}</main>
+            <div className="relative ml-[240px] flex-auto LM:ml-[70px] min-h-height-content">
+                <main className="absolute top-0 left-0 h-full w-full XM:px-[29px] px-[59px] overflow-y-auto">{children}</main>
             </div>
             <MusicPlayer />
         </div>

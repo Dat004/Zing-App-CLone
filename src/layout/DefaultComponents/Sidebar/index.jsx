@@ -14,7 +14,7 @@ function Sidebar() {
 
     return (
         <aside
-            className={`relative min-h-height-content max-h-full w-[240px] bg-purple-bg-side-bar transition-all ${
+            className={`fixed top-0 left-0 min-h-height-content max-h-full w-[240px] bg-purple-bg-side-bar transition-all ${
                 isExtend ? 'LM:bg-purple-bg-sidebar-res' : 'LM:w-[70px] LM:bg-purple-bg-sidebar-res'
             } z-[99]`}
         >

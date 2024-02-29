@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { SlArrowRight } from 'react-icons/sl';
 
-function BoxContent({ children, title = '', isHeader = false, isSeeAll = false }) {
+function BoxContent({ children, title, isHeader = false, isSeeAll = false }) {
     return (
         <div className="mt-[48px]">
             {isHeader && (
