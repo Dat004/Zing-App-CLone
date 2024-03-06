@@ -13,6 +13,7 @@ const routerApp = [
     { path: config.routes.search, component: pages.Search, layout: DefaultLayout },
     { path: config.routes.album, component: pages.Album, layout: DefaultLayout },
     { path: config.routes.playlist, component: pages.Playlist, layout: DefaultLayout },
+    { path: config.routes.artists, component: pages.Artist, layout: DefaultLayout },
 ];
 
 export default routerApp;

@@ -8,11 +8,8 @@ export default {
         MS: [{ min: "0", max: "768px" }],
         XM: [{ max: "1024px" }, { min: "769px", max: "1024px" }],
         LM: [{ max: "1133px" }, { min: "1025px", max: "1133px" }],
-        L: [
-          { max: "1224px" },
-          { min: "1134px", max: "1224px" },
-        ],
-        ML: { min: "1225px", max: "1350px" },
+        L: [{ max: "1224px" }, { min: "1134px", max: "1224px" }],
+        ML: [{ min: "1225px", max: "1350px" }, { max: "1350px" }],
         XL: { min: "1351px" },
       },
       flex: {
@@ -62,11 +59,13 @@ export default {
         "bg-current-slider": "#FFF",
         purple: {
           "bg-layout": "#170f23",
+          "bg-header": "rgba(23, 15, 35, 0.8)",
           "bd-player": "rgb(19, 12, 28)",
           "bg-wrapper": "rgb(52, 34, 79);",
           "bg-side-bar": "rgb(255 255 255 / 5%)",
           "bg-btn": "rgb(255 255 255 / 15%)",
           "bg-sidebar-res": "rgb(42, 33, 58)",
+          "bg-logo-partner": "rgb(247, 247, 247)",
           "bg-active-items": "rgba(255, 255, 255, 0.1)",
           "bg-separate-items": "rgba(255, 255, 255, 0.1)",
           "bg-layer": "rgba(0, 0, 0, 0.5)",

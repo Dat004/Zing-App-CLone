@@ -5,8 +5,18 @@ import classNames from 'classnames';
 
 import Image from '../Image';
 
-function CardImage({ src, className, rounded = false, small = false, medium = false, large = false, larger = false }) {
-    const cardClasses = classNames('overflow-hidden', {
+function CardImage({
+    src,
+    className,
+    borderRadius = '4px',
+    isScale = false,
+    rounded = false,
+    small = false,
+    medium = false,
+    large = false,
+    larger = false,
+}) {
+    const cardClasses = classNames(`rounded-[${borderRadius}]`, {
         [className]: className,
         'size-small': small,
         'size-medium': medium,
@@ -17,7 +27,7 @@ function CardImage({ src, className, rounded = false, small = false, medium = fa
     return (
         <section className={cardClasses}>
             <span className="block h-full w-full">
-                <Image rounded={rounded} className="rounded-[4px]" src={src} />
+                <Image rounded={rounded} className={`rounded-[${borderRadius}] ${isScale && 'hover:scale-[1.1]'}`} src={src} />
             </span>
         </section>
     );

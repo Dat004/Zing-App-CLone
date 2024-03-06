@@ -8,6 +8,7 @@ import Top100 from './Top100';
 import Search from './Search';
 import Album from './Album';
 import Playlist from './Playlist';
+import Artist from './Artist';
 
 const pages = {
     Home,
@@ -20,6 +21,7 @@ const pages = {
     Search,
     Album,
     Playlist,
+    Artist,
 };
 
 export default pages;

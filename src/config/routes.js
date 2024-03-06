@@ -9,6 +9,7 @@ const routes = {
     search: '/tim-kiem/:keyword',
     album: '/album/:nameAlbum/:idAlbum',
     playlist: '/playlist/:nameplaylist/:idplaylist',
+    artists: '/artist/:nameArtist',
 };
 
 export default routes;

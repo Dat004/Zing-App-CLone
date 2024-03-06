@@ -8,6 +8,10 @@ export const customRequest = axios.create({
     baseURL: 'https://ac.zingmp3.vn/v1/web/',
 });
 
+export const extraRequest = axios.create({
+    baseURL: 'https://zingmp3.vn/api/v2/app/get/',
+});
+
 export const getRequest = async (path, options) => {
     const reponse = await defaultRequest.get(path, options);
     
@@ -16,6 +20,12 @@ export const getRequest = async (path, options) => {
 
 export const getCustomRequest = async (path, options) => {
     const reponse = await customRequest.get(path, options);
+    
+    return reponse;
+};
+
+export const getExtraRequest = async (path, options) => {
+    const reponse = await extraRequest.get(path, options);
     
     return reponse;
 };

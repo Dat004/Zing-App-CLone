@@ -1,6 +1,6 @@
 import ApiRequest from '../utils';
 
-const suggestionSearchApi = async (keyword, num = 10) => {
+export const suggestionSearchApi = async (keyword, num = 10) => {
     try {
         const res = await ApiRequest.getCustom('ac-suggestions', {
             params: {
@@ -14,5 +14,3 @@ const suggestionSearchApi = async (keyword, num = 10) => {
         return { Erorr: e };
     }
 };
-
-export default suggestionSearchApi;

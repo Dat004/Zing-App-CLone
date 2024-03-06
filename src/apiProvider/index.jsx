@@ -1,5 +1,5 @@
-import suggestionSearchApi from "./seachApi";
-import homeApi from "./homeApi";
+import { suggestionSearchApi } from './seachApi';
+import homeApi from './homeApi';
 
 const apiService = {
     suggestionSearchApi,
