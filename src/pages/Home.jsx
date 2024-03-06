@@ -62,17 +62,36 @@ function Home() {
                 <Fragment>
                     <SliderBanner data={dataHome.banner?.items} />
                     <NewRelease data={dataHome.newRelease} />
-                    <PlayLists title={dataHome.chillPlaylists.title} data={dataHome.chillPlaylists.items} />
-                    <PlayLists title={dataHome.remixPlaylists.title} data={dataHome.remixPlaylists.items} />
-                    <PlayLists title={dataHome.moodPlaylists.title} data={dataHome.moodPlaylists.items} />
+                    <PlayLists
+                        isHeader
+                        isSeeAll
+                        title={dataHome.chillPlaylists.title}
+                        data={dataHome.chillPlaylists.items}
+                    />
+                    <PlayLists
+                        isHeader
+                        isSeeAll
+                        title={dataHome.remixPlaylists.title}
+                        data={dataHome.remixPlaylists.items}
+                    />
+                    <PlayLists
+                        isHeader
+                        isSeeAll
+                        title={dataHome.moodPlaylists.title}
+                        data={dataHome.moodPlaylists.items}
+                    />
                     <Banner data={dataHome.adBanner} />
                     <PlayLists
+                        isHeader
+                        isSeeAll
                         isShowArtists
                         isShowTitlePlaylist
                         title={dataHome.top100Playlists.title}
                         data={dataHome.top100Playlists.items}
                     />
                     <PlayLists
+                        isHeader
+                        isSeeAll
                         isShowArtists
                         isShowTitlePlaylist
                         title={dataHome.hotPlaylists.title}

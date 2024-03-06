@@ -1,13 +1,28 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 import BoxContent from '../BoxContent';
 import CardImage from '../CardImage';
 
-function PlayLists({ data, title, isSlider = false, isShowTitlePlaylist = false, isShowArtists = false }) {
+function PlayLists({
+    data,
+    className,
+    title,
+    isSlider = false,
+    isShowTitlePlaylist = false,
+    isShowArtists = false,
+    isHeader = false,
+    isSeeAll = false,
+    ...passProps
+}) {
+    const playlistsClasses = classNames('flex mx-[-14px] LM:mx-[-12px] overflow-x-hidden', {
+        [className]: className,
+    });
+
     return (
-        <BoxContent title={title} isHeader isSeeAll>
-            <div className="flex mx-[-14px] LM:mx-[-12px] overflow-x-hidden">
+        <BoxContent title={title} isHeader={isHeader} isSeeAll={isSeeAll}>
+            <div {...passProps} className={playlistsClasses}>
                 {data?.map((items, index) => {
                     const getPathNamePlaylists = items?.link?.split('/')[2];
 
@@ -16,7 +31,7 @@ function PlayLists({ data, title, isSlider = false, isShowTitlePlaylist = false,
                             <div className="w-full">
                                 <div className="relative pb-[100%]">
                                     <Link
-                                        to={`playlist/${getPathNamePlaylists}/${items?.encodeId}`}
+                                        to={`/playlist/${getPathNamePlaylists}/${items?.encodeId}`}
                                         className="absolute flex inset-0"
                                     >
                                         <div className="w-full h-full rounded-[5px] overflow-hidden">
@@ -36,7 +51,7 @@ function PlayLists({ data, title, isSlider = false, isShowTitlePlaylist = false,
                                 >
                                     {isShowTitlePlaylist ? (
                                         <Link
-                                            to={`playlist/${getPathNamePlaylists}/${items?.encodeId}`}
+                                            to={`/playlist/${getPathNamePlaylists}/${items?.encodeId}`}
                                             className="max-w-[90%] hover:text-link-text-hover"
                                         >
                                             {items?.title}
@@ -49,7 +64,7 @@ function PlayLists({ data, title, isSlider = false, isShowTitlePlaylist = false,
                                     <p className="flex flex-wrap mt-[4px] max-h-[37.22px] text-[14px] font-medium text-purple-text-items leading-[1.33] overflow-hidden">
                                         {items?.artists?.map((artist, index) => (
                                             <Link
-                                                to={`artist/${artist?.alias}`}
+                                                to={`/artist/${artist?.alias}`}
                                                 className="whitespace-nowrap hover:text-link-text-hover hover:underline"
                                                 key={artist?.id}
                                             >
