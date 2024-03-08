@@ -75,10 +75,13 @@ export default {
         transparent: "transparent",
         purple: {
           "bd-primary-color": "rgba(255, 255, 255, 0.1)",
+          "bd-secondary-color": "rgba(255, 255, 255, 0.05)",
           "bd-purple-color": "rgb(155, 77, 224)",
         },
       },
       colors: {
+        "up-color": "#1dc186",
+        "down-color": "#e35050",
         "title-package-color": "rgb(20, 20, 20)",
         "plus-color": "rgb(142, 76, 255)",
         "premium-color": "rgb(220, 165, 25)",

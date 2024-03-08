@@ -108,13 +108,13 @@ function SliderBanner({ data = [] }) {
                             </div>
                             {data.map((items, index) => (
                                 <div
-                                    style={{
-                                        transition:
-                                            'transform 0.5s ease-in-out, opacity 0.45s ease-in-out 0.15s, z-index 0s linear 0.25s',
-                                        transform: `translateX(${stylesBanner[index].translateX})`,
-                                        zIndex: `${stylesBanner[index].zIndex}`,
-                                        opacity: `${stylesBanner[index].opacity}`,
-                                    }}
+                                    // style={{
+                                    //     transition:
+                                    //         'transform 0.5s ease-in-out, opacity 0.45s ease-in-out 0.15s, z-index 0s linear 0.25s',
+                                    //     transform: `translateX(${stylesBanner[index].translateX})`,
+                                    //     zIndex: `${stylesBanner[index].zIndex}`,
+                                    //     opacity: `${stylesBanner[index].opacity}`,
+                                    // }}
                                     key={index}
                                     className={`absolute translate-x-[100%] XM:min-w-[50%] XM:px-[12px] w-[33.33%] XM:w-[50%] px-[15px]`}
                                 >

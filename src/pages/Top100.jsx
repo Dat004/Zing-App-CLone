@@ -1,8 +1,8 @@
 import { useState, useEffect, Fragment } from 'react';
 
+import { Top100Banner } from '../components/CustomIcon';    
 import apiService from '../apiProvider';
 import Playlists from '../components/PlayLists';
-import { Top100Banner } from '../components/CustomIcon';
 
 function Top100() {
     const [newData, setNewData] = useState([]);
