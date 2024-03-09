@@ -70,7 +70,7 @@ function MusicPlayer() {
                     </div>
                     <div>
                         <TippyBox content="Danh sách phát" placement="top" arrow offset={[0, 10]}>
-                            <button className="flex items-center justify-center h-[30px] px-[5px] bg-purple-bg-active-items rounded-[4px] !text-purple-text-actions">
+                            <button className="flex items-center justify-center h-[30px] px-[5px] bg-purple-bg-btn-alpha rounded-[4px] !text-purple-text-actions">
                                 <RiPlayList2Fill className="text-[18px]" />
                             </button>
                         </TippyBox>

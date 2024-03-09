@@ -22,27 +22,36 @@ function PlayLists({
 
     return (
         <BoxContent title={title} isHeader={isHeader} isSeeAll={isSeeAll}>
-            <div {...passProps} className={playlistsClasses}>
+            <div className={playlistsClasses} {...passProps}>
                 {data?.map((items, index) => {
                     const getPathNamePlaylists = items?.link?.split('/')[2];
 
                     return (
                         <div key={index} className="w-[20%] flex-shrink-0 ML:w-[25%] LM:px-[12px] px-[14px]">
                             <div className="w-full">
-                                <div className="relative pb-[100%]">
+                                {/* <div className="relative">
                                     <Link
                                         to={`/playlist/${getPathNamePlaylists}/${items?.encodeId}`}
-                                        className="absolute flex inset-0"
+                                        className="pb-[100%] rounded-[5px]"
                                     >
-                                        <div className="w-full h-full rounded-[5px] overflow-hidden">
-                                            <CardImage borderRadius="5px" isScale src={items?.thumbnailM} />
+                                        <div className='absolute top-0 left-0 w-full h-full rounded-[5px] overflow-hidden'>
+                                            <CardImage className="" borderRadius="5px" isScale src={items?.thumbnailM} />
                                         </div>
                                     </Link>
-                                </div>
+                                </div> */}
+                                <Link to={`/playlist/${getPathNamePlaylists}/${items?.encodeId}`}>
+                                    <div className="w-full h-full">
+                                        <CardImage
+                                            className="h-0 pb-[100%] overflow-hidden"
+                                            src={items?.thumbnailM}
+                                            borderRadius="5px"
+                                            isScale
+                                        />
+                                    </div>
+                                </Link>
                             </div>
                             <div className="mt-[12px]">
                                 <p
-                                    // style={{ display: '-webkit-box', WebkitLineClamp: lineBreak, WebkitBoxOrient: 'vertical' }}
                                     className={`${
                                         isShowTitlePlaylist
                                             ? 'font-bold text-purple-text-primary'

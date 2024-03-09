@@ -25,11 +25,13 @@ function CardImage({
     });
 
     return (
-        <section className={cardClasses}>
-            <span className="block h-full w-full">
-                <Image rounded={rounded} className={`rounded-[${borderRadius}] ${isScale && 'hover:scale-[1.1]'}`} src={src} />
-            </span>
-        </section>
+        <div className={cardClasses}>
+            <Image
+                rounded={rounded}
+                className={`rounded-[${borderRadius}] ${isScale && 'hover:scale-[1.1]'}`}
+                src={src}
+            />
+        </div>
     );
 }
 

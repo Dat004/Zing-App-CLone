@@ -8,7 +8,7 @@ function ListsMusic({ data = [] }) {
         <div className="w-full">
             <section className="flex flex-wrap w-full h-full">
                 {data.map((items, index) => (
-                    <div key={index} className="group/card w-full rounded-[5px] hover:bg-purple-bg-active-items">
+                    <div key={index} className="group/card w-full rounded-[5px] hover:bg-purple-bg-btn-alpha">
                         <div className="flex items-center p-[10px]">
                             <div className="mr-[10px]">
                                 <CardImage medium src={items?.thumbnailM} />

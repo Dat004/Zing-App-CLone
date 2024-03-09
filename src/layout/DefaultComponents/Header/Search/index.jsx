@@ -71,7 +71,7 @@ function Search() {
         <form onFocus={() => setIsFocus(true)} onBlur={() => setIsFocus(false)} action="" className="relative flex-1 max-w-[440px]">
             <div
                 className={`relative flex items-center h-[40px] rounded-[20px] ${
-                    isFocus ? 'bg-purple-bg-wrapper rounded-b-none' : 'bg-purple-bg-active-items'
+                    isFocus ? 'bg-purple-bg-wrapper rounded-b-none' : 'bg-purple-bg-btn-alpha'
                 }`}
             >
                 <Button className="w-[30px] h-[30px] ml-[6px] mr-[4px]" type="button">

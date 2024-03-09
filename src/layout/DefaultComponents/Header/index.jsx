@@ -3,7 +3,6 @@ import { GoArrowLeft, GoArrowRight } from 'react-icons/go';
 import { GoGear } from 'react-icons/go';
 
 import { DownLoadToPCIcon } from '../../../components/CustomIcon';
-import MenuWrapper from '../../../components/Popper/MenuWrapper';
 import DATAS from '../../../tempData';
 import Tippy from '../../../components/Tippy';
 import TippyBox from '../../../components/Tippy/TippyBox';
@@ -62,7 +61,7 @@ function Header() {
                             </p>
                             <Button
                                 className={`py-[6px] px-[24px] text-[13px] font-bold leading-[20px] ${
-                                    (items.isPlus && '!bg-plus-bg') || (items.isPremium && '!bg-premium-bg')
+                                    (items.isPlus && '!bg-bg-package-plus') || (items.isPremium && '!bg-bg-package-premium')
                                 }`}
                                 medium
                                 primary
@@ -99,9 +98,9 @@ function Header() {
                         return (
                             <li
                                 key={items.id}
-                                className={`relative flex items-center h-[44px] hover:bg-purple-bg-active-items rounded-[4px] ${
+                                className={`relative flex items-center h-[44px] hover:bg-purple-bg-btn-alpha rounded-[4px] ${
                                     items.separate
-                                        ? 'after:content-[""] after:absolute after:top-[-10px] after:left-[12px] after:h-px after:w-[calc(100%-24px)] after:mx-auto after:bg-purple-bg-separate-items mt-[21px]'
+                                        ? 'after:content-[""] after:absolute after:top-[-10px] after:left-[12px] after:h-px after:w-[calc(100%-24px)] after:mx-auto after:bg-purple-bg-separator-items mt-[21px]'
                                         : ''
                                 }`}
                             >
@@ -143,8 +142,7 @@ function Header() {
                 <div className="flex items-center">
                     <Button
                         large
-                        primary
-                        className="flex items-center py-[10px] px-[24px] mr-[12px] gap-[4px] !text-purple-text-btn-download bg-purple-bg-active-items"
+                        className="py-[10px] px-[24px] mr-[12px] gap-[4px] rounded-[999px] text-purple-text-btn-download bg-purple-bg-btn-alpha"
                     >
                         <DownLoadToPCIcon className="text-[14px]" />
                         <span className="flex items-center font-bold text-[14px] leading-[17px]">Tải bản Windows</span>
@@ -161,7 +159,7 @@ function Header() {
                             <Button
                                 rounded
                                 onClick={() => setIsShow((state) => ({ ...state, menuSettings: !state.menuSettings }))}
-                                className="flex p-[10px] mr-[10px] rounded-full !bg-purple-bg-active-items"
+                                className="flex p-[10px] mr-[10px] rounded-full !bg-purple-bg-btn-alpha"
                             >
                                 <span className="flex items-center text-[14px] text-purple-text-btn-setting leading-[20px]">
                                     <GoGear className="text-[20px]" />

@@ -53,7 +53,7 @@ function Menu({ isExtend }) {
             ) : (
                 <>
                     <MenuItems data={DATAS.DATA_MENU_TOP} isExtend={isExtend} />
-                    <span className="block h-px my-[16px] mx-[25px] bg-purple-bg-active-items"></span>
+                    <span className="block h-px my-[16px] mx-[25px] bg-purple-bg-btn-alpha"></span>
                     <MenuItems data={DATAS.DATA_MENU_BOTTOM_CLIENT} isExtend={isExtend} />
                 </>
             )}

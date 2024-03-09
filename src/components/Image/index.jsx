@@ -7,7 +7,7 @@ import images from '../../assets/images';
 function Image({ className, rounded = false, src, alt , ...props }) {
     const [fallBack, setFallBack] = useState(src);
 
-    const imagesClasses = classNames('h-full w-full transition-all duration-[700ms]', {
+    const imagesClasses = classNames('w-full h-auto object-cover transition-transform duration-[700ms] will-change-auto', {
         [className]: className,
         'rounded-[50%]': rounded,
     });

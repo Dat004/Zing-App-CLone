@@ -22,7 +22,7 @@ function KeyWords({ data, keyWords = '', isRelate = false }) {
                           return (
                               <li
                                   key={items?.keyword}
-                                  className="list-none py-[8px] px-[10px] rounded-[4px] overflow-hidden hover:bg-purple-bg-active-items"
+                                  className="list-none py-[8px] px-[10px] rounded-[4px] overflow-hidden hover:bg-purple-bg-btn-alpha"
                               >
                                   <Link className="flex items-center gap-[10px] text-purple-text-primary">
                                       <IconContent className="text-[16px] text-purple-text-items" />
@@ -45,7 +45,7 @@ function KeyWords({ data, keyWords = '', isRelate = false }) {
                     : null}
             </ul>
             {isRelate && (
-                <Link className="flex items-center gap-[10px] py-[8px] px-[10px] text-purple-text-primary rounded-[4px] overflow-hidden hover:bg-purple-bg-active-items">
+                <Link className="flex items-center gap-[10px] py-[8px] px-[10px] text-purple-text-primary rounded-[4px] overflow-hidden hover:bg-purple-bg-btn-alpha">
                     <IconContent className="text-[16px] text-purple-text-items" />
                     <span className="text-[14px] font-normal">
                         Tìm kiếm<span className="ml-[4px] font-bold">"{keyWords}"</span>

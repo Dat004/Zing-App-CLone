@@ -20,7 +20,7 @@ function Results({ data }) {
 
                 return (
                     <div
-                        className="group/items py-[8px] px-[10px] rounded-[4px] hover:bg-purple-bg-active-items"
+                        className="group/items py-[8px] px-[10px] rounded-[4px] hover:bg-purple-bg-btn-alpha"
                         key={items?.id}
                     >
                         <div className="flex items-center">

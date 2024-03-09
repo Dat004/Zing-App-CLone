@@ -10,21 +10,21 @@ function BarController() {
             <div className="flex items-center justify-center">
                 <div className="flex items-center">
                     <TippyBox content="Bật phát ngẫu nhiên" placement="top" arrow offset={[0, 10]}>
-                        <button className="flex mx-[7px] items-center justify-center w-[32px] h-[32px] text-purple-text-actions bg-transparent hover:bg-purple-bg-active-items rounded-[50%]">
+                        <button className="flex mx-[7px] items-center justify-center w-[32px] h-[32px] text-purple-text-actions bg-transparent hover:bg-purple-bg-btn-alpha rounded-[50%]">
                             <IoShuffle className="text-[26px]" />
                         </button>
                     </TippyBox>
-                    <button className="flex mx-[7px] items-center justify-center w-[32px] h-[32px] text-purple-text-actions bg-transparent hover:bg-purple-bg-active-items rounded-[50%]">
+                    <button className="flex mx-[7px] items-center justify-center w-[32px] h-[32px] text-purple-text-actions bg-transparent hover:bg-purple-bg-btn-alpha rounded-[50%]">
                         <BsSkipStartFill className="text-[26px]" />
                     </button>
                     <button className="flex mx-[7px] items-center justify-center w-[50px] h-[50px] text-purple-text-actions hover:text-link-text-hover rounded-[50%]">
                         <BsPlayCircle className="text-[38px]" />
                     </button>
-                    <button className="flex mx-[7px] items-center justify-center w-[32px] h-[32px] text-purple-text-actions bg-transparent hover:bg-purple-bg-active-items rounded-[50%]">
+                    <button className="flex mx-[7px] items-center justify-center w-[32px] h-[32px] text-purple-text-actions bg-transparent hover:bg-purple-bg-btn-alpha rounded-[50%]">
                         <BsSkipEndFill className="text-[26px]" />
                     </button>
                     <TippyBox content="Bật phát lại tất cả" placement="top" arrow offset={[0, 10]}>
-                        <button className="flex mx-[7px] items-center justify-center w-[32px] h-[32px] text-purple-text-actions bg-transparent hover:bg-purple-bg-active-items rounded-[50%]">
+                        <button className="flex mx-[7px] items-center justify-center w-[32px] h-[32px] text-purple-text-actions bg-transparent hover:bg-purple-bg-btn-alpha rounded-[50%]">
                             <IoRepeat className="text-[26px]" />
                         </button>
                     </TippyBox>

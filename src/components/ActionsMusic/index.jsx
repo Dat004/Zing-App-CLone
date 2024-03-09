@@ -37,7 +37,7 @@ function ActionsMusic({
                     <div className="pt-[15px] px-[15px]">
                         <CardMusic widthImg="40px" heightImg="40px" isHoverArtist isHoverName />
                     </div>
-                    <div className="flex justify-between mx-[15px] mt-[15px] mb-[10px] bg-purple-bg-active-items rounded-[8px]">
+                    <div className="flex justify-between mx-[15px] mt-[15px] mb-[10px] bg-purple-bg-btn-alpha rounded-[8px]">
                         <Button className="flex-col items-center !justify-normal flex-1 max-w-[80px] py-[8px] text-purple-text-primary text-[10px] rounded-[8px]">
                             <span className="mb-[4px] text-[16px]">
                                 <FiDownload />
@@ -60,7 +60,7 @@ function ActionsMusic({
                     <ul>
                         {DATA_OPTIONS_CURRENT_MUSIC.map((items) => {
                             return (
-                                <li key={items.id} className="hover:bg-purple-bg-active-items">
+                                <li key={items.id} className="hover:bg-purple-bg-btn-alpha">
                                     <Button className="!justify-between w-full py-[10px] pr-[20px] pl-[14px] text-[14px] text-purple-text-secondary">
                                         <p className="flex items-center">
                                             {items.leftIcon && <span className="mr-[15px]">{items.leftIcon}</span>}
