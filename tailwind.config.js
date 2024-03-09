@@ -72,6 +72,9 @@ export default {
         },
       },
       colors: {
+        "first-color": "rgb(74, 144, 226)",
+        "second-color": "rgb(80, 227, 194)",
+        "third-color": "rgb(227, 80, 80)",
         "up-color": "rgba(29, 193, 134)",
         "down-color": "rgba(227, 80, 80)",
         "title-package-color": "rgb(20, 20, 20)",
