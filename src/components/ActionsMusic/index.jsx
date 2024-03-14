@@ -11,7 +11,7 @@ import TippyBox from '../Tippy/TippyBox';
 import Tippy from '../Tippy';
 import PopperWrapper from '../Popper';
 import DATAS from '../../tempData';
-import CardMusic from '../CardImage';
+import CardImage from '../CardImage';
 import Button from '../Button';
 
 function ActionsMusic({
@@ -35,7 +35,7 @@ function ActionsMusic({
             <PopperWrapper className="w-[280px]">
                 <div>
                     <div className="pt-[15px] px-[15px]">
-                        <CardMusic widthImg="40px" heightImg="40px" isHoverArtist isHoverName />
+                        <CardImage widthImg="40px" heightImg="40px" isHoverArtist isHoverName />
                     </div>
                     <div className="flex justify-between mx-[15px] mt-[15px] mb-[10px] bg-purple-bg-btn-alpha rounded-[8px]">
                         <Button className="flex-col items-center !justify-normal flex-1 max-w-[80px] py-[8px] text-purple-text-primary text-[10px] rounded-[8px]">
@@ -89,7 +89,9 @@ function ActionsMusic({
                         style={{ width: widthBtn, height: heightBtn }}
                         className="mx-[3px] !text-purple-text-actions"
                     >
-                        <span className='flex items-center justify-center w-full h-full'><PiHeartBold className="text-[16px]" /></span>
+                        <span className="flex items-center justify-center w-full h-full">
+                            <PiHeartBold className="text-[16px]" />
+                        </span>
                     </Button>
                 </TippyBox>
             )}
@@ -109,7 +111,9 @@ function ActionsMusic({
                         style={{ width: widthBtn, height: heightBtn }}
                         className="mx-[3px] px-[4px] !text-purple-text-actions"
                     >
-                        <span className='flex items-center justify-center w-full h-full'><TfiMoreAlt /></span>
+                        <span className="flex items-center justify-center w-full h-full">
+                            <TfiMoreAlt />
+                        </span>
                     </Button>
                 </Tippy>
             </TippyBox>

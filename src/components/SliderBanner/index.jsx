@@ -35,7 +35,6 @@ function SliderBanner({ data = [] }) {
     useEffect(() => {
         setHeight(bannerRef.current?.clientHeight);
     }, [data]);
-    
 
     useEffect(() => {
         const handleResize = () => {
@@ -145,5 +144,9 @@ function SliderBanner({ data = [] }) {
         </div>
     );
 }
+
+SliderBanner.propTypes = {
+    data: PropTypes.array,
+};
 
 export default SliderBanner;

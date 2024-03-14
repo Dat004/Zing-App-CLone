@@ -30,7 +30,7 @@ button,
 input,
 a,
 img {
-    display: block;
+    display: inline-block;
     outline: none;
     border: none;
 }

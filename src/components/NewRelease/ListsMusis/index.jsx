@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-
+import TitleMusic from '../../TitleMusic';
+import ArtistName from '../../ArtistName';
 import ActionMusic from '../../ActionsMusic';
 import CardImage from '../../CardImage';
 
@@ -15,12 +15,8 @@ function ListsMusic({ data = [] }) {
                             </div>
                             <div className="w-0 flex-grow flex-shrink mr-[10px]">
                                 <div className="flex flex-col">
-                                    <p className="text-[14px] leading-[18px] text-purple-text-primary font-semibold">
-                                        <span className="w-[90%]">{items?.title}</span>
-                                    </p>
-                                    <Link className="mt-[3px] text-[12px] leading-[15px] font-medium text-purple-text-items">
-                                        <span>{items?.artistsNames}</span>
-                                    </Link>
+                                    <TitleMusic>{items?.title}</TitleMusic>
+                                    <ArtistName className='mt-[3px]' smallSize artistData={items?.artists}></ArtistName>
                                     <p className="text-[12px] font-medium mt-[3px] leading-[18px] text-purple-text-items">
                                         <span>2 ngày trước</span>
                                     </p>

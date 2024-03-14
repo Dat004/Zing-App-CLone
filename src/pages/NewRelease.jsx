@@ -28,7 +28,9 @@ function NewRelease() {
                                 <PlayBoldIcon />
                             </i>
                         </header>
-                        <CardMusic data={newData?.items} />
+                        <div className="mb-[20px]">
+                            <CardMusic isShowAlbum data={newData?.items} />
+                        </div>
                     </Fragment>
                 ) : null}
             </div>

@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -39,6 +41,8 @@ export default {
       backgroundImage: {
         "linear-loading":
           "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)",
+        "bg-text-linear":
+          "radial-gradient(50% 124.93% at 95.86% -10%, #3efad9 0, hsla(0, 0%, 100%, 0) 100%), linear-gradient(91.56deg, #ff9357 1.54%, #9100ff 98.71%)",
       },
       backgroundColor: {
         transparent: "transparent",
@@ -68,6 +72,7 @@ export default {
         purple: {
           "bd-primary-color": "rgba(255, 255, 255, 0.1)",
           "bd-secondary-color": "rgba(255, 255, 255, 0.05)",
+          "bd-white-color": "rgba(255, 255, 255)",
           "bd-purple-color": "rgb(155, 77, 224)",
         },
       },
@@ -111,5 +116,13 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addComponents }) {
+      addComponents({
+        ".text-fill-transparent": {
+          WebkitTextFillColor: "transparent",
+        },
+      });
+    }),
+  ],
 };
