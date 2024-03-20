@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from 'react';
 
-import SliderBanner from '../components/SliderBanner';
 import apiService from '../apiProvider';
+import SliderBanner from '../components/SliderBanner';
 import NewRelease from '../components/NewRelease';
 import PlayLists from '../components/PlayLists';
 import Banner from '../components/Banner';
@@ -42,12 +42,12 @@ function Home() {
             setDataHome({
                 banner: data?.data?.items[0],
                 newRelease: data?.data?.items[2],
-                chillPlaylists: { title: data?.data?.items[3].title, items: data?.data?.items[3]?.items?.splice(0, 5) },
-                remixPlaylists: { title: data?.data?.items[4].title, items: data?.data?.items[4]?.items?.splice(0, 5) },
-                moodPlaylists: { title: data?.data?.items[5].title, items: data?.data?.items[5]?.items?.splice(0, 5) },
+                chillPlaylists: { title: data?.data?.items[3].title, items: data?.data?.items[3]?.items?.slice(0, 5) },
+                remixPlaylists: { title: data?.data?.items[4].title, items: data?.data?.items[4]?.items?.slice(0, 5) },
+                moodPlaylists: { title: data?.data?.items[5].title, items: data?.data?.items[5]?.items?.slice(0, 5) },
                 top100Playlists: {
                     title: data?.data?.items[9].title,
-                    items: data?.data?.items[9]?.items?.splice(0, 5),
+                    items: data?.data?.items[9]?.items?.slice(0, 5),
                 },
                 hotPlaylists: { title: data?.data?.items[11].title, items: data?.data?.items[11]?.items },
                 adBanner: data?.data?.items[8]?.items,

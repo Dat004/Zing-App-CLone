@@ -46,6 +46,9 @@ export default {
       },
       backgroundColor: {
         transparent: "transparent",
+        "bg-tooltip-1": 'rgb(74, 144, 226)',
+        "bg-tooltip-2": 'rgb(39, 189, 156)',
+        "bg-tooltip-3": 'rgb(227, 80, 80)',
         "bg-loading": "rgba(255, 255, 255, 0.1)",
         "bg-package-plus": "rgb(142, 76, 255)",
         "bg-package-premium": "rgb(220, 165, 25)",
