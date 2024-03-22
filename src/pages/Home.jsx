@@ -6,6 +6,7 @@ import NewRelease from '../components/NewRelease';
 import PlayLists from '../components/PlayLists';
 import Banner from '../components/Banner';
 import PartnerLayout from '../components/PartnerLayout';
+import Slider from '../components/Slider';
 
 function Home() {
     const [dataHome, setDataHome] = useState({
@@ -89,14 +90,16 @@ function Home() {
                         title={dataHome.top100Playlists.title}
                         data={dataHome.top100Playlists.items}
                     />
-                    <PlayLists
-                        isHeader
-                        isSeeAll
-                        isShowArtists
-                        isShowTitlePlaylist
-                        title={dataHome.hotPlaylists.title}
-                        data={dataHome.hotPlaylists.items}
-                    />
+                    <Slider title={`${dataHome.hotPlaylists.title}`} data={dataHome.hotPlaylists.items}>
+                        {/* <PlayLists
+                            isHeader
+                            isSeeAll
+                            isShowArtists
+                            isShowTitlePlaylist
+                            title={dataHome.hotPlaylists.title}
+                            data={dataHome.hotPlaylists.items}
+                        /> */}
+                    </Slider>
                     <PartnerLayout />
                 </Fragment>
             ) : (
