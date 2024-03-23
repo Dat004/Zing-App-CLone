@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+
 import PlayLists from '../PlayLists';
 
-function Slider({ title = '', data = [] }) {
+function SliderPlaylist({ data = [], title = '' }) {
     const sliderRef = useRef();
     const [stateSlider, setStateSlider] = useState({
         counter: 0,
@@ -90,11 +91,11 @@ function Slider({ title = '', data = [] }) {
             />
         </div>
     );
-}
+};
 
-Slider.propTypes = {
+SliderPlaylist.propTypes = {
     children: PropTypes.string,
     data: PropTypes.array,
 };
 
-export default Slider;
+export default SliderPlaylist;

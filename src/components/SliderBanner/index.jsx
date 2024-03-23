@@ -8,7 +8,7 @@ import CardImage from '../CardImage';
 
 function SliderBanner({ data = [] }) {
     const bannerRef = useRef(null);
-    const [height, setHeight] = useState();
+    const [height, setHeight] = useState(null);
     const [stylesBanner, setStylesBanner] = useState([
         {
             translateX: '0',
@@ -34,7 +34,7 @@ function SliderBanner({ data = [] }) {
 
     useEffect(() => {
         setHeight(bannerRef.current?.clientHeight);
-    }, [data]);
+    }, [bannerRef.currentx]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -51,11 +51,9 @@ function SliderBanner({ data = [] }) {
     useEffect(() => {
         let timeOut;
 
-        if (data.length > 0) {
-            timeOut = setTimeout(() => {
-                nextBanner();
-            }, 4500);
-        }
+        timeOut = setTimeout(() => {
+            nextBanner();
+        }, 4500);
 
         return () => {
             clearTimeout(timeOut);
@@ -81,64 +79,56 @@ function SliderBanner({ data = [] }) {
                     style={{ height: height + 'px' }}
                     className="group/banners flex relative XM:mx-[-12px] mx-[-15px] mb-[20px] overflow-hidden"
                 >
-                    {data.length > 0 ? (
-                        <Fragment>
-                            <div className="group-hover/banners:block hidden absolute top-[50%] left-[25px] translate-y-[-50%] z-10">
-                                <Button
-                                    onClick={prevBanner}
-                                    className="w-[55px] h-[55px] !bg-purple-bg-btn hover:opacity-80"
-                                    rounded
-                                >
-                                    <SlArrowLeft className="text-[26px]" />
-                                </Button>
-                            </div>
+                    <Fragment>
+                        <div className="group-hover/banners:block hidden absolute top-[50%] left-[25px] translate-y-[-50%] z-10">
+                            <Button
+                                onClick={prevBanner}
+                                className="w-[55px] h-[55px] !bg-purple-bg-btn hover:opacity-80"
+                                rounded
+                            >
+                                <SlArrowLeft className="text-[26px]" />
+                            </Button>
+                        </div>
+                        <div
+                            style={{
+                                transition:
+                                    'transform 0.5s ease-in-out, opacity 0.45s ease-in-out 0.15s, z-index 0s linear 0.25s',
+                                transform: '100%',
+                                zIndex: '0',
+                                opacity: '0',
+                            }}
+                            ref={bannerRef}
+                            className={`absolute translate-x-[100%] XM:min-w-[50%] XM:px-[12px] w-[33.33%] XM:w-[50%] px-[15px]`}
+                        >
+                            <div className="pb-[56.25%]"></div>
+                        </div>
+                        {data.map((items, index) => (
                             <div
-                                style={{
-                                    transition:
-                                        'transform 0.5s ease-in-out, opacity 0.45s ease-in-out 0.15s, z-index 0s linear 0.25s',
-                                    transform: '100%',
-                                    zIndex: '0',
-                                    opacity: '0',
-                                }}
-                                ref={bannerRef}
+                                // style={{
+                                //     transition:
+                                //         'transform 0.5s ease-in-out, opacity 0.45s ease-in-out 0.15s, z-index 0s linear 0.25s',
+                                //     transform: `translateX(${stylesBanner[index].translateX})`,
+                                //     zIndex: `${stylesBanner[index].zIndex}`,
+                                //     opacity: `${stylesBanner[index].opacity}`,
+                                // }}
+                                key={index}
                                 className={`absolute translate-x-[100%] XM:min-w-[50%] XM:px-[12px] w-[33.33%] XM:w-[50%] px-[15px]`}
                             >
-                                <div className="pb-[56.25%]"></div>
-                            </div>
-                            {data.map((items, index) => (
-                                <div
-                                    // style={{
-                                    //     transition:
-                                    //         'transform 0.5s ease-in-out, opacity 0.45s ease-in-out 0.15s, z-index 0s linear 0.25s',
-                                    //     transform: `translateX(${stylesBanner[index].translateX})`,
-                                    //     zIndex: `${stylesBanner[index].zIndex}`,
-                                    //     opacity: `${stylesBanner[index].opacity}`,
-                                    // }}
-                                    key={index}
-                                    className={`absolute translate-x-[100%] XM:min-w-[50%] XM:px-[12px] w-[33.33%] XM:w-[50%] px-[15px]`}
-                                >
-                                    <div className="w-full max-w-full">
-                                        <CardImage className="rounded-[8px]" src={items?.banner} />
-                                    </div>
+                                <div className="w-full max-w-full">
+                                    <CardImage className="rounded-[8px]" src={items?.banner} />
                                 </div>
-                            ))}
-                            <div className="group-hover/banners:block hidden absolute top-[50%] right-[25px] translate-y-[-50%] z-10">
-                                <Button
-                                    onClick={nextBanner}
-                                    className="w-[55px] h-[55px] !bg-purple-bg-btn hover:opacity-80"
-                                    rounded
-                                >
-                                    <SlArrowRight className="text-[26px]" />
-                                </Button>
                             </div>
-                        </Fragment>
-                    ) : (
-                        <div className="flex justify-center h-[212px] w-full">
-                            <div className="w-full max-w-[970px] h-full text-center">
-                                <SkeletonLoading />
-                            </div>
+                        ))}
+                        <div className="group-hover/banners:block hidden absolute top-[50%] right-[25px] translate-y-[-50%] z-10">
+                            <Button
+                                onClick={nextBanner}
+                                className="w-[55px] h-[55px] !bg-purple-bg-btn hover:opacity-80"
+                                rounded
+                            >
+                                <SlArrowRight className="text-[26px]" />
+                            </Button>
                         </div>
-                    )}
+                    </Fragment>
                 </section>
             </div>
         </div>

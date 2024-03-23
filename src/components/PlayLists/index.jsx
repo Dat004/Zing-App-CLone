@@ -12,7 +12,6 @@ function PlayLists(
         data,
         className,
         title,
-        isSlider = false,
         isShowTitlePlaylist = false,
         isShowArtists = false,
         isHeader = false,

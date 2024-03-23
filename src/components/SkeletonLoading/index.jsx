@@ -3,7 +3,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 function SkeletonLoading({ className, duration = 2, count = 1, borderRadius = '4px', circle = false }) {
-    const skeletonClasses = classNames('block w-full h-full after:bg-linear-loading after:bg-no-repeat after:bg-[length:200px_100%]', {
+    const skeletonClasses = classNames('inline-block w-full h-full after:bg-linear-loading after:bg-no-repeat after:bg-[length:200px_100%]', {
         [className]: className,
     });
 

@@ -37,6 +37,7 @@ export default {
       },
       minHeight: {
         "height-layout": "calc(100vh - 90px)",
+        "heigth-loading-layout": "calc(100vh - 158px)",
       },
       backgroundImage: {
         "linear-loading":
@@ -46,9 +47,9 @@ export default {
       },
       backgroundColor: {
         transparent: "transparent",
-        "bg-tooltip-1": 'rgb(74, 144, 226)',
-        "bg-tooltip-2": 'rgb(39, 189, 156)',
-        "bg-tooltip-3": 'rgb(227, 80, 80)',
+        "bg-tooltip-1": "rgb(74, 144, 226)",
+        "bg-tooltip-2": "rgb(39, 189, 156)",
+        "bg-tooltip-3": "rgb(227, 80, 80)",
         "bg-loading": "rgba(255, 255, 255, 0.1)",
         "bg-package-plus": "rgb(142, 76, 255)",
         "bg-package-premium": "rgb(220, 165, 25)",
@@ -124,6 +125,9 @@ export default {
       addComponents({
         ".text-fill-transparent": {
           WebkitTextFillColor: "transparent",
+        },
+        ".mask-loading": {
+          WebkitMask: "-webkit-linear-gradient(top, #000, transparent)",
         },
       });
     }),
