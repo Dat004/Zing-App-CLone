@@ -4,9 +4,9 @@ const newReleaseChartApi = async () => {
     try {
         const res = await ApiRequest.get('charthome');
 
-        return res.data;
+        return res;
     } catch (e) {
-        return { Error: e };
+        return { Error: { ...e, isError: true } };
     }
 };
 

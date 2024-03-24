@@ -1,38 +1,49 @@
 import { useState, useEffect, Fragment } from 'react';
 
+import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
+import PageLoader from '../layout/DefaultComponents/PageLoader';
+import CardMusic from '../components/CardImage/CardMusic';
 import { PlayBoldIcon } from '../components/CustomIcon';
 import apiService from '../apiProvider';
-import CardMusic from '../components/CardImage/CardMusic';
 
 function NewRelease() {
     const [newData, setNewData] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        (async () => {
-            const data = await apiService.newReleaseApi();
-
-            setNewData({ ...data?.data });
-        })();
+        // (async () => {
+        //     const data = await apiService.newReleaseApi();
+        //     if (data.Error?.isError) {
+        //         setIsLoading(true);
+        //     } else {
+        //         setNewData({ ...data?.data?.data });
+        //         setIsLoading(false);
+        //     }
+        // })();
     }, []);
 
     return (
         <div className="mt-[70px]">
             <div className="pt-[40px]">
-                {Object.keys(newData).length > 0 ? (
+                <header className="flex items-center mb-[32px]">
+                    <h3 className="text-[40px] leading-[1.225] font-bold text-purple-text-primary">
+                        {newData?.title ?? 'BXH Nhạc Mới'}
+                    </h3>
+                    <i className="ml-[10px] hover:opacity-90 cursor-pointer">
+                        <PlayBoldIcon />
+                    </i>
+                </header>
+                {isLoading ? (
+                    <PageLoader isMaskLayer className="!mt-0">
+                        <CardMusicSkeleton />
+                    </PageLoader>
+                ) : (
                     <Fragment>
-                        <header className="flex items-center mb-[32px]">
-                            <h3 className="text-[40px] leading-[1.225] font-bold text-purple-text-primary">
-                                {newData?.title}
-                            </h3>
-                            <i className="ml-[10px] hover:opacity-90 cursor-pointer">
-                                <PlayBoldIcon />
-                            </i>
-                        </header>
                         <div className="mb-[20px]">
                             <CardMusic isShowAlbum data={newData?.items} />
                         </div>
                     </Fragment>
-                ) : null}
+                )}
             </div>
         </div>
     );

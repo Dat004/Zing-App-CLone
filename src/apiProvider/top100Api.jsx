@@ -4,9 +4,9 @@ const top100Api = async () => {
     try {
         const res = await ApiRequest.get('top100');
 
-        return res.data;
+        return res;
     } catch (e) {
-        return { Error: e };
+        return { Error: {...e, isError: true}};
     }
 };
 

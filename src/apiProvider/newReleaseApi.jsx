@@ -4,9 +4,9 @@ const newReleaseApi = async () => {
     try {
         const res = await ApiRequest.get('newreleasechart');
 
-        return res.data;
+        return res;
     } catch (e) {
-        return { Error: e };
+        return { Error: { ...e, isError: true } };
     }
 };
 

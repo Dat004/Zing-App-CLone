@@ -1,13 +1,12 @@
-import ApiRequest from "../utils";
+import ApiRequest from '../utils';
 
 const homeApi = async () => {
-    try {   
+    try {
         const res = await ApiRequest.get('home');
 
-        return res.data;
-    }
-    catch (e) {
-        return { Error: e }
+        return res;
+    } catch (e) {
+        return { Error: { ...e, isError: true } };
     }
 };
 

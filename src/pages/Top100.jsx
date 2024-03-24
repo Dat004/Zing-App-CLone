@@ -1,25 +1,40 @@
 import { useState, useEffect, Fragment } from 'react';
 
-import { Top100Banner } from '../components/CustomIcon';    
-import apiService from '../apiProvider';
+import PageLoader from '../layout/DefaultComponents/PageLoader';
+import SkeletonLoading from '../components/SkeletonLoading';
+import { Top100Banner } from '../components/CustomIcon';
 import Playlists from '../components/PlayLists';
+import apiService from '../apiProvider';
+import PlaylistSkeleton from '../components/SkeletonLoading/PlaylistSkeleton';
 
 function Top100() {
     const [newData, setNewData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        (async () => {
-            const data = await apiService.top100Api();
-
-            setNewData(data?.data);
-        })();
+        // (async () => {
+        //     const data = await apiService.top100Api();
+        //     if (data.Error?.isError) {
+        //         setIsLoading(true);
+        //     } else {
+        //         setNewData(data?.data);
+        //         setIsLoading(false);
+        //     }
+        // })();
     }, []);
 
     return (
         <Fragment>
-            {newData.length > 0 ? (
+            {isLoading ? (
+                <PageLoader isMaskLayer>
+                    <div className='w-full h-[280px] mb-[30px]'>
+                        <SkeletonLoading />
+                    </div>
+                    <PlaylistSkeleton />
+                </PageLoader>
+            ) : (
                 <Fragment>
-                    <div className='flex items-center justify-center mt-[90px]'>
+                    <div className="flex items-center justify-center mt-[90px]">
                         <i>
                             <Top100Banner />
                         </i>
@@ -36,7 +51,7 @@ function Top100() {
                         />
                     ))}
                 </Fragment>
-            ) : null}
+            )}
         </Fragment>
     );
 }

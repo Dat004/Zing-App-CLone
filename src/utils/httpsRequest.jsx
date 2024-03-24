@@ -2,10 +2,12 @@ import axios from "axios";
 
 export const defaultRequest = axios.create({
     baseURL: 'https://server-tau-six.vercel.app/api/',
+    timeout: 10000,
 });
 
 export const customRequest = axios.create({
     baseURL: 'https://ac.zingmp3.vn/v1/web/',
+    timeout: 10000,
 });
 
 export const extraRequest = axios.create({

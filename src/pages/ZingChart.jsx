@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
 
+import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
+import PageLoader from '../layout/DefaultComponents/PageLoader';
+import SkeletonLoading from '../components/SkeletonLoading';
+import CardMusic from '../components/CardImage/CardMusic';
 import { PlayBoldIcon } from '../components/CustomIcon';
 import LineChart from '../components/Charts/LineChart';
-import apiService from '../apiProvider';
 import Button from '../components/Button';
-import CardMusic from '../components/CardImage/CardMusic';
+import apiService from '../apiProvider';
 
 function ZingChart() {
     const [isShowMore, setIsShowMore] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [newData, setNewData] = useState({
         chart: {
             data: {},
@@ -26,40 +30,42 @@ function ZingChart() {
             top10: [],
             topRemaning: [],
         },
-        isSuccess: false,
     });
 
     useEffect(() => {
-        (async () => {
-            const data = await apiService.newReleaseChartApi();
-
-            setNewData({
-                chart: {
-                    data: data?.data?.RTChart?.chart,
-                    topTrendMusic: [...data?.data?.RTChart?.items?.slice(0, 3)],
-                },
-                weekChart: {
-                    korea: { ...data?.data?.weekChart?.korea },
-                    us: { ...data?.data?.weekChart?.us },
-                    vn: { ...data?.data?.weekChart?.vn },
-                },
-                randomSuggestSong: {
-                    listSuggestSong: [...data?.data?.RTChart?.promotes],
-                    randomId: Math.max(
-                        0,
-                        Math.min(
-                            Math.round(Math.random() * data?.data?.RTChart?.promotes.length - 1),
-                            data?.data?.RTChart?.promotes.length - 1,
-                        ),
-                    ),
-                },
-                newRealease: {
-                    top10: [...data?.data?.RTChart?.items?.splice(0, 10)],
-                    topRemaning: [...data?.data?.RTChart?.items],
-                },
-                isSuccess: true,
-            });
-        })();
+        // (async () => {
+        //     const data = await apiService.newReleaseChartApi();
+        //     if (data.Error?.isError) {
+        //         setIsLoading(true);
+        //     } else {
+        //         setNewData({
+        //             chart: {
+        //                 data: data?.data?.data?.RTChart?.chart,
+        //                 topTrendMusic: [...data?.data?.data?.RTChart?.items?.slice(0, 3)],
+        //             },
+        //             weekChart: {
+        //                 korea: { ...data?.data?.data?.weekChart?.korea },
+        //                 us: { ...data?.data?.data?.weekChart?.us },
+        //                 vn: { ...data?.data?.data?.weekChart?.vn },
+        //             },
+        //             randomSuggestSong: {
+        //                 listSuggestSong: [...data?.data?.data?.RTChart?.promotes],
+        //                 randomId: Math.max(
+        //                     0,
+        //                     Math.min(
+        //                         Math.round(Math.random() * data?.data?.data?.RTChart?.promotes?.length - 1),
+        //                         data?.data?.data?.RTChart?.promotes?.length - 1,
+        //                     ),
+        //                 ),
+        //             },
+        //             newRealease: {
+        //                 top10: [...data?.data?.data?.RTChart?.items?.splice(0, 10)],
+        //                 topRemaning: [...data?.data?.data?.RTChart?.items],
+        //             },
+        //         });
+        //         setIsLoading(false);
+        //     }
+        // })();
     }, []);
 
     const handleShowMore = () => {
@@ -69,17 +75,21 @@ function ZingChart() {
     };
 
     return (
-        <div className="mt-[70px]">
-            {newData.isSuccess && (
-                <section className="pt-[40px] pb-[30px]">
-                    <header className="flex items-center mb-[20px]">
-                        <h3 className="text-[40px] leading-[1.225] bg-bg-text-linear font-bold bg-clip-text text-fill-transparent">
-                            #zingchart
-                        </h3>
-                        <i className="ml-[10px] hover:opacity-90 cursor-pointer">
-                            <PlayBoldIcon />
-                        </i>
-                    </header>
+        <div className="mt-[70px] pt-[40px]">
+            <header className="flex items-center mb-[20px]">
+                <h3 className="text-[40px] leading-[1.225] bg-bg-text-linear font-bold bg-clip-text text-fill-transparent">
+                    #zingchart
+                </h3>
+                <i className="ml-[10px] hover:opacity-90 cursor-pointer">
+                    <PlayBoldIcon />
+                </i>
+            </header>
+            {isLoading ? (
+                <PageLoader isMaskLayer className='!mt-0'>
+                    <CardMusicSkeleton />
+                </PageLoader>
+            ) : (
+                <section className="pb-[30px]">
                     <section className="mb-[55px]">
                         <LineChart
                             height="300px"
