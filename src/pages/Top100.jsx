@@ -1,27 +1,30 @@
 import { useState, useEffect, Fragment } from 'react';
 
+import PlaylistSkeleton from '../components/SkeletonLoading/PlaylistSkeleton';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
 import SkeletonLoading from '../components/SkeletonLoading';
 import { Top100Banner } from '../components/CustomIcon';
 import Playlists from '../components/PlayLists';
+import { useLoadingState } from '../hooks';
 import apiService from '../apiProvider';
-import PlaylistSkeleton from '../components/SkeletonLoading/PlaylistSkeleton';
 
 function Top100() {
     const [newData, setNewData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const { isLoading, handleSetLoadingState } = useLoadingState();
 
     useEffect(() => {
-        // (async () => {
-        //     const data = await apiService.top100Api();
-        //     if (data.Error?.isError) {
-        //         setIsLoading(true);
-        //     } else {
-        //         setNewData(data?.data);
-        //         setIsLoading(false);
-        //     }
-        // })();
+        (async () => {
+            const data = await apiService.top100Api();
+            if (data.Error?.isError) {
+                handleSetLoadingState(true);
+            } else {
+                setNewData(data?.data?.data);
+                handleSetLoadingState(false);
+            }
+        })();
     }, []);
+
+    console.log(newData);
 
     return (
         <Fragment>

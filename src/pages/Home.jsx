@@ -8,11 +8,11 @@ import PartnerLayout from '../components/PartnerLayout';
 import SliderBanner from '../components/SliderBanner';
 import NewRelease from '../components/NewRelease';
 import PlayLists from '../components/PlayLists';
+import { useLoadingState } from '../hooks';
 import Banner from '../components/Banner';
 import apiService from '../apiProvider';
 
 function Home() {
-    const [isLoading, setIsLoading] = useState(true);
     const [dataHome, setDataHome] = useState({
         banner: [],
         newRelease: {},
@@ -38,39 +38,40 @@ function Home() {
         },
         adBanner: [],
     });
+    const { isLoading, handleSetLoadingState } = useLoadingState();
 
-    // useEffect(() => {
-    //     (async () => {
-    //         const data = await apiService.homeApi();
-    //         if (data.Error?.isError) {
-    //             setIsLoading(true);
-    //         } else {
-    //             setDataHome({
-    //                 banner: data?.data?.data?.items[0],
-    //                 newRelease: data?.data?.data?.items[2],
-    //                 chillPlaylists: {
-    //                     title: data?.data?.data?.items[3]?.title,
-    //                     items: data?.data?.data?.items[3]?.items?.slice(0, 5),
-    //                 },
-    //                 remixPlaylists: {
-    //                     title: data?.data?.data?.items[4]?.title,
-    //                     items: data?.data?.data?.items[4]?.items?.slice(0, 5),
-    //                 },
-    //                 moodPlaylists: {
-    //                     title: data?.data?.data?.items[5]?.title,
-    //                     items: data?.data?.data?.items[5]?.items?.slice(0, 5),
-    //                 },
-    //                 top100Playlists: {
-    //                     title: data?.data?.data?.items[9]?.title,
-    //                     items: data?.data?.data?.items[9]?.items?.slice(0, 5),
-    //                 },
-    //                 hotPlaylists: { title: data?.data?.data?.items[11]?.title, items: data?.data?.data?.items[11]?.items },
-    //                 adBanner: data?.data?.data?.items[8]?.items,
-    //             });
-    //             setIsLoading(false);
-    //         }
-    //     })();
-    // }, []);
+    useEffect(() => {
+        (async () => {
+            const data = await apiService.homeApi();
+            if (data.Error?.isError) {
+                handleSetLoadingState(true);
+            } else {
+                setDataHome({
+                    banner: data?.data?.data?.items[0],
+                    newRelease: data?.data?.data?.items[2],
+                    chillPlaylists: {
+                        title: data?.data?.data?.items[3]?.title,
+                        items: data?.data?.data?.items[3]?.items?.slice(0, 5),
+                    },
+                    remixPlaylists: {
+                        title: data?.data?.data?.items[4]?.title,
+                        items: data?.data?.data?.items[4]?.items?.slice(0, 5),
+                    },
+                    moodPlaylists: {
+                        title: data?.data?.data?.items[5]?.title,
+                        items: data?.data?.data?.items[5]?.items?.slice(0, 5),
+                    },
+                    top100Playlists: {
+                        title: data?.data?.data?.items[9]?.title,
+                        items: data?.data?.data?.items[9]?.items?.slice(0, 5),
+                    },
+                    hotPlaylists: { title: data?.data?.data?.items[11]?.title, items: data?.data?.data?.items[11]?.items },
+                    adBanner: data?.data?.data?.items[8]?.items,
+                });
+                handleSetLoadingState(false);
+            }
+        })();
+    }, []);
 
     return (
         <div className="w-full h-full mt-[70px]">

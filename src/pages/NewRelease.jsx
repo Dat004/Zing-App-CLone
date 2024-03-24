@@ -4,22 +4,23 @@ import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
 import CardMusic from '../components/CardImage/CardMusic';
 import { PlayBoldIcon } from '../components/CustomIcon';
+import { useLoadingState } from '../hooks';
 import apiService from '../apiProvider';
 
 function NewRelease() {
     const [newData, setNewData] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
+    const { isLoading, handleSetLoadingState } = useLoadingState();
 
     useEffect(() => {
-        // (async () => {
-        //     const data = await apiService.newReleaseApi();
-        //     if (data.Error?.isError) {
-        //         setIsLoading(true);
-        //     } else {
-        //         setNewData({ ...data?.data?.data });
-        //         setIsLoading(false);
-        //     }
-        // })();
+        (async () => {
+            const data = await apiService.newReleaseApi();
+            if (data.Error?.isError) {
+                handleSetLoadingState(true);
+            } else {
+                setNewData({ ...data?.data?.data });
+                handleSetLoadingState(false);
+            }
+        })();
     }, []);
 
     return (
