@@ -4,8 +4,8 @@ import classNames from 'classnames';
 
 import ArtistName from '../ArtistName';
 import BoxContent from '../BoxContent';
-import CardImage from '../CardImage';
 import TitleMusic from '../TitleMusic';
+import CardImage from '../CardImage';
 
 function PlayLists(
     {

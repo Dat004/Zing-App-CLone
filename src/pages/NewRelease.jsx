@@ -41,7 +41,7 @@ function NewRelease() {
                 ) : (
                     <Fragment>
                         <div className="mb-[20px]">
-                            <CardMusic isShowAlbum data={newData?.items} />
+                            <CardMusic isShowRankingNumber isShowAlbum data={newData?.items} />
                         </div>
                     </Fragment>
                 )}

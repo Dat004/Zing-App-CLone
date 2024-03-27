@@ -106,11 +106,12 @@ function ZingChart() {
                     </section>
                     <div className="mb-[20px]">
                         <CardMusic
+                            isSuggest
                             isShowAlbum
                             data={[newData.randomSuggestSong.listSuggestSong[newData.randomSuggestSong.randomId]]}
-                            isSuggest
                         />
                         <CardMusic
+                            isShowRankingNumber
                             isShowAlbum
                             data={
                                 isShowMore

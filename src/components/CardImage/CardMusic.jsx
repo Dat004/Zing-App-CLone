@@ -1,30 +1,58 @@
-import { Fragment } from 'react';
+import { Fragment, useState, useRef, useReducer, useEffect } from 'react';
 import { VscTriangleUp, VscTriangleDown } from 'react-icons/vsc';
 import { PiEquals } from 'react-icons/pi';
+import { LuMusic } from 'react-icons/lu';
 
-import CardImage from '.';
+import { addMusic, removeMusic } from '../../reducers/actions';
+import InputCheckbox from '../InputSlider/InputCheckbox';
+import reducer, { initState } from '../../reducers';
 import TimeConversion from '../TimeConversion';
-import ArtistName from '../ArtistName';
 import NumberOutline from '../NumberOutline';
 import CustomLink from '../CustomLink';
+import ArtistName from '../ArtistName';
 import TitleMusic from '../TitleMusic';
+import CardImage from '.';
 
-function CardMusic({ data = [], isSuggest = false, isShowAlbum = false }) {
+function CardMusic({
+    data = [],
+    isShowRankingNumber = false,
+    isAllowSelect = false,
+    isShowAlbum = false,
+    isSuggest = false,
+}) {
+    const cardElementRef = useRef([]);
+    const [state, dispatch] = useReducer(reducer, initState.listMusic);
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleSelect = (e, index) => {
+        if (e.target.checked) {
+            cardElementRef.current[index].style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+            dispatch(addMusic(data[index]));
+            setIsChecked(true);
+        } else {
+            cardElementRef.current[index].style.backgroundColor = 'transparent';
+            dispatch(removeMusic(data[index].encodeId));
+            setIsChecked(false);
+        };
+    };
+
     return (
         <Fragment>
             {data?.map((items, index) => (
                 <section
                     key={index}
-                    className="border-b-[1px] border-b-purple-bd-secondary-color hover:bg-purple-bg-btn-alpha"
+                    ref={(ref) => (cardElementRef.current[index] = ref)}
+                    className={`group/card border-b-[1px] border-b-purple-bd-secondary-color hover:bg-purple-bg-btn-alpha`}
                 >
                     <div className="p-[10px] rounded-[4px]">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center w-[50%] mr-[10px]">
-                                {isSuggest ? (
+                                {isSuggest && (
                                     <div className="flex items-center justify-center w-[83px] mr-[15px]">
                                         <span className="text-[14px] text-purple-text-items">Gợi ý</span>
                                     </div>
-                                ) : (
+                                )}
+                                {isShowRankingNumber && (
                                     <div className="flex items-center mr-[15px]">
                                         <div className="flex justify-center items-center min-w-[60px] mr-[5px]">
                                             <NumberOutline
@@ -58,6 +86,36 @@ function CardMusic({ data = [], isSuggest = false, isShowAlbum = false }) {
                                             )}
                                         </div>
                                     </div>
+                                )}
+                                {isAllowSelect && (
+                                    <Fragment>
+                                        <div
+                                            className={`group-hover/card:hidden ${
+                                                state.length ? 'hidden' : 'block'
+                                            } min-w-[14px] mr-[10px]`}
+                                        >
+                                            <div className={`flex items-center justify-center`}>
+                                                <i className="flex-grow flex-shrink-0 text-[14px] text-purple-text-items">
+                                                    <LuMusic />
+                                                </i>
+                                            </div>
+                                        </div>
+                                        <div
+                                            className={`group-hover/card:block ${
+                                                state.length ? 'block' : 'hidden'
+                                            } min-w-[14px] mr-[10px]`}
+                                        >
+                                            <div className="flex items-center justify-center">
+                                                <span className="relative flex-grow flex-shrink-0">
+                                                    <InputCheckbox
+                                                        className="checked:border-purple-bd-white-color"
+                                                        id={index}
+                                                        handleChange={handleSelect}
+                                                    />
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </Fragment>
                                 )}
                                 <div className="mr-[10px]">
                                     <CardImage src={items?.thumbnailM} small />
