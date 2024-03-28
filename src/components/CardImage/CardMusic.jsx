@@ -15,6 +15,7 @@ import CardImage from '.';
 
 function CardMusic({
     data = [],
+    isShowHeaderCard = false,
     isShowRankingNumber = false,
     isAllowSelect = false,
     isShowAlbum = false,
@@ -33,7 +34,7 @@ function CardMusic({
             cardElementRef.current[index].style.backgroundColor = 'transparent';
             dispatch(removeMusic(data[index].encodeId));
             setIsChecked(false);
-        };
+        }
     };
 
     return (
@@ -125,7 +126,7 @@ function CardMusic({
                                     <ArtistName className="mt-[3px]" artistData={items?.artists} smallSize />
                                 </div>
                             </div>
-                            {isShowAlbum && (
+                            {isShowAlbum && items?.album && (
                                 <div className="flex justify-start flex-shrink flex-grow w-0 MS:hidden">
                                     <p className="text-[12px] text-purple-text-items">
                                         <CustomLink isHover isUnderline>

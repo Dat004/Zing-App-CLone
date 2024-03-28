@@ -38,9 +38,9 @@ const Button = forwardRef(
 
         return (
             <button ref={ref} className={buttonClasses} disabled={disabled} {...props}>
-                {leftIcon && <span>{leftIcon}</span>}
+                {leftIcon && <span className='mr-[8px]'>{leftIcon}</span>}
                 {children}
-                {rightIcon && <span>{rightIcon}</span>}
+                {rightIcon && <span className='ml-[8px]'>{rightIcon}</span>}
             </button>
         );
     },
