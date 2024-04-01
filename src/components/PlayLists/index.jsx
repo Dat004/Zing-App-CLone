@@ -7,30 +7,28 @@ import BoxContent from '../BoxContent';
 import TitleMusic from '../TitleMusic';
 import CardImage from '../CardImage';
 
-function PlayLists(
-    {
-        data,
-        className,
-        title,
-        isShowTitlePlaylist = false,
-        isShowArtists = false,
-        isHeader = false,
-        isSeeAll = false,
-        refElement,
-        ...passProps
-    },
-) {
+function PlayLists({
+    data = [],
+    className,
+    title,
+    isShowTitlePlaylist = false,
+    isShowArtists = false,
+    isHeader = false,
+    isSeeAll = false,
+    refElement,
+    ...passProps
+}) {
     const playlistsClasses = classNames('flex mx-[-14px] LM:mx-[-12px]', {
         [className]: className,
     });
 
     return (
         <BoxContent title={title} isHeader={isHeader} isSeeAll={isSeeAll}>
-            <div className='overflow-x-hidden'>
+            <div className="overflow-x-hidden">
                 <div ref={refElement} className={playlistsClasses} {...passProps}>
                     {data?.map((items, index) => {
                         const getPathNamePlaylists = items?.link?.split('/')[2];
-                
+
                         return (
                             <div key={index} className="w-[20%] flex-shrink-0 ML:w-[25%] LM:px-[12px] px-[14px]">
                                 <div className="w-full">
@@ -82,6 +80,12 @@ function PlayLists(
 PlayLists.propTypes = {
     data: PropTypes.array,
     title: PropTypes.string,
+    className: PropTypes.string,
+    isShowTitlePlaylist: PropTypes.bool,
+    isShowArtists: PropTypes.bool,
+    isHeader: PropTypes.bool,
+    isSeeAll: PropTypes.bool,
+    refElement: PropTypes.node,
 };
 
 export default PlayLists;

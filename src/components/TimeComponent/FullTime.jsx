@@ -5,7 +5,7 @@ import { useConvertTimestamps } from '../../hooks';
 function FullTime({ className, timestamps = 0, getFull = false, getYear = false, getMonth = false, getDay = false }) {
     const { days, months, years } = useConvertTimestamps(timestamps);
 
-    const fullTimeClasses = classNames('leading-[1.75] font-meidum', {
+    const fullTimeClasses = classNames('leading-[1.75] font-medium', {
         [className]: className,
     });
 

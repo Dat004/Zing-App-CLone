@@ -1,23 +1,47 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { useTime } from '../../hooks';
 
-function TimeConversion({ className, duration, isDark = false, isLight = false }) {
-    const { seconds, minutes } = useTime(duration);
+function TimeConversion({
+    className,
+    duration,
+    isMilitaryTime = false,
+    isHoursWithMinutes = false,
+    isFontColorDark = false,
+    isFontColorLight = false,
+}) {
+    const { seconds, minutes, totalMinutes, hours } = useTime(duration);
 
     const timeClasses = classNames('flex items-center justify-center min-w-[46px] text-[12px] font-medium', {
         [className]: className,
-        'text-purple-text-items': isDark,
-        'text-purple-text-primary': isLight,
+        'text-purple-text-items': isFontColorDark,
+        'text-purple-text-primary': isFontColorLight,
     });
 
     return (
-        <div className={timeClasses}>
-            <span>
-                {minutes}:{seconds}
-            </span>
-        </div>
+        <span className={timeClasses}>
+            {isMilitaryTime && (
+                <span>
+                    {totalMinutes}:{seconds}
+                </span>
+            )}
+            {isHoursWithMinutes && (
+                <span>
+                    {hours} giờ {minutes} phút
+                </span>
+            )}
+        </span>
     );
-}
+};
+
+TimeConversion.propTypes = {
+    className: PropTypes.string,
+    duration: PropTypes.number,
+    isMilitaryTime: PropTypes.bool,
+    isHoursWithMinutes: PropTypes.bool,
+    isFontColorDark: PropTypes.bool,
+    isFontColorLight: PropTypes.bool,
+};
 
 export default TimeConversion;
