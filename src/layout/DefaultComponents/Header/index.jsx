@@ -3,16 +3,16 @@ import { GoArrowLeft, GoArrowRight } from 'react-icons/go';
 import { GoGear } from 'react-icons/go';
 
 import { DownLoadToPCIcon } from '../../../components/CustomIcon';
-import DATAS from '../../../tempData';
-import Tippy from '../../../components/Tippy';
 import TippyBox from '../../../components/Tippy/TippyBox';
 import PopperWrapper from '../../../components/Popper';
-import images from '../../../assets/images';
-import Image from '../../../components/Image';
-import Search from './Search';
 import Button from '../../../components/Button';
+import Tippy from '../../../components/Tippy';
+import Image from '../../../components/Image';
+import images from '../../../assets/images';
+import DATAS from '../../../tempData';
+import Search from './Search';
 
-function Header() {
+function Header({ isSticky = false }) {
     const DATA_SUB_PACKAGE = DATAS.DATA_SUB_PACKAGE;
     const DATA_MENU_SETTINGS = DATAS.DATA_MENU_SETTINGS;
 
@@ -61,7 +61,8 @@ function Header() {
                             </p>
                             <Button
                                 className={`py-[6px] px-[24px] text-[13px] font-bold leading-[20px] ${
-                                    (items.isPlus && '!bg-bg-package-plus') || (items.isPremium && '!bg-bg-package-premium')
+                                    (items.isPlus && '!bg-bg-package-plus') ||
+                                    (items.isPremium && '!bg-bg-package-premium')
                                 }`}
                                 medium
                                 primary
@@ -125,7 +126,11 @@ function Header() {
     };
 
     return (
-        <header className="fixed left-[240px] LM:left-[70px] right-0 top-0 h-[70px] min-w-[660px] backdrop-blur-[50px] bg-purple-bg-header z-50">
+        <header
+            className={`fixed left-[240px] LM:left-[70px] right-0 top-0 h-[70px] min-w-[660px] ${
+                isSticky ? 'backdrop-blur-[50px] bg-purple-bg-header' : ''
+            } z-50`}
+        >
             <section className="flex items-center justify-between gap-[10px] h-full px-[59px] XM:px-[29px]">
                 {/* <div className='flex items-center justify-between w-full'> */}
                 <div className="flex items-center flex-auto">
@@ -176,7 +181,7 @@ function Header() {
                         renderComponent={<MENU_USER />}
                     >
                         <Button rounded onClick={() => setIsShow((state) => ({ ...state, menuUser: !state.menuUser }))}>
-                            <span className='w-[38px] h-[38px]'>
+                            <span className="w-[38px] h-[38px]">
                                 <Image rounded src={images.userClient} />
                             </span>
                         </Button>

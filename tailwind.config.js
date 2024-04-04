@@ -39,7 +39,7 @@ export default {
       minHeight: {
         "height-layout": "calc(100vh - 90px)",
         "heigth-loading-layout": "calc(100vh - 158px)",
-      },
+      }, 
       backgroundImage: {
         "linear-loading":
           "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)",
@@ -60,6 +60,7 @@ export default {
         "bg-current-slider": "rgb(255 255 255)",
         purple: {
           "bg-layout": "rgba(23, 15, 35)",
+          "bg-artist-layout": "rgba(41, 21, 71, 0.8)",
           "bg-header": "rgba(23, 15, 35, 0.8)",
           "bd-player": "rgb(19, 12, 28)",
           "bg-wrapper": "rgb(52, 34, 79);",

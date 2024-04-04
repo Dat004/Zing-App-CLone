@@ -128,7 +128,7 @@ function CardMusic({
                                             </div>
                                         </Fragment>
                                     )}
-                                    {!isAllowSelect && !isShowAlbumNumber && !isShowRankingNumber && (
+                                    {!isSuggest && !isAllowSelect && !isShowAlbumNumber && !isShowRankingNumber && (
                                         <div className="min-w-[14px] mr-[10px]">
                                             <div className={`flex items-center justify-center`}>
                                                 <i className="flex-grow flex-shrink-0 text-[14px] text-purple-text-items">
@@ -164,7 +164,7 @@ function CardMusic({
             })}
         </Fragment>
     );
-};
+}
 
 CardMusic.propTypes = {
     data: PropTypes.array,
