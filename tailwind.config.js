@@ -76,6 +76,7 @@ export default {
           "bg-btn-alpha": "rgba(255, 255, 255, 0.1)",
           "bg-partner": "rgb(247, 247, 247)",
           "bg-separator-items": "rgba(255, 255, 255, 0.1)",
+          "bg-layer-time": "rgba(0, 0, 0, .7)",
           "bg-layer": "rgba(0, 0, 0, 0.5)",
         },
       },

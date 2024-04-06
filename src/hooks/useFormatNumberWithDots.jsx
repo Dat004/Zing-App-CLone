@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 
 const useFormatNumberWithDots = (number) => {
-    const [results, setResults] = useState(number);
+    const [dotsNumber, setDotsNumber] = useState(number);
 
     useEffect(() => {
         // const formatValue = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         const formatValue = number.toLocaleString('en-US').split(',').join('.');
 
-        setResults(formatValue);
+        setDotsNumber(formatValue);
     }, [number]);
 
-    return { results };
+    return { dotsNumber };
 };
 
 export default useFormatNumberWithDots;

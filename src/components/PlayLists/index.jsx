@@ -1,17 +1,20 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import ArtistName from '../ArtistName';
 import BoxContent from '../BoxContent';
 import TitleMusic from '../TitleMusic';
+import CustomLink from '../CustomLink';
 import CardImage from '../CardImage';
+import Number from '../Number';
 
 function PlayLists({
     data = [],
     className,
     title,
-    countCols = 5, // Default count of columns is 5
+    numberCols = 5, // Default number of columns is 5
+    isTypeArtist = false, // Default is false, if true then type artist ui
+    isShowTimeRelease = false, // Default is false, if true then show time release
     isShowTitlePlaylist = false, // Defalt is false, if true then show title
     isShowArtists = false, // Defalt is false, if true then show artists
     isHeader = false, // Defalt is false, if true then show title at the top
@@ -31,44 +34,96 @@ function PlayLists({
                         const getPathNamePlaylists = items?.link?.split('/')[2];
 
                         return (
-                            <div key={index} className={`w-1/${countCols} flex-shrink-0 ML:w-[25%] LM:px-[12px] px-[14px]`}>
-                                <div className="w-full">
-                                    <Link to={`/playlist/${getPathNamePlaylists}/${items?.encodeId}`}>
-                                        <div className="w-full h-full">
-                                            <CardImage
-                                                className="h-0 pb-[100%] overflow-hidden"
-                                                src={items?.thumbnailM}
-                                                borderRadius="5px"
-                                                isScale
-                                            />
+                            <div
+                                key={index}
+                                className={`w-1/${numberCols} flex-shrink-0 ML:w-[25%] LM:px-[12px] px-[14px]`}
+                            >
+                                {isTypeArtist ? (
+                                    // Type of artist
+                                    <>
+                                        <div className="w-full">
+                                            <CustomLink to={`/artist/${items?.alias}`}>
+                                                <div className="w-full h-full rounded-[50%]">
+                                                    <CardImage
+                                                        className="h-0 pb-[100%] overflow-hidden"
+                                                        src={items?.thumbnailM}
+                                                        rounded
+                                                        isScale
+                                                    />
+                                                </div>
+                                            </CustomLink>
                                         </div>
-                                    </Link>
-                                </div>
-                                <div className="mt-[12px]">
-                                    <div
-                                        className={`${
-                                            isShowTitlePlaylist
-                                                ? 'font-bold text-purple-text-primary'
-                                                : 'max-h-[37.22px] font-medium text-purple-text-items overflow-hidden'
-                                        } text-[14px] leading-[1.33] whitespace-pre-wrap`}
-                                    >
-                                        {isShowTitlePlaylist ? (
-                                            <TitleMusic to={`/playlist/${getPathNamePlaylists}/${items?.encodeId}`}>
-                                                {items?.title}
-                                            </TitleMusic>
-                                        ) : (
-                                            <span className="whitespace-pre-wrap">{items?.sortDescription}</span>
-                                        )}
-                                    </div>
-                                    {isShowArtists && (
-                                        <ArtistName
-                                            className="mt-[4px] max-h-[37.22px] overflow-hidden"
-                                            artistData={items?.artists}
-                                            mediumSize
-                                            isWrap
-                                        ></ArtistName>
-                                    )}
-                                </div>
+                                        <div className="mt-[15px]">
+                                            <p className="max-w-[100%] text-[14px] text-purple-text-primary font-medium">
+                                                <CustomLink to={`/artist/${items?.alias}`} isUnderline isHover>
+                                                    {/* Name artist */}
+                                                    {items?.name}
+                                                </CustomLink>
+                                            </p>
+                                            <p className="mt-[4px] text-[12px] text-purple-text-items font-normal leading-[1.33]">
+                                                {/* Total number of follow */}
+                                                <Number number={items?.totalFollow} />
+                                                <span className="ml-[4px]">quan tâm</span>
+                                            </p>
+                                        </div>
+                                    </>
+                                ) : (
+                                    // Type of albums
+                                    <>
+                                        <div className="w-full">
+                                            <CustomLink to={`/playlist/${getPathNamePlaylists}/${items?.encodeId}`}>
+                                                <div className="w-full h-full">
+                                                    <CardImage
+                                                        className="h-0 pb-[100%] overflow-hidden"
+                                                        src={items?.thumbnailM}
+                                                        borderRadius="5px"
+                                                        isScale
+                                                    />
+                                                </div>
+                                            </CustomLink>
+                                        </div>
+                                        <div className="mt-[12px]">
+                                            <div
+                                                className={`${
+                                                    // styles if isShowTitlePlaylist is true
+                                                    isShowTitlePlaylist
+                                                        ? 'font-bold text-purple-text-primary'
+                                                        : // else
+                                                          'max-h-[37.22px] font-medium text-purple-text-items overflow-hidden'
+                                                } text-[14px] leading-[1.33] whitespace-pre-wrap`}
+                                            >
+                                                {/* Show title */}
+                                                {isShowTitlePlaylist ? (
+                                                    <TitleMusic
+                                                        to={`/playlist/${getPathNamePlaylists}/${items?.encodeId}`}
+                                                    >
+                                                        {items?.title}
+                                                    </TitleMusic>
+                                                ) : (
+                                                    // Show default is description
+                                                    <span className="whitespace-pre-wrap">
+                                                        {items?.sortDescription}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            {isShowArtists && (
+                                                // Show artist names
+                                                <ArtistName
+                                                    className="mt-[4px] max-h-[37.22px] overflow-hidden"
+                                                    artistData={items?.artists}
+                                                    mediumSize
+                                                    isWrap
+                                                ></ArtistName>
+                                            )}
+                                            {isShowTimeRelease && (
+                                                // Show time release
+                                                <p className="mt-[4px] text-[14px] text-purple-text-items font-normal leading-[1.33]">
+                                                    <span>{items?.releaseDateText}</span>
+                                                </p>
+                                            )}
+                                        </div>
+                                    </>
+                                )}
                             </div>
                         );
                     })}
@@ -81,13 +136,12 @@ function PlayLists({
 PlayLists.propTypes = {
     data: PropTypes.array,
     title: PropTypes.string,
-    countCols: PropTypes.number, 
+    countCols: PropTypes.number,
     className: PropTypes.string,
     isShowTitlePlaylist: PropTypes.bool,
     isShowArtists: PropTypes.bool,
     isHeader: PropTypes.bool,
     isSeeAll: PropTypes.bool,
-    refElement: PropTypes.node,
 };
 
 export default PlayLists;

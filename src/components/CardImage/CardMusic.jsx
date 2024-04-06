@@ -155,7 +155,9 @@ function CardMusic({
                                     </div>
                                 )}
                                 <div className="flex justify-end flex-shrink-0 min-w-[66px] ml-[10px]">
-                                    <TimeConversion duration={items?.duration} isMilitaryTime isFontColorDark />
+                                    <p className='flex items-center justify-center min-w-[46px] '>
+                                        <TimeConversion duration={items?.duration} isMilitaryTime isFontColorDark />
+                                    </p>
                                 </div>
                             </div>
                         </div>

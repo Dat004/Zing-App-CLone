@@ -13,7 +13,7 @@ function TimeConversion({
 }) {
     const { seconds, minutes, totalMinutes, hours } = useTime(duration);
 
-    const timeClasses = classNames('flex items-center justify-center min-w-[46px] text-[12px] font-medium', {
+    const timeClasses = classNames('text-[12px] font-medium', {
         [className]: className,
         'text-purple-text-items': isFontColorDark,
         'text-purple-text-primary': isFontColorLight,
