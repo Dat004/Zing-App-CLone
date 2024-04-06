@@ -11,11 +11,12 @@ function PlayLists({
     data = [],
     className,
     title,
-    isShowTitlePlaylist = false,
-    isShowArtists = false,
-    isHeader = false,
-    isSeeAll = false,
-    refElement,
+    countCols = 5, // Default count of columns is 5
+    isShowTitlePlaylist = false, // Defalt is false, if true then show title
+    isShowArtists = false, // Defalt is false, if true then show artists
+    isHeader = false, // Defalt is false, if true then show title at the top
+    isSeeAll = false, // Defalt is false, if true then show navigation button
+    refElement, // refElement
     ...passProps
 }) {
     const playlistsClasses = classNames('flex mx-[-14px] LM:mx-[-12px]', {
@@ -30,7 +31,7 @@ function PlayLists({
                         const getPathNamePlaylists = items?.link?.split('/')[2];
 
                         return (
-                            <div key={index} className="w-[20%] flex-shrink-0 ML:w-[25%] LM:px-[12px] px-[14px]">
+                            <div key={index} className={`w-1/${countCols} flex-shrink-0 ML:w-[25%] LM:px-[12px] px-[14px]`}>
                                 <div className="w-full">
                                     <Link to={`/playlist/${getPathNamePlaylists}/${items?.encodeId}`}>
                                         <div className="w-full h-full">
@@ -80,6 +81,7 @@ function PlayLists({
 PlayLists.propTypes = {
     data: PropTypes.array,
     title: PropTypes.string,
+    countCols: PropTypes.number, 
     className: PropTypes.string,
     isShowTitlePlaylist: PropTypes.bool,
     isShowArtists: PropTypes.bool,

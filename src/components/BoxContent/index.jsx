@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types';
 import { SlArrowRight } from 'react-icons/sl';
+import classNames from 'classnames';
 
 import CustomLink from '../CustomLink';
 
-function BoxContent({ children, title = '', isHeader = false, isSeeAll = false }) {
+function BoxContent({ children, className, title = '', isHeader = false, isSeeAll = false }) {
+    const boxClasses = classNames('mt-[48px]', {
+        [className]: className,
+    });
+
     return (
-        <div className="mt-[48px]">
+        <div className={boxClasses}>
             {isHeader && (
                 <div className="flex items-center justify-between mb-[20px]">
                     <h3 className="font-bold text-[20px] text-purple-text-primary">{title}</h3>
@@ -25,10 +30,11 @@ function BoxContent({ children, title = '', isHeader = false, isSeeAll = false }
             {children}
         </div>
     );
-};
+}
 
 BoxContent.propTypes = {
     children: PropTypes.node,
+    className: PropTypes.string,
     title: PropTypes.string,
     isHeader: PropTypes.bool,
     isSeeAll: PropTypes.bool,

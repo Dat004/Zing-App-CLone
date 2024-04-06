@@ -39,12 +39,16 @@ export default {
       minHeight: {
         "height-layout": "calc(100vh - 90px)",
         "heigth-loading-layout": "calc(100vh - 158px)",
-      }, 
+      },
       backgroundImage: {
         "linear-loading":
           "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)",
         "bg-text-linear":
           "radial-gradient(50% 124.93% at 95.86% -10%, #3efad9 0, hsla(0, 0%, 100%, 0) 100%), linear-gradient(91.56deg, #ff9357 1.54%, #9100ff 98.71%)",
+        "bg-cover-layout":
+          "linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 50%, rgba(193, 196, 197, 0.8))",
+        "bg-cover-linear":
+          "linear-gradient(0deg, #0e131a, rgba(14, 19, 26, 0))  ",
       },
       backgroundColor: {
         transparent: "transparent",
@@ -60,6 +64,7 @@ export default {
         "bg-current-slider": "rgb(255 255 255)",
         purple: {
           "bg-layout": "rgba(23, 15, 35)",
+          "bg-blur-color": "rgba(254, 255, 255, 0.1)",
           "bg-artist-layout": "rgba(41, 21, 71, 0.8)",
           "bg-header": "rgba(23, 15, 35, 0.8)",
           "bd-player": "rgb(19, 12, 28)",
