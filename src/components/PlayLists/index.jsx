@@ -109,7 +109,7 @@ function PlayLists({
                                             {isShowArtists && (
                                                 // Show artist names
                                                 <ArtistName
-                                                    className="mt-[4px] max-h-[37.22px] overflow-hidden"
+                                                    className="mt-[4px] max-h-[37.22px]"
                                                     artistData={items?.artists}
                                                     mediumSize
                                                     isWrap

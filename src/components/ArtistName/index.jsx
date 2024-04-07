@@ -1,30 +1,34 @@
-import { Fragment } from 'react';
 import classNames from 'classnames';
 
 import CustomLink from '../CustomLink';
 
-function ArtistName({ artistData = [], className, isWrap = false, mediumSize = false, smallSize = false }) {
-    const artistClasses = classNames('flex items-center text-purple-text-items leading-[1.33] font-normal', {
+function ArtistName({
+    artistData = [],
+    className,
+    isWrap = false, // Allow wrapping
+    mediumSize = false, // Font size medium
+    smallSize = false, // Font size small
+}) {
+    const artistClasses = classNames('text-purple-text-items leading-[1.33] font-normal', {
         [className]: className,
-        'flex-wrap': isWrap,
-        'text-[12px]': smallSize,
         'text-[14px]': mediumSize,
+        'text-[13px]': smallSize,
     });
 
     return (
         <p className={artistClasses}>
             {artistData?.map((artist, index) => (
-                <Fragment key={index}>
+                <span key={index}>
                     <CustomLink
-                        className="flex-grow-0 flex-shrink-0"
+                        className={`inline flex-shrink-0 ${isWrap ? 'whitespace-pre-line' : 'whitespace-nowrap'}`}
                         to={`/artist/${artist?.alias}`}
                         isHover
                         isUnderline
                     >
                         {artist?.name}
                     </CustomLink>
-                    {index !== artistData?.length - 1 && <span className="mr-[4px] flex-shrink-0">,</span>}
-                </Fragment>
+                    {index !== artistData?.length - 1 && <span className="mr-[4px]">,</span>}
+                </span>
             ))}
         </p>
     );
