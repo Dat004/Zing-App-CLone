@@ -1,27 +1,29 @@
-import Home from './Home';
-import ZingChart from './ZingChart';
-import Radio from './Radio';
-import MyMusic from './MyMusic';
+import ArtistSongs from './ArtistSongs';
 import NewRelease from './NewRelease';
-import Hub from './Hub';
+import ZingChart from './ZingChart';
+import Playlist from './Playlist';
+import MyMusic from './MyMusic';
 import Top100 from './Top100';
 import Search from './Search';
-import Album from './Album';
-import Playlist from './Playlist';
 import Artist from './Artist';
+import Radio from './Radio';
+import Album from './Album';
+import Home from './Home';
+import Hub from './Hub';
 
 const pages = {
-    Home,
-    ZingChart,
-    Radio,
-    MyMusic,
+    ArtistSongs,
     NewRelease,
-    Hub,
+    ZingChart,
+    Playlist,
+    MyMusic,
     Top100,
     Search,
-    Album,
-    Playlist,
     Artist,
+    Album,
+    Radio,
+    Home,
+    Hub,
 };
 
 export default pages;

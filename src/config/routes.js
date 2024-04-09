@@ -1,15 +1,16 @@
 const routes = {
-    home: '/',
-    zing_chart: '/zing-chart',
-    radio: '/radio',
-    my_music: '/mymusic',
-    new_release: '/moi-phat-hanh',
-    hub: '/hub',
-    top100: '/top100',
-    search: '/tim-kiem/:keyword',
-    album: '/album/:nameAlbum/:idAlbum',
     playlist: '/playlist/:nameplaylist/:idplaylist',
+    artist_songs: '/:nameArtist/bai-hat',
+    album: '/album/:nameAlbum/:idAlbum',
     artists: '/artist/:nameArtist',
+    new_release: '/moi-phat-hanh',
+    search: '/tim-kiem/:keyword',
+    zing_chart: '/zing-chart',
+    my_music: '/mymusic',
+    top100: '/top100',
+    radio: '/radio',
+    hub: '/hub',
+    home: '/',
 };
 
 export default routes;
