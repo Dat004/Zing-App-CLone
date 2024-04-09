@@ -34,7 +34,7 @@ function SliderBanner({ data = [] }) {
 
     useEffect(() => {
         setHeight(bannerRef.current?.clientHeight);
-    }, [bannerRef.currentx]);
+    }, [bannerRef.current]);
 
     useEffect(() => {
         const handleResize = () => {

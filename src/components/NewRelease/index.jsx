@@ -4,7 +4,7 @@ import BoxContent from '../BoxContent';
 import Tabs from './Tabs';
 import ListsMusic from './ListsMusis';
 
-function NewRelease({ data }) {
+function NewRelease({ data = [], title = '', isHeader = false, isSeeAll = false }) {
     const [isActive, setIsActive] = useState('all');
     const [newData, setNewData] = useState({
         all: {
@@ -28,19 +28,19 @@ function NewRelease({ data }) {
         setNewData((state) => ({
             ...state,
             all: {
-                col1: [data?.items?.all?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
-                col2: [data?.items?.all?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
-                col3: [data?.items?.all?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
+                col1: [data?.all?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
+                col2: [data?.all?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
+                col3: [data?.all?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
             },
             others: {
-                col1: [data?.items?.others?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
-                col2: [data?.items?.others?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
-                col3: [data?.items?.others?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
+                col1: [data?.others?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
+                col2: [data?.others?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
+                col3: [data?.others?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
             },
             vPop: {
-                col1: [data?.items?.vPop?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
-                col2: [data?.items?.vPop?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
-                col3: [data?.items?.vPop?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
+                col1: [data?.vPop?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
+                col2: [data?.vPop?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
+                col3: [data?.vPop?.splice(0, 4)], // Xử lí việc cắt 4 phần tử đầu của data
             },
         }));
     }, [data]);
@@ -50,7 +50,7 @@ function NewRelease({ data }) {
     };
 
     return (
-        <BoxContent title={data?.title} isSeeAll isHeader>
+        <BoxContent title={title} isSeeAll={isSeeAll} isHeader={isHeader}>
             <div className="flex items-center gap-[15px] mb-[16px]">
                 <Tabs onClick={() => handleTabsClick('all')} isActive={isActive === 'all'}>
                     TẤT CẢ

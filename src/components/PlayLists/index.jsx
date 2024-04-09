@@ -89,7 +89,7 @@ function PlayLists({
                                                     isShowTitlePlaylist
                                                         ? 'font-bold text-purple-text-primary'
                                                         : // else
-                                                          'max-h-[37.22px] font-medium text-purple-text-items overflow-hidden'
+                                                          'line-clamp-2 font-medium text-purple-text-items'
                                                 } text-[14px] leading-[1.33] whitespace-pre-wrap`}
                                             >
                                                 {/* Show title */}
@@ -101,7 +101,7 @@ function PlayLists({
                                                     </TitleMusic>
                                                 ) : (
                                                     // Show default is description
-                                                    <span className="whitespace-pre-wrap">
+                                                    <span className="whitespace-pre-line">
                                                         {items?.sortDescription}
                                                     </span>
                                                 )}

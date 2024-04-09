@@ -47,29 +47,7 @@ function Home() {
                 handleSetLoadingState(true);
             } else {
                 setDataHome({
-                    banner: data?.data?.data?.items[0],
-                    newRelease: data?.data?.data?.items[2],
-                    chillPlaylists: {
-                        title: data?.data?.data?.items[3]?.title,
-                        items: data?.data?.data?.items[3]?.items?.slice(0, 5),
-                    },
-                    remixPlaylists: {
-                        title: data?.data?.data?.items[4]?.title,
-                        items: data?.data?.data?.items[4]?.items?.slice(0, 5),
-                    },
-                    moodPlaylists: {
-                        title: data?.data?.data?.items[5]?.title,
-                        items: data?.data?.data?.items[5]?.items?.slice(0, 5),
-                    },
-                    top100Playlists: {
-                        title: data?.data?.data?.items[9]?.title,
-                        items: data?.data?.data?.items[9]?.items?.slice(0, 5),
-                    },
-                    hotPlaylists: {
-                        title: data?.data?.data?.items[11]?.title,
-                        items: data?.data?.data?.items[11]?.items,
-                    },
-                    adBanner: data?.data?.data?.items[8]?.items,
+                    ...data?.data?.data,
                 });
                 handleSetLoadingState(false);
             }
@@ -100,36 +78,60 @@ function Home() {
                 </PageLoader>
             ) : (
                 <Fragment>
-                    <SliderBanner data={dataHome.banner?.items} />
-                    <NewRelease data={dataHome.newRelease} />
-                    <PlayLists
-                        isHeader
-                        isSeeAll
-                        title={dataHome.chillPlaylists.title}
-                        data={dataHome.chillPlaylists.items}
-                    />
-                    <PlayLists
-                        isHeader
-                        isSeeAll
-                        title={dataHome.remixPlaylists.title}
-                        data={dataHome.remixPlaylists.items}
-                    />
-                    <PlayLists
-                        isHeader
-                        isSeeAll
-                        title={dataHome.moodPlaylists.title}
-                        data={dataHome.moodPlaylists.items}
-                    />
-                    <Banner data={dataHome.adBanner} />
-                    <PlayLists
-                        isHeader
-                        isSeeAll
-                        isShowArtists
-                        isShowTitlePlaylist
-                        title={dataHome.top100Playlists.title}
-                        data={dataHome.top100Playlists.items}
-                    />
-                    <SliderPlaylist title={`${dataHome.hotPlaylists.title}`} data={dataHome.hotPlaylists.items} />
+                    {dataHome?.items?.map((items, index) => {
+                        const isTitle = !!items?.title;
+                        const isPlaylist = items?.sectionType === 'playlist' && !items?.options?.autoSlider;
+                        const isSliderBanner = items?.sectionType === 'banner';
+                        const isNewRelease = items?.sectionType === 'new-release';
+                        const isPlayListHasDes = items?.sectionType === 'playlist' && items?.itemType === 'description';
+                        const isBanner = items?.sectionType === 'weekChart';
+                        const isSliderPlaylist = items?.sectionType === 'playlist' && items?.options?.autoSlider;
+                        const getData =
+                            (items?.sectionType === 'playlist' && items?.itemType === 'description') ||
+                            (items?.sectionType === 'playlist' && !items?.options?.autoSlider)
+                                ? items?.items?.slice(0, 5)
+                                : items?.items;
+
+                        // console.log(
+                        //     isTitle,
+                        //     isPlaylist,
+                        //     isSliderBanner,
+                        //     isNewRelease,
+                        //     isPlayListHasDes,
+                        //     isBanner,
+                        //     isPlaylistHaveTitleAndArtists,
+                        //     isSliderPlaylist,
+                        //     getData,
+                        // );
+
+                        return (
+                            <Fragment key={index}>
+                                {isSliderBanner && <SliderBanner data={getData} />}
+                                {isNewRelease && (
+                                    <NewRelease data={getData} title={items?.title} isHeader={isTitle ? true : false} />
+                                )}
+                                {isPlaylist && (
+                                    <PlayLists
+                                        data={getData}
+                                        title={items?.title}
+                                        isShowTitlePlaylist={!isPlayListHasDes ? true : false}
+                                        isShowArtists={!isPlayListHasDes ? true : false}
+                                        isHeader={isTitle ? true : false}
+                                    />
+                                )}
+                                {isBanner && <Banner data={getData} />}
+                                {isSliderPlaylist && (
+                                    <SliderPlaylist
+                                        data={getData}
+                                        title={items?.title}
+                                        isHeader={isTitle ? true : false}
+                                        isShowTitlePlaylist={!isPlayListHasDes ? true : false}
+                                        isShowArtists={!isPlayListHasDes ? true : false}
+                                    />
+                                )}
+                            </Fragment>
+                        );
+                    })}
                     <PartnerLayout />
                 </Fragment>
             )}
