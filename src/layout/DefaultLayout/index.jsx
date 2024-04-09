@@ -14,10 +14,14 @@ function DefaultLayout({ children }) {
             setPosition(e.target.scrollTop);
         };
 
-        mainRef.current.addEventListener('scroll', handleScroll);
+        if (mainRef.current) {
+            mainRef.current.addEventListener('scroll', handleScroll);
+        }
 
         return () => {
-            mainRef.current.removeEventListener('scroll', handleScroll);
+            if (mainRef.current) {
+                mainRef.current.removeEventListener('scroll', handleScroll);
+            }
         };
     }, []);
 
@@ -26,7 +30,10 @@ function DefaultLayout({ children }) {
             <Sidebar />
             <Header isSticky={position >= 50 ? true : false} />
             <div className="relative ml-[240px] flex-auto LM:ml-[70px] min-h-height-layout">
-                <main ref={mainRef} className="absolute top-0 left-0 h-full w-full XM:px-[29px] px-[59px] overflow-x-hidden overflow-y-auto">
+                <main
+                    ref={mainRef}
+                    className="absolute top-0 left-0 h-full w-full XM:px-[29px] px-[59px] overflow-x-hidden overflow-y-auto"
+                >
                     <div className="mb-[30px]">{children}</div>
                 </main>
             </div>

@@ -4,13 +4,13 @@ import classNames from 'classnames';
 
 import CustomLink from '../CustomLink';
 
-function BoxContent({ children, className, title = '', isHeader = false, isSeeAll = false }) {
+function BoxContent({ children, className, title = '', isHeader = false, isSeeAll = false, ...passProps }) {
     const boxClasses = classNames('mt-[48px]', {
         [className]: className,
     });
 
     return (
-        <div className={boxClasses}>
+        <div className={boxClasses} {...passProps}>
             {isHeader && (
                 <div className="flex items-center justify-between mb-[20px]">
                     <h3 className="font-bold text-[20px] text-purple-text-primary">{title}</h3>

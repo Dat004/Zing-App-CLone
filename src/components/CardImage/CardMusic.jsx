@@ -18,6 +18,7 @@ function CardMusic({
     data = [],
     isShowRankingNumber = false,
     isShowAlbumNumber = false,
+    isShowIconMusic = false,
     isAllowSelect = false,
     isShowAlbum = false,
     isSuggest = false,
@@ -128,7 +129,7 @@ function CardMusic({
                                             </div>
                                         </Fragment>
                                     )}
-                                    {!isSuggest && !isAllowSelect && !isShowAlbumNumber && !isShowRankingNumber && (
+                                    {isShowIconMusic && (
                                         <div className="min-w-[14px] mr-[10px]">
                                             <div className={`flex items-center justify-center`}>
                                                 <i className="flex-grow flex-shrink-0 text-[14px] text-purple-text-items">

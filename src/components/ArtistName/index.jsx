@@ -12,7 +12,7 @@ function ArtistName({
     const artistClasses = classNames('text-purple-text-items leading-[1.33] font-normal', {
         [className]: className,
         'text-[14px]': mediumSize,
-        'text-[13px]': smallSize,
+        'text-[12px]': smallSize,
     });
 
     return (
@@ -24,7 +24,7 @@ function ArtistName({
                         to={`/artist/${artist?.alias}`}
                         isHover
                         isUnderline
-                    >
+                    > 
                         {artist?.name}
                     </CustomLink>
                     {index !== artistData?.length - 1 && <span className="mr-[4px]">,</span>}

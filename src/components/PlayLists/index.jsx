@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { NumberAbbreviated } from '../Number';
 import ArtistName from '../ArtistName';
 import BoxContent from '../BoxContent';
 import TitleMusic from '../TitleMusic';
 import CustomLink from '../CustomLink';
 import CardImage from '../CardImage';
-import Number from '../Number';
 
 function PlayLists({
     data = [],
@@ -42,7 +42,7 @@ function PlayLists({
                                     // Type of artist
                                     <>
                                         <div className="w-full">
-                                            <CustomLink to={`/artist/${items?.alias}`}>
+                                            <CustomLink className="rounded-[50%]" to={`/artist/${items?.alias}`}>
                                                 <div className="w-full h-full rounded-[50%]">
                                                     <CardImage
                                                         className="h-0 pb-[100%] overflow-hidden"
@@ -53,16 +53,16 @@ function PlayLists({
                                                 </div>
                                             </CustomLink>
                                         </div>
-                                        <div className="mt-[15px]">
+                                        <div className="mt-[15px] text-center">
                                             <p className="max-w-[100%] text-[14px] text-purple-text-primary font-medium">
                                                 <CustomLink to={`/artist/${items?.alias}`} isUnderline isHover>
                                                     {/* Name artist */}
                                                     {items?.name}
                                                 </CustomLink>
                                             </p>
-                                            <p className="mt-[4px] text-[12px] text-purple-text-items font-normal leading-[1.33]">
+                                            <p className="text-[12px] text-purple-text-items font-normal leading-[1.33]">
                                                 {/* Total number of follow */}
-                                                <Number number={items?.totalFollow} />
+                                                <NumberAbbreviated number={items?.totalFollow} />
                                                 <span className="ml-[4px]">quan tâm</span>
                                             </p>
                                         </div>
@@ -109,13 +109,13 @@ function PlayLists({
                                             {isShowArtists && (
                                                 // Show artist names
                                                 <ArtistName
-                                                    className="mt-[4px] max-h-[37.22px]"
+                                                    className="mt-[4px] line-clamp-2"
                                                     artistData={items?.artists}
                                                     mediumSize
                                                     isWrap
                                                 ></ArtistName>
                                             )}
-                                            {isShowTimeRelease && (
+                                            {isShowTimeRelease && items?.releaseDateText && (
                                                 // Show time release
                                                 <p className="mt-[4px] text-[14px] text-purple-text-items font-normal leading-[1.33]">
                                                     <span>{items?.releaseDateText}</span>

@@ -170,7 +170,7 @@ function Playlist() {
                                         }
                                     >
                                         {newData?.sections[0]?.items && (
-                                            <CardMusic data={newData?.sections[0]?.items} isShowAlbum />
+                                            <CardMusic data={newData?.sections[0]?.items} isShowIconMusic isShowAlbum />
                                         )}
                                     </BoxContent>
                                 </div>
