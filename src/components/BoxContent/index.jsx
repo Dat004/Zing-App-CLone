@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import CustomLink from '../CustomLink';
 
-function BoxContent({ children, className, title = '', isHeader = false, isSeeAll = false, ...passProps }) {
+function BoxContent({ children, className, title = '', to = '', isHeader = false, isSeeAll = false, ...passProps }) {
     const boxClasses = classNames('mt-[48px]', {
         [className]: className,
     });
@@ -16,6 +16,7 @@ function BoxContent({ children, className, title = '', isHeader = false, isSeeAl
                     <h3 className="font-bold text-[20px] text-purple-text-primary">{title}</h3>
                     {isSeeAll && (
                         <CustomLink
+                            to={to}
                             className="flex items-center text-purple-text-items text-[12px] font-medium"
                             isHover
                         >
@@ -36,6 +37,7 @@ BoxContent.propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
     title: PropTypes.string,
+    to: PropTypes.string,
     isHeader: PropTypes.bool,
     isSeeAll: PropTypes.bool,
 };

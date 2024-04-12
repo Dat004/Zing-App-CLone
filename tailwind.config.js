@@ -13,7 +13,7 @@ export default {
         LS: { max: "1199px" },
         L: [{ max: "1224px" }, { min: "1134px", max: "1224px" }],
         LX: { max: "1280px" },
-        ML: [{ min: "1225px", max: "1350px" }, { max: "1350px" }],
+        ML: [{ max: "1350px" }, { min: "1225px", max: "1350px" }],
         XL: { min: "1351px" },
       },
       flex: {

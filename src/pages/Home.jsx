@@ -13,31 +13,7 @@ import Banner from '../components/Banner';
 import apiService from '../apiProvider';
 
 function Home() {
-    const [dataHome, setDataHome] = useState({
-        banner: [],
-        newRelease: {},
-        chillPlaylists: {
-            title: '',
-            items: [],
-        },
-        remixPlaylists: {
-            title: '',
-            items: [],
-        },
-        moodPlaylists: {
-            title: '',
-            items: [],
-        },
-        top100Playlists: {
-            title: '',
-            items: [],
-        },
-        hotPlaylists: {
-            title: '',
-            items: [],
-        },
-        adBanner: [],
-    });
+    const [dataHome, setDataHome] = useState({});
     const { isLoading, handleSetLoadingState } = useLoadingState();
 
     useEffect(() => {
@@ -114,9 +90,11 @@ function Home() {
                                     <PlayLists
                                         data={getData}
                                         title={items?.title}
+                                        to={items?.link?.split('.')[0]}
                                         isShowTitlePlaylist={!isPlayListHasDes ? true : false}
                                         isShowArtists={!isPlayListHasDes ? true : false}
                                         isHeader={isTitle ? true : false}
+                                        isSeeAll
                                     />
                                 )}
                                 {isBanner && <Banner data={getData} />}

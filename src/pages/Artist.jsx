@@ -270,7 +270,7 @@ function Artist() {
                                             <BoxContent title={items?.title} isHeader>
                                                 <div className="flex mx-[-14px] LM:mx-[-12px]">
                                                     {items?.items?.slice(0, 3)?.map((vd, id) => (
-                                                        <MV key={id} data={vd} isAvatar />
+                                                        <MV className="XM:w-1/2" key={id} data={vd} isAvatar />
                                                     ))}
                                                 </div>
                                             </BoxContent>

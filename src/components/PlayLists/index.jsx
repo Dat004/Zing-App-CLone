@@ -11,7 +11,8 @@ import CardImage from '../CardImage';
 function PlayLists({
     data = [],
     className,
-    title,
+    title = '',
+    to = '',
     numberCols = 5, // Default number of columns is 5
     isTypeArtist = false, // Default is false, if true then type artist ui
     isShowTimeRelease = false, // Default is false, if true then show time release
@@ -27,7 +28,7 @@ function PlayLists({
     });
 
     return (
-        <BoxContent title={title} isHeader={isHeader} isSeeAll={isSeeAll}>
+        <BoxContent title={title} isHeader={isHeader} isSeeAll={isSeeAll} to={to}>
             <div className="overflow-x-hidden">
                 <div ref={refElement} className={playlistsClasses} {...passProps}>
                     {data?.map((items, index) => {

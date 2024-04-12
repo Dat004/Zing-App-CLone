@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import classNames from 'classnames';
 
 import CustomLink from '../CustomLink';
@@ -16,21 +17,23 @@ function ArtistName({
     });
 
     return (
-        <p className={artistClasses}>
-            {artistData?.map((artist, index) => (
-                <span key={index}>
-                    <CustomLink
-                        className={`inline flex-shrink-0 ${isWrap ? 'whitespace-pre-line' : 'whitespace-nowrap'}`}
-                        to={`/artist/${artist?.alias}`}
-                        isHover
-                        isUnderline
-                    > 
-                        {artist?.name}
-                    </CustomLink>
-                    {index !== artistData?.length - 1 && <span className="mr-[4px]">,</span>}
-                </span>
-            ))}
-        </p>
+        <div>
+            <p className={artistClasses}>
+                {artistData?.map((artist, index) => (
+                    <Fragment key={index}>
+                        <CustomLink
+                            className={`inline flex-shrink-0 ${isWrap ? 'whitespace-pre-line' : 'whitespace-nowrap'}`}
+                            to={`/artist/${artist?.alias}`}
+                            isHover
+                            isUnderline
+                        > 
+                            {artist?.name}
+                        </CustomLink>
+                        {index !== artistData?.length - 1 && <span className="mr-[4px]">,</span>}
+                    </Fragment>
+                ))}
+            </p>
+        </div>
     );
 }
 

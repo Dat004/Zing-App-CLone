@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const defaultRequest = axios.create({
     baseURL: 'https://server-tau-six.vercel.app/api/',
@@ -11,24 +11,24 @@ export const customRequest = axios.create({
 });
 
 export const extraRequest = axios.create({
-    baseURL: 'https://zingmp3.vn/api/v2/app/get/',
+    baseURL: 'https://node-mongodb-zingapi.onrender.com/api/data/',
 });
 
 export const getRequest = async (path, options) => {
     const reponse = await defaultRequest.get(path, options);
-    
+
     return reponse;
 };
 
 export const getCustomRequest = async (path, options) => {
     const reponse = await customRequest.get(path, options);
-    
+
     return reponse;
 };
 
 export const getExtraRequest = async (path, options) => {
     const reponse = await extraRequest.get(path, options);
-    
+
     return reponse;
 };
 
