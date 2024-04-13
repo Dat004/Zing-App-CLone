@@ -12,9 +12,9 @@ import NumberOutline from '../NumberOutline';
 import CustomLink from '../CustomLink';
 import ArtistName from '../ArtistName';
 import TitleMusic from '../TitleMusic';
-import CardImage from '.';
+import ImageCard from './ImageCard';
 
-function CardMusic({
+function MusicCard({
     data = [],
     isShowRankingNumber = false, // Default is false, if true then show ranking numbers on left thumnail music
     isShowAlbumNumber = false, // Default is false, if true then show album numbers on left thumnail music
@@ -143,7 +143,7 @@ function CardMusic({
                                         </div>
                                     )}
                                     <div className="mr-[10px]">
-                                        <CardImage src={items?.thumbnailM} small />
+                                        <ImageCard src={items?.thumbnailM} small />
                                     </div>
                                     <div className="w-0 flex-shrink flex-grow">
                                         <TitleMusic>{items?.title}</TitleMusic>
@@ -175,7 +175,7 @@ function CardMusic({
     );
 }
 
-CardMusic.propTypes = {
+MusicCard.propTypes = {
     data: PropTypes.array,
     isShowRankingNumber: PropTypes.bool,
     isShowAlbumNumber: PropTypes.bool,
@@ -184,4 +184,4 @@ CardMusic.propTypes = {
     isSuggest: PropTypes.bool,
 };
 
-export default CardMusic;
+export default MusicCard;

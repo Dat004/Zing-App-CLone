@@ -2,8 +2,8 @@ import { useState, useEffect, Fragment } from 'react';
 
 import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
-import CardMusic from '../components/CardImage/CardMusic';
 import { PlayBoldIcon } from '../components/CustomIcon';
+import { MusicCard } from '../components/Card';
 import { useLoadingState } from '../hooks';
 import apiService from '../apiProvider';
 
@@ -41,7 +41,7 @@ function NewRelease() {
                 ) : (
                     <Fragment>
                         <div className="mb-[20px]">
-                            <CardMusic isShowRankingNumber isShowAlbum data={newData?.items} />
+                            <MusicCard isShowRankingNumber isShowAlbum data={newData?.items} />
                         </div>
                     </Fragment>
                 )}

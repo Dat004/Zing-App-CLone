@@ -4,7 +4,7 @@ import TimeConversion from '../TimeConversion';
 import CustomLink from '../CustomLink';
 import ArtistName from '../ArtistName';
 import TitleMusic from '../TitleMusic';
-import CardImage from '../CardImage';
+import { ImageCard } from '../Card';
 
 function MV({
     data = {},
@@ -22,7 +22,7 @@ function MV({
             <div className="w-full">
                 <div className="w-full relative">
                     <div className="w-full h-full rounded-[5px]">
-                        <CardImage
+                        <ImageCard
                             borderRadius="5px"
                             className="h-0 pb-[56.25%] overflow-hidden"
                             src={data?.thumbnailM}
@@ -44,7 +44,7 @@ function MV({
                         {isAvatar && (
                             <div className="mr-[10px] flex-shrink-0">
                                 <CustomLink to="">
-                                    <CardImage src={data?.artist?.thumbnail} small rounded />
+                                    <ImageCard src={data?.artist?.thumbnail} small rounded />
                                 </CustomLink>
                             </div>
                         )}

@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 
 import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
-import CardMusic from '../components/CardImage/CardMusic';
 import { PlayBoldIcon } from '../components/CustomIcon';
 import LineChart from '../components/Charts/LineChart';
+import { MusicCard } from '../components/Card';
 import { useLoadingState } from '../hooks';
 import Button from '../components/Button';
 import apiService from '../apiProvider';
@@ -105,12 +105,12 @@ function ZingChart() {
                         ></LineChart>
                     </section>
                     <div className="mb-[20px]">
-                        <CardMusic
+                        <MusicCard
                             isSuggest
                             isShowAlbum
                             data={[newData.randomSuggestSong.listSuggestSong[newData.randomSuggestSong.randomId]]}
                         />
-                        <CardMusic
+                        <MusicCard
                             isShowRankingNumber
                             isShowAlbum
                             data={

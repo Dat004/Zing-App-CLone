@@ -1,7 +1,7 @@
+import ActionMusic from '../../ActionsMusic';
 import TitleMusic from '../../TitleMusic';
 import ArtistName from '../../ArtistName';
-import ActionMusic from '../../ActionsMusic';
-import CardImage from '../../CardImage';
+import { ImageCard } from '../../Card';
 
 function ListsMusic({ data = [] }) {
     return (
@@ -11,12 +11,12 @@ function ListsMusic({ data = [] }) {
                     <div key={index} className="group/card w-full rounded-[5px] hover:bg-purple-bg-btn-alpha">
                         <div className="flex items-center p-[10px]">
                             <div className="mr-[10px]">
-                                <CardImage medium src={items?.thumbnailM} />
+                                <ImageCard medium src={items?.thumbnailM} />
                             </div>
                             <div className="w-0 flex-grow flex-shrink mr-[10px]">
                                 <div className="flex flex-col">
                                     <TitleMusic>{items?.title}</TitleMusic>
-                                    <ArtistName className='mt-[3px]' smallSize artistData={items?.artists}></ArtistName>
+                                    <ArtistName className="mt-[3px]" smallSize artistData={items?.artists}></ArtistName>
                                     <p className="text-[12px] font-medium mt-[3px] leading-[18px] text-purple-text-items">
                                         <span>2 ngày trước</span>
                                     </p>

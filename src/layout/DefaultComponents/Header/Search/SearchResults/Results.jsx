@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { ImageCard, LayerCard } from '../../../../../components/Card';
 import ActionsMusic from '../../../../../components/ActionsMusic';
-import LayerCard from '../../../../../components/CardImage/LayerCard';
-import CardImage from '../../../../../components/CardImage';
 
 function Results({ data }) {
     return (
@@ -25,7 +24,7 @@ function Results({ data }) {
                     >
                         <div className="flex items-center">
                             <div className="relative mr-[10px] rounded-[4px] overflow-hidden">
-                                <CardImage
+                                <ImageCard
                                     rounded={type === 1 ? false : true}
                                     src={getImage}
                                     className="w-[52px] h-[52px]"

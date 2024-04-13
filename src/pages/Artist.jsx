@@ -2,14 +2,13 @@ import { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { ZingChoiceIcon, ZingAwardsIcon } from '../components/CustomIcon';
-import CardMusic from '../components/CardImage/CardMusic';
 import { FullTime } from '../components/TimeComponent';
 import ArtistName from '../components/ArtistName';
 import CustomLink from '../components/CustomLink';
 import BoxContent from '../components/BoxContent';
 import { NumberDots } from '../components/Number';
 import Playlists from '..//components/PlayLists';
-import CardImage from '../components/CardImage';
+import { MusicCard, ImageCard } from '../components/Card';
 import { useLoadingState } from '../hooks';
 import Button from '../components/Button';
 import apiService from '../apiProvider';
@@ -91,7 +90,7 @@ function Artist() {
                             {/* Show avatar artist if hasn't cover */}
                             {!newData.cover.isCover && (
                                 <div className="mr-[32px]">
-                                    <CardImage className="size-[140px]" src={newData.avatar} rounded />
+                                    <ImageCard className="size-[140px]" src={newData.avatar} rounded />
                                 </div>
                             )}
                             {/* Show info */}
@@ -140,7 +139,7 @@ function Artist() {
                                                 <div className="flex w-full">
                                                     {/* Show thumbnail of song */}
                                                     <div className="w-[151px] flex-shrink-0">
-                                                        <CardImage
+                                                        <ImageCard
                                                             borderRadius="5px"
                                                             className="size-[151px]"
                                                             src={newData?.newRelease?.thumbnailM}
@@ -204,7 +203,7 @@ function Artist() {
                                                             } px-[14px] LM:px-[12px]`}
                                                         >
                                                             <div className="w-full">
-                                                                <CardMusic data={col1} />
+                                                                <MusicCard data={col1} />
                                                             </div>
                                                         </div>
                                                         <div
@@ -213,7 +212,7 @@ function Artist() {
                                                             } px-[14px] LM:px-[12px]`}
                                                         >
                                                             <div className="w-full">
-                                                                <CardMusic data={col2} />
+                                                                <MusicCard data={col2} />
                                                             </div>
                                                         </div>
                                                     </div>

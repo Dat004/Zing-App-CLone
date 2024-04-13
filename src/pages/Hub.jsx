@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 
 import BoxContent from '../components/BoxContent';
 import CustomLink from '../components/CustomLink';
-import CardImage from '../components/CardImage';
 import PlayLists from '../components/PlayLists';
+import { ImageCard } from '../components/Card';
 import HubItems from '../components/HubItems';
 import { useLoadingState } from '../hooks';
 import Button from '../components/Button';
@@ -101,7 +101,7 @@ function Hub() {
                             {/* Get the links */}
                             <CustomLink to={data.banners.data[data.banners.randomBannerId]?.link?.split('.')[0]}>
                                 {/* Show any background by the randomId */}
-                                <CardImage
+                                <ImageCard
                                     src={data.banners.data[data.banners.randomBannerId]?.cover}
                                     className="h-0 pb-[29.1%]"
                                 />
@@ -126,7 +126,7 @@ function Hub() {
                                 ))}
                             </div>
                             {/* If isShowBtn is true then show button handle show all hub */}
-                            {isShowBtn && (
+                            {/* {isShowBtn && (
                                 <div className="flex items-center justify-center mt-[30px]">
                                     <Button
                                         className="py-[9px] px-[24px] text-[12px] leading-[1.25] uppercase font-semibold"
@@ -136,7 +136,7 @@ function Hub() {
                                         Tất Cả
                                     </Button>
                                 </div>
-                            )}
+                            )} */}
                         </BoxContent>
                     ))}
                     {/* Show playlists */}

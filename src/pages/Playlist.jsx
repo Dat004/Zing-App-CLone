@@ -2,14 +2,12 @@ import { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaPlay } from 'react-icons/fa6';
 
+import { ImageCard, MusicCard, HeaderCard } from '../components/Card';
 import detailsPlaylist from '../apiProvider/detailsPlaylist';
-import HeaderCard from '../components/CardImage/HeaderCard';
-import CardMusic from '../components/CardImage/CardMusic';
 import TimeConversion from '../components/TimeConversion';
 import { FullTime } from '../components/TimeComponent';
 import ArtistName from '../components/ArtistName';
 import BoxContent from '../components/BoxContent';
-import CardImage from '../components/CardImage';
 import { useLoadingState } from '../hooks';
 import Button from '../components/Button';
 
@@ -37,7 +35,7 @@ function Playlist() {
                     <div className="flex flex-nowrap LS:flex-wrap w-full">
                         <div className="w-[300px] flex flex-col LS:flex-row LS:flex-grow LS:w-full flex-shrink-0 pb-[30px]">
                             <div className="LS:w-[200px] w-[300px] flex-shrink-0 LS:mr-[20px] overflow-hidden">
-                                <CardImage className="LS:size-large" isScale larger src={newData?.thumbnailM} />
+                                <ImageCard className="LS:size-large" isScale larger src={newData?.thumbnailM} />
                             </div>
                             <div className="flex flex-col w-full LS:mt-0 mt-[12px] LS:text-start text-center">
                                 <h3 className="flex text-[20px] text-purple-text-primary font-bold leading-[1.5]">
@@ -121,7 +119,7 @@ function Playlist() {
                                 <Fragment>
                                     <div className="mb-[10px]">
                                         <HeaderCard isAllowSort={newData?.song?.items?.length > 1} />
-                                        <CardMusic data={newData?.song?.items} isAllowSelect isShowAlbumNumber />
+                                        <MusicCard data={newData?.song?.items} isAllowSelect isShowAlbumNumber />
                                     </div>
                                     <div>
                                         <h3 className="mt-[20px] mb-[8px] text-purple-text-primary text-[14px] font-bold leading-[20px]">
@@ -145,7 +143,7 @@ function Playlist() {
                                 <Fragment>
                                     <div className="mb-[10px]">
                                         <HeaderCard isAllowSort iShowTitleAlbum />
-                                        <CardMusic data={newData?.song?.items} isAllowSelect isShowAlbum />
+                                        <MusicCard data={newData?.song?.items} isAllowSelect isShowAlbum />
                                     </div>
                                     <div className="mt-[16px]">
                                         <p className="flex items-center text-[13px] text-purple-text-items font-normal">
@@ -170,7 +168,7 @@ function Playlist() {
                                         }
                                     >
                                         {newData?.sections[0]?.items && (
-                                            <CardMusic data={newData?.sections[0]?.items} isShowIconMusic isShowAlbum />
+                                            <MusicCard data={newData?.sections[0]?.items} isShowIconMusic isShowAlbum />
                                         )}
                                     </BoxContent>
                                 </div>

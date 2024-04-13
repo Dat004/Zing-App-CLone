@@ -6,7 +6,7 @@ import ArtistName from '../ArtistName';
 import BoxContent from '../BoxContent';
 import TitleMusic from '../TitleMusic';
 import CustomLink from '../CustomLink';
-import CardImage from '../CardImage';
+import { ImageCard } from '../Card';
 
 function PlayLists({
     data = [],
@@ -45,7 +45,7 @@ function PlayLists({
                                         <div className="w-full">
                                             <CustomLink className="rounded-[50%]" to={`/artist/${items?.alias}`}>
                                                 <div className="w-full h-full rounded-[50%]">
-                                                    <CardImage
+                                                    <ImageCard
                                                         className="h-0 pb-[100%] overflow-hidden"
                                                         src={items?.thumbnailM}
                                                         rounded
@@ -74,7 +74,7 @@ function PlayLists({
                                         <div className="w-full">
                                             <CustomLink to={`/playlist/${getPathNamePlaylists}/${items?.encodeId}`}>
                                                 <div className="w-full h-full">
-                                                    <CardImage
+                                                    <ImageCard
                                                         className="h-0 pb-[100%] overflow-hidden"
                                                         src={items?.thumbnailM}
                                                         borderRadius="5px"

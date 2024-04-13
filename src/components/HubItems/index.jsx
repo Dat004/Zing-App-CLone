@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 import CustomLink from '../CustomLink';
-import CardImage from '../CardImage';
+import { ImageCard } from '../Card';
 
 function HubItems({
     data = {},
@@ -15,7 +15,7 @@ function HubItems({
             <CustomLink to={getPathName}>
                 <div className="relative rounded-[8px]">
                     {/* Show thumnail of hub items */}
-                    <CardImage
+                    <ImageCard
                         src={data?.thumbnail}
                         className="h-0 pb-[56.25%] overflow-hidden"
                         borderRadius="8px"
@@ -37,7 +37,7 @@ function HubItems({
                                         <div key={id} className="w-1/5 flex-shrink-0 pr-[3px]">
                                             <div className="w-full rounded-[4px]">
                                                 {/* Show thumnail of all playlists */}
-                                                <CardImage src={thumbnail?.thumbnailM} />
+                                                <ImageCard src={thumbnail?.thumbnailM} />
                                             </div>
                                         </div>
                                     ))}

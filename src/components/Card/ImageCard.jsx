@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import Image from '../Image';
 
-function CardImage({
+function ImageCard({
     src,
     className,
     borderRadius = '4px',
@@ -35,7 +33,7 @@ function CardImage({
     );
 }
 
-CardImage.propTypes = {
+ImageCard.propTypes = {
     data: PropTypes.object,
     className: PropTypes.string,
     small: PropTypes.bool,
@@ -44,4 +42,4 @@ CardImage.propTypes = {
     larger: PropTypes.bool,
 };
 
-export default CardImage;
+export default ImageCard;

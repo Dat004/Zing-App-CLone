@@ -2,9 +2,8 @@ import PropTypes from 'prop-types';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { SlArrowRight, SlArrowLeft } from 'react-icons/sl';
 
+import { ImageCard } from '../Card';
 import Button from '../Button';
-import SkeletonLoading from '../SkeletonLoading';
-import CardImage from '../CardImage';
 
 function SliderBanner({ data = [] }) {
     const bannerRef = useRef(null);
@@ -115,7 +114,7 @@ function SliderBanner({ data = [] }) {
                                 className={`absolute translate-x-[100%] XM:min-w-[50%] XM:px-[12px] w-[33.33%] XM:w-[50%] px-[15px]`}
                             >
                                 <div className="w-full max-w-full">
-                                    <CardImage className="rounded-[8px]" src={items?.banner} />
+                                    <ImageCard className="rounded-[8px]" src={items?.banner} />
                                 </div>
                             </div>
                         ))}

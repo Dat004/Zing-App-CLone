@@ -1,4 +1,4 @@
-import CardImage from '../CardImage';
+import { ImageCard } from '../Card';
 
 function Banner({ data }) {
     return (
@@ -7,7 +7,7 @@ function Banner({ data }) {
                 {data?.map((items, index) => (
                     <div key={index} className="w-[33.33%] px-[14px]">
                         <div className="w-full h-full">
-                            <CardImage isScale src={items?.cover} />
+                            <ImageCard isScale src={items?.cover} />
                         </div>
                     </div>
                 ))}

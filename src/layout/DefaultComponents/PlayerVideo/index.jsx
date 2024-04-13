@@ -5,11 +5,11 @@ import { RiPlayList2Fill } from 'react-icons/ri';
 import { SlVolume2, SlVolumeOff } from 'react-icons/sl';
 
 import ActionsMusic from '../../../components/ActionsMusic';
-import CardImage from '../../../components/CardImage';
 import TippyBox from '../../../components/Tippy/TippyBox';
-import BarController from './BarController';
 import InputSlider from '../../../components/InputSlider';
+import { LayerCard } from '../../../components/Card';
 import Button from '../../../components/Button';
+import BarController from './BarController';
 
 function MusicPlayer() {
     const [muteVolume, setMuteVolume] = useState(false);
@@ -22,7 +22,7 @@ function MusicPlayer() {
         <div className="fixed bottom-0 left-0 h-[90px] w-full bg-purple-bg-layout">
             <div className="flex items-center w-full h-full bg-purple-bd-player px-[20px] border-t border-t-purple-bd-primary-color">
                 <div className="flex items-center justify-start w-[30%]">
-                    <CardImage className="p-0" />
+                    <LayerCard className="p-0" />
                     <div className="ml-[10px]">
                         <ActionsMusic widthBtn="32px" heightBtn="32px" isAddLibrary />
                     </div>
