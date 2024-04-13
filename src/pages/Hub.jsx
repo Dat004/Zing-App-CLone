@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import BoxContent from '../components/BoxContent';
 import CustomLink from '../components/CustomLink';
@@ -6,22 +6,52 @@ import CardImage from '../components/CardImage';
 import PlayLists from '../components/PlayLists';
 import HubItems from '../components/HubItems';
 import { useLoadingState } from '../hooks';
+import Button from '../components/Button';
 import apiService from '../apiProvider';
 
 function Hub() {
+    const hubsRef = useRef([]);
     const [data, setData] = useState({
         banners: {
             data: [],
             randomBannerId: {},
         },
-        hubItems: {
-            featured: {},
-            nations: [],
-            topic: [],
-        },
+        hubItems: [],
         playlists: [],
     });
     const { isLoading, handleSetLoadingState } = useLoadingState();
+
+    // const handleCheckItems = () => {
+    //     hubsRef.current?.map((hub) => {
+    //         const scrollWidth = Number(hub.scrollWidth);
+    //         const clientWidth = Number(hub.clientWidth);
+
+    //         if(clientWidth === scrollWidth) {
+    //             setIsShowBtn(false);
+    //         }
+    //         if(clientWidth < scrollWidth) {
+    //             setIsShowBtn(true);
+    //         }
+    //     });
+    // };
+
+    // useEffect(() => {
+    //     if (hubsRef.current) {
+    //         handleCheckItems();
+    //     }
+    // }, [hubsRef.current, isLoading]);
+
+    // useEffect(() => {
+    //     if (hubsRef.current) {
+    //         window.addEventListener('resize', handleCheckItems);
+    //     }
+
+    //     return () => {
+    //         if (hubsRef.current) {
+    //             window.removeEventListener('resize', handleCheckItems);
+    //         }
+    //     };
+    // }, []);
 
     useEffect(() => {
         (async () => {
@@ -42,11 +72,18 @@ function Hub() {
                             ),
                         ),
                     },
-                    hubItems: {
-                        featured: { ...data?.data?.data?.featured },
-                        nations: [...data?.data?.data?.nations],
-                        topic: [...data?.data?.data?.topic],
-                    },
+                    hubItems: [
+                        // Create value and spread value
+                        { items: [...data?.data?.data?.featured?.items], title: data?.data?.data?.featured?.title },
+                        {
+                            items: [...data?.data?.data?.nations],
+                            title: data?.data?.data?.nations?.title || 'Quốc gia',
+                        },
+                        {
+                            items: [...data?.data?.data?.topic],
+                            title: data?.data?.data?.topic?.title || 'Tâm Trạng Và Hoạt Động',
+                        },
+                    ],
                     playlists: [...data?.data?.data?.genre],
                 }));
 
@@ -72,47 +109,36 @@ function Hub() {
                         </div>
                     </div>
                     {/* Show hub items */}
-                    <BoxContent title={data.hubItems.featured?.title} isHeader>
-                        <div className="flex items-center mx-[-14px] LM:mx-[-12px]">
-                            {data.hubItems.featured?.items?.map((items, index) => (
-                                // If has playlists then show thumbnail in hub items
-                                <div
-                                    key={index}
-                                    className="w-1/4 XM:!w-1/2 ML:w-1/3 flex-shrink-0 px-[14px] LM:px-[12px]"
-                                >
-                                    <HubItems data={items} isShowThumbnail={!!items?.playlists ? true : false} />
+                    {data.hubItems?.map((items, index) => (
+                        <BoxContent title={items?.title} key={index} isHeader={!!items.title ? true : false}>
+                            <div
+                                ref={(ref) => (hubsRef.current[index] = ref)}
+                                className="flex items-center mx-[-14px] LM:mx-[-12px] overflow-hidden"
+                            >
+                                {items?.items?.map((value, id) => (
+                                    // If has playlists then show thumbnail in hub items
+                                    <div
+                                        key={id}
+                                        className="w-1/4 XM:!w-1/2 ML:w-1/3 flex-shrink-0 px-[14px] LM:px-[12px]"
+                                    >
+                                        <HubItems data={value} isShowThumbnail={!!value?.playlists ? true : false} />
+                                    </div>
+                                ))}
+                            </div>
+                            {/* If isShowBtn is true then show button handle show all hub */}
+                            {isShowBtn && (
+                                <div className="flex items-center justify-center mt-[30px]">
+                                    <Button
+                                        className="py-[9px] px-[24px] text-[12px] leading-[1.25] uppercase font-semibold"
+                                        small
+                                        outline
+                                    >
+                                        Tất Cả
+                                    </Button>
                                 </div>
-                            ))}
-                        </div>
-                    </BoxContent>
-                    {/* Show hub items */}
-                    <BoxContent title="Quốc gia" isHeader>
-                        <div className="flex items-center mx-[-14px] LM:mx-[-12px]">
-                            {data.hubItems.nations?.map((items, index) => (
-                                // If has playlists then show thumbnail in hub items
-                                <div
-                                    key={index}
-                                    className="w-1/4 XM:!w-1/2 ML:w-1/3 flex-shrink-0 px-[14px] LM:px-[12px]"
-                                >
-                                    <HubItems data={items} isShowThumbnail={!!items?.playlists ? true : false} />
-                                </div>
-                            ))}
-                        </div>
-                    </BoxContent>
-                    {/* Show hub items */}
-                    <BoxContent title="Tâm Trạng Và Hoạt Động" isHeader>
-                        <div className="flex items-center mx-[-14px] LM:mx-[-12px]">
-                            {data.hubItems.topic?.map((items, index) => (
-                                // If has playlists then show thumbnail in hub items
-                                <div
-                                    key={index}
-                                    className="w-1/4 XM:!w-1/2 ML:w-1/3 flex-shrink-0 px-[14px] LM:px-[12px]"
-                                >
-                                    <HubItems data={items} isShowThumbnail={!!items?.playlists ? true : false} />
-                                </div>
-                            ))}
-                        </div>
-                    </BoxContent>
+                            )}
+                        </BoxContent>
+                    ))}
                     {/* Show playlists */}
                     {data.playlists?.map((items, index) => {
                         // Get the links
