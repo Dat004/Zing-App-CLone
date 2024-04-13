@@ -32,74 +32,76 @@ function Playlist() {
             <div className="pt-[40px]">
                 {isLoading ? null : (
                     <div className="flex flex-nowrap LS:flex-wrap w-full">
-                        <div className="w-[300px] flex flex-col LS:flex-row LS:flex-grow LS:w-full flex-shrink-0 pb-[30px]">
-                            <div className="LS:w-[200px] w-[300px] flex-shrink-0 LS:mr-[20px] overflow-hidden">
-                                <ImageCard className="LS:size-large" isScale larger src={newData?.thumbnailM} />
-                            </div>
-                            <div className="flex flex-col w-full LS:mt-0 mt-[12px] LS:text-start text-center">
-                                <h3 className="flex text-[20px] text-purple-text-primary font-bold leading-[1.5]">
-                                    <p className="flex-grow flex-shrink w-0">
-                                        <span className="whitespace-pre-line LS:whitespace-nowrap">
-                                            {newData?.title}
-                                        </span>
-                                    </p>
-                                </h3>
-                                {newData?.isAlbum ? (
-                                    <div className="flex items-center justify-center LS:justify-start text-[12px] text-purple-text-items">
-                                        <ArtistName
-                                            className="LS:justify-start justify-center mr-[4px] leading-[1.75]"
-                                            artistData={newData?.artists}
-                                            smallSize
-                                            isWrap
-                                        />
-                                        <span>•</span>
-                                        <TimeTracker
-                                            className="ml-[4px]"
-                                            timestamps={newData?.contentLastUpdate}
-                                            getYear
-                                        />
-                                    </div>
-                                ) : (
-                                    <>
-                                        <p className="text-[12px] text-purple-text-items leading-[1.75]">
-                                            <span>Cập nhật:</span>
+                        <div className="w-[300px] LS:flex-grow LS:w-full flex-shrink-0 pb-[30px]">
+                            <div className="sticky top-[110px] flex flex-col LS:flex-row">
+                                <div className="LS:w-[200px] w-[300px] flex-shrink-0 LS:mr-[20px] overflow-hidden">
+                                    <ImageCard className="LS:size-large" isScale larger src={newData?.thumbnailM} />
+                                </div>
+                                <div className="flex flex-col w-full LS:mt-0 mt-[12px] LS:text-start text-center">
+                                    <h3 className="flex text-[20px] text-purple-text-primary font-bold leading-[1.5]">
+                                        <p className="flex-grow flex-shrink w-0">
+                                            <span className="whitespace-pre-line LS:whitespace-nowrap">
+                                                {newData?.title}
+                                            </span>
+                                        </p>
+                                    </h3>
+                                    {newData?.isAlbum ? (
+                                        <div className="flex items-center justify-center LS:justify-start text-[12px] text-purple-text-items">
+                                            <ArtistName
+                                                className="LS:justify-start justify-center mr-[4px] leading-[1.75]"
+                                                artistData={newData?.artists}
+                                                smallSize
+                                                isWrap
+                                            />
+                                            <span>•</span>
                                             <TimeTracker
                                                 className="ml-[4px]"
                                                 timestamps={newData?.contentLastUpdate}
-                                                getFull
+                                                getYear
                                             />
-                                        </p>
-                                        <ArtistName
-                                            className="LS:justify-start justify-center leading-[1.75]"
-                                            artistData={newData?.artists}
-                                            smallSize
-                                            isWrap
-                                        />
-                                    </>
-                                )}
-                                {!newData?.isAlbum && newData?.sortDescription && (
-                                    <div className="LS:block hidden">
-                                        <p className="text-[14px] text-purple-text-items font-normal mt-[16px] mb-[10px]">
-                                            <span>Lời tựa</span>
-                                            <span className="ml-[4px] text-purple-text-primary line-clamp-3  whitespace-pre-line">
-                                                {newData?.sortDescription}
-                                            </span>
-                                        </p>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <p className="text-[12px] text-purple-text-items leading-[1.75]">
+                                                <span>Cập nhật:</span>
+                                                <TimeTracker
+                                                    className="ml-[4px]"
+                                                    timestamps={newData?.contentLastUpdate}
+                                                    getFull
+                                                />
+                                            </p>
+                                            <ArtistName
+                                                className="LS:justify-start justify-center leading-[1.75]"
+                                                artistData={newData?.artists}
+                                                smallSize
+                                                isWrap
+                                            />
+                                        </>
+                                    )}
+                                    {!newData?.isAlbum && newData?.sortDescription && (
+                                        <div className="LS:block hidden">
+                                            <p className="text-[14px] text-purple-text-items font-normal mt-[16px] mb-[10px]">
+                                                <span>Lời tựa</span>
+                                                <span className="ml-[4px] text-purple-text-primary line-clamp-3  whitespace-pre-line">
+                                                    {newData?.sortDescription}
+                                                </span>
+                                            </p>
+                                        </div>
+                                    )}
+                                    <div className="LS:mt-auto mt-[16px]">
+                                        <Button
+                                            leftIcon={
+                                                <i className="text-[16px]">
+                                                    <FaPlay />
+                                                </i>
+                                            }
+                                            className="LS:mr-auto LS:ml-0 mx-auto px-[24px] py-[8px] text-[14px] uppercase"
+                                            primary
+                                            large
+                                        >
+                                            {newData?.isAlbum ? 'Phát tất cả' : 'Phát ngẫu nhiên'}
+                                        </Button>
                                     </div>
-                                )}
-                                <div className="LS:mt-auto mt-[16px]">
-                                    <Button
-                                        leftIcon={
-                                            <i className="text-[16px]">
-                                                <FaPlay />
-                                            </i>
-                                        }
-                                        className="LS:mr-auto LS:ml-0 mx-auto px-[24px] py-[8px] text-[14px] uppercase"
-                                        primary
-                                        large
-                                    >
-                                        {newData?.isAlbum ? 'Phát tất cả' : 'Phát ngẫu nhiên'}
-                                    </Button>
                                 </div>
                             </div>
                         </div>
