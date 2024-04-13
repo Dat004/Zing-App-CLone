@@ -1,11 +1,10 @@
 import { Fragment, useEffect, useState } from 'react';
 
 import PlaylistSkeleton from '../components/SkeletonLoading/PlaylistSkeleton';
-import SliderPlaylist from '../components/SliderBanner/SliderPlaylist';
+import { SliderBanner, SliderPlaylist } from '../components/Slider';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
 import SkeletonLoading from '../components/SkeletonLoading';
 import PartnerLayout from '../components/PartnerLayout';
-import SliderBanner from '../components/SliderBanner';
 import NewRelease from '../components/NewRelease';
 import PlayLists from '../components/PlayLists';
 import { useLoadingState } from '../hooks';
