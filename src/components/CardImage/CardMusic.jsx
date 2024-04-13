@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Fragment, useState, useRef } from 'react';
+import { Fragment, useRef } from 'react';
 import { VscTriangleUp, VscTriangleDown } from 'react-icons/vsc';
 import { PiEquals } from 'react-icons/pi';
 import { LuMusic } from 'react-icons/lu';
@@ -16,26 +16,23 @@ import CardImage from '.';
 
 function CardMusic({
     data = [],
-    isShowRankingNumber = false,
-    isShowAlbumNumber = false,
-    isShowIconMusic = false,
-    isAllowSelect = false,
-    isShowAlbum = false,
-    isSuggest = false,
+    isShowRankingNumber = false, // Default is false, if true then show ranking numbers on left thumnail music
+    isShowAlbumNumber = false, // Default is false, if true then show album numbers on left thumnail music
+    isShowIconMusic = false, // Default is false, if true then show icon music on left thumnail music
+    isAllowSelect = false, // Default is false, if true then allow select music to add playlists on left thumnail music
+    isShowAlbum = false, // Default is false, if true then show name of album
+    isSuggest = false, // Default is false, if true then show suggestion music on left thumnail music
 }) {
     const cardElementRef = useRef([]);
     const [state, dispatch] = UserListMusicPlaylist();
-    const [isChecked, setIsChecked] = useState(false);
 
     const handleSelect = (e, index) => {
         if (e.target.checked) {
-            cardElementRef.current[index].style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
-            dispatch(addMusic(data[index]));
-            setIsChecked(true);
+            cardElementRef.current[index].classList.add('!bg-purple-bg-select-box'); // add effect on songs selected
+            dispatch(addMusic(data[index])); // add song to the playlists
         } else {
-            cardElementRef.current[index].style.backgroundColor = 'transparent';
-            dispatch(removeMusic(data[index].encodeId));
-            setIsChecked(false);
+            cardElementRef.current[index].classList.remove('!bg-purple-bg-select-box'); // remove effect on songs deselected
+            dispatch(removeMusic(data[index].encodeId)); // remove song to the playlists
         }
     };
 
@@ -53,11 +50,13 @@ function CardMusic({
                         <div className="p-[10px] rounded-[4px]">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center w-[50%] mr-[10px]">
+                                    {/* Show suggestion music on left thumnail music */}
                                     {isSuggest && (
                                         <div className="flex items-center justify-center w-[83px] mr-[15px]">
                                             <span className="text-[14px] text-purple-text-items">Gợi ý</span>
                                         </div>
                                     )}
+                                    {/* Show ranking numbers on left thumnail music */}
                                     {isShowRankingNumber && (
                                         <div className="flex items-center mr-[15px]">
                                             <div className="flex justify-center items-center min-w-[60px] mr-[5px]">
@@ -76,6 +75,7 @@ function CardMusic({
                                                     </i>
                                                 ) : (
                                                     <Fragment>
+                                                        {/* rakingStatus is used to check if a song has changed on the chart? */}
                                                         {items?.rakingStatus > 0 ? (
                                                             <i className="text-[18px] text-up-color">
                                                                 <VscTriangleUp />
@@ -93,6 +93,7 @@ function CardMusic({
                                             </div>
                                         </div>
                                     )}
+                                    {/* Allow select music to add playlists on left thumnail music */}
                                     {isAllowSelect && (
                                         <Fragment>
                                             <div
@@ -101,6 +102,7 @@ function CardMusic({
                                                 } min-w-[14px] mr-[10px]`}
                                             >
                                                 <div className={`flex items-center justify-center`}>
+                                                    {/* Show album numbers on left thumnail music */}
                                                     {isShowAlbumNumber ? (
                                                         <p className="text-[14px] text-purple-text-items font-medium">
                                                             <span className="leading-[1.29]">{++count}</span>
@@ -112,6 +114,7 @@ function CardMusic({
                                                     )}
                                                 </div>
                                             </div>
+                                            {/* If state has playlist then show input checkbox */}
                                             <div
                                                 className={`group-hover/card:block ${
                                                     state.length ? 'block' : 'hidden'
@@ -129,6 +132,7 @@ function CardMusic({
                                             </div>
                                         </Fragment>
                                     )}
+                                    {/* Show icon music on left thumnail music */}
                                     {isShowIconMusic && (
                                         <div className="min-w-[14px] mr-[10px]">
                                             <div className={`flex items-center justify-center`}>
@@ -146,17 +150,19 @@ function CardMusic({
                                         <ArtistName className="mt-[3px]" artistData={items?.artists} smallSize />
                                     </div>
                                 </div>
+                                {/* Show name of album */}
                                 {isShowAlbum && items?.album && (
                                     <div className="flex justify-start flex-shrink flex-grow w-0 MS:hidden">
                                         <p className="text-[12px] text-purple-text-items">
                                             <CustomLink isHover isUnderline>
+                                                {/* Title album */}
                                                 {items?.album?.title}
                                             </CustomLink>
                                         </p>
                                     </div>
                                 )}
                                 <div className="flex justify-end flex-shrink-0 min-w-[66px] ml-[10px]">
-                                    <p className='flex items-center justify-center min-w-[46px] '>
+                                    <p className="flex items-center justify-center min-w-[46px] ">
                                         <TimeConversion duration={items?.duration} isMilitaryTime isFontColorDark />
                                     </p>
                                 </div>
