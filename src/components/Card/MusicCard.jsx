@@ -4,11 +4,10 @@ import { VscTriangleUp, VscTriangleDown } from 'react-icons/vsc';
 import { PiEquals } from 'react-icons/pi';
 import { LuMusic } from 'react-icons/lu';
 
-import { addMusic, removeMusic } from '../../reducers/actions';
 import InputCheckbox from '../InputSlider/InputCheckbox';
 import { UserListMusicPlaylist } from '../../Context';
-import TimeConversion from '../TimeConversion';
-import NumberOutline from '../NumberOutline';
+import { DurationTime } from '../TimeComponent';
+import { NumberOutline } from '../Number';
 import CustomLink from '../CustomLink';
 import ArtistName from '../ArtistName';
 import TitleMusic from '../TitleMusic';
@@ -24,15 +23,15 @@ function MusicCard({
     isSuggest = false, // Default is false, if true then show suggestion music on left thumnail music
 }) {
     const cardElementRef = useRef([]);
-    const [state, dispatch] = UserListMusicPlaylist();
+    const [state, dispatch, handle] = UserListMusicPlaylist();
 
     const handleSelect = (e, index) => {
         if (e.target.checked) {
             cardElementRef.current[index].classList.add('!bg-purple-bg-select-box'); // add effect on songs selected
-            dispatch(addMusic(data[index])); // add song to the playlists
+            dispatch(handle.addMusic(data[index])); // add song to the playlists
         } else {
             cardElementRef.current[index].classList.remove('!bg-purple-bg-select-box'); // remove effect on songs deselected
-            dispatch(removeMusic(data[index].encodeId)); // remove song to the playlists
+            dispatch(handle.removeMusic(data[index].encodeId)); // remove song to the playlists
         }
     };
 
@@ -163,7 +162,7 @@ function MusicCard({
                                 )}
                                 <div className="flex justify-end flex-shrink-0 min-w-[66px] ml-[10px]">
                                     <p className="flex items-center justify-center min-w-[46px] ">
-                                        <TimeConversion duration={items?.duration} isMilitaryTime isFontColorDark />
+                                        <DurationTime duration={items?.duration} isMilitaryTime isFontColorDark />
                                     </p>
                                 </div>
                             </div>

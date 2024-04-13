@@ -1,1 +1,2 @@
-export { default as FullTime } from './FullTime';
+export { default as TimeTracker } from './TimeTracker';
+export { default as DurationTime } from './DurationTime';

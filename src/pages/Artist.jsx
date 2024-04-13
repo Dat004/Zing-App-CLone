@@ -2,7 +2,7 @@ import { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { ZingChoiceIcon, ZingAwardsIcon } from '../components/CustomIcon';
-import { FullTime } from '../components/TimeComponent';
+import { TimeTracker } from '../components/TimeComponent';
 import ArtistName from '../components/ArtistName';
 import CustomLink from '../components/CustomLink';
 import BoxContent from '../components/BoxContent';
@@ -162,7 +162,7 @@ function Artist() {
                                                                 isWrap
                                                             />
                                                             {/* Show time release */}
-                                                            <FullTime
+                                                            <TimeTracker
                                                                 timestamps={newData?.newRelease?.releasedAt / 1000}
                                                                 getFull
                                                             />

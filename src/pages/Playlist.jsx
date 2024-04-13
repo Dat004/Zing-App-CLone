@@ -2,10 +2,9 @@ import { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaPlay } from 'react-icons/fa6';
 
+import { TimeTracker, DurationTime } from '../components/TimeComponent';
 import { ImageCard, MusicCard, HeaderCard } from '../components/Card';
 import detailsPlaylist from '../apiProvider/detailsPlaylist';
-import TimeConversion from '../components/TimeConversion';
-import { FullTime } from '../components/TimeComponent';
 import ArtistName from '../components/ArtistName';
 import BoxContent from '../components/BoxContent';
 import { useLoadingState } from '../hooks';
@@ -54,7 +53,7 @@ function Playlist() {
                                             isWrap
                                         />
                                         <span>•</span>
-                                        <FullTime
+                                        <TimeTracker
                                             className="ml-[4px]"
                                             timestamps={newData?.contentLastUpdate}
                                             getYear
@@ -64,7 +63,7 @@ function Playlist() {
                                     <>
                                         <p className="text-[12px] text-purple-text-items leading-[1.75]">
                                             <span>Cập nhật:</span>
-                                            <FullTime
+                                            <TimeTracker
                                                 className="ml-[4px]"
                                                 timestamps={newData?.contentLastUpdate}
                                                 getFull
@@ -149,7 +148,7 @@ function Playlist() {
                                         <p className="flex items-center text-[13px] text-purple-text-items font-normal">
                                             <span>{newData?.song?.total} bài hát</span>
                                             <span className="mx-[8px]">•</span>
-                                            <TimeConversion
+                                            <DurationTime
                                                 className="!text-[13px]"
                                                 duration={newData?.song?.totalDuration}
                                                 isHoursWithMinutes

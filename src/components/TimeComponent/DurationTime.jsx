@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { useTime } from '../../hooks';
 
-function TimeConversion({
+function DurationTime({
     className,
     duration,
     isMilitaryTime = false,
@@ -35,7 +35,7 @@ function TimeConversion({
     );
 };
 
-TimeConversion.propTypes = {
+DurationTime.propTypes = {
     className: PropTypes.string,
     duration: PropTypes.number,
     isMilitaryTime: PropTypes.bool,
@@ -44,4 +44,4 @@ TimeConversion.propTypes = {
     isFontColorLight: PropTypes.bool,
 };
 
-export default TimeConversion;
+export default DurationTime;

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import TimeConversion from '../TimeConversion';
+import { DurationTime } from '../TimeComponent';
 import CustomLink from '../CustomLink';
 import ArtistName from '../ArtistName';
 import TitleMusic from '../TitleMusic';
@@ -31,7 +31,7 @@ function MV({
                     </div>
                     <div className="absolute right-[5px] bottom-[5px]">
                         <p className="flex items-center justify-center py-[3px] px-[5px] bg-purple-bg-layer-time rounded-[3px]">
-                            <TimeConversion
+                            <DurationTime
                                 className="text-purple-text-primary !font-normal"
                                 duration={data?.duration}
                                 isMilitaryTime

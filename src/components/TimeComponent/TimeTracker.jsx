@@ -2,7 +2,7 @@ import classNames from 'classnames';
 
 import { useConvertTimestamps } from '../../hooks';
 
-function FullTime({ className, timestamps = 0, getFull = false, getYear = false, getMonth = false, getDay = false }) {
+function TimeTracker({ className, timestamps = 0, getFull = false, getYear = false, getMonth = false, getDay = false }) {
     const { days, months, years } = useConvertTimestamps(timestamps);
 
     const fullTimeClasses = classNames('leading-[1.75] font-medium', {
@@ -19,4 +19,4 @@ function FullTime({ className, timestamps = 0, getFull = false, getYear = false,
     );
 }
 
-export default FullTime;
+export default TimeTracker;
