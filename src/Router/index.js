@@ -5,6 +5,7 @@ import pages from '../pages';
 const routerApp = [
     { path: config.routes.artist_songs, component: pages.ArtistSongs, layout: DefaultLayout },
     { path: config.routes.new_release, component: pages.NewRelease, layout: DefaultLayout },
+    { path: config.routes.hub_details, component: pages.HubDetails, layout: DefaultLayout },
     { path: config.routes.zing_chart, component: pages.ZingChart, layout: DefaultLayout },
     { path: config.routes.playlist, component: pages.Playlist, layout: DefaultLayout },
     { path: config.routes.my_music, component: pages.MyMusic, layout: DefaultLayout },

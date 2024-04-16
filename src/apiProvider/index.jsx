@@ -1,5 +1,5 @@
 import homeApi from './homeApi';
-import { hubApi } from './hubApi';
+import { hubApi, hubDetailsApi } from './hubApi';
 import top100Api from './top100Api';
 import newReleaseApi from './newReleaseApi';
 import { suggestionSearchApi } from './seachApi';
@@ -11,6 +11,7 @@ const apiService = {
     homeApi,
     top100Api,
     newReleaseApi,
+    hubDetailsApi,
     detailsArtistApi,
     newReleaseChartApi,
     suggestionSearchApi,

@@ -2,6 +2,7 @@ const routes = {
     playlist: '/playlist/:nameplaylist/:idplaylist',
     artist_songs: '/:nameArtist/bai-hat',
     album: '/album/:nameAlbum/:idAlbum',
+    hub_details: '/hub/:title/:idHub',
     artists: '/artist/:nameArtist',
     new_release: '/moi-phat-hanh',
     search: '/tim-kiem/:keyword',

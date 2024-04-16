@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import CustomLink from '../CustomLink';
 
 function ArtistName({
+    children,
     artistData = [],
     className,
     isWrap = false, // Allow wrapping
@@ -26,12 +27,13 @@ function ArtistName({
                             to={`/artist/${artist?.alias}`}
                             isHover
                             isUnderline
-                        > 
+                        >
                             {artist?.name}
                         </CustomLink>
                         {index !== artistData?.length - 1 && <span className="mr-[4px]">,</span>}
                     </Fragment>
                 ))}
+                {children}
             </p>
         </div>
     );

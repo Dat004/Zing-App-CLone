@@ -1,5 +1,6 @@
 import ArtistSongs from './ArtistSongs';
 import NewRelease from './NewRelease';
+import HubDetails from './HubDetails';
 import ZingChart from './ZingChart';
 import Playlist from './Playlist';
 import MyMusic from './MyMusic';
@@ -14,6 +15,7 @@ import Hub from './Hub';
 const pages = {
     ArtistSongs,
     NewRelease,
+    HubDetails,
     ZingChart,
     Playlist,
     MyMusic,

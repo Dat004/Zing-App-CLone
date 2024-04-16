@@ -52,13 +52,16 @@ function Playlist() {
                                                 artistData={newData?.artists}
                                                 smallSize
                                                 isWrap
-                                            />
-                                            <span>•</span>
-                                            <TimeTracker
-                                                className="ml-[4px]"
-                                                timestamps={newData?.contentLastUpdate}
-                                                getYear
-                                            />
+                                            >
+                                                <span className="ml-[4px]">
+                                                    <span>•</span>
+                                                    <TimeTracker
+                                                        className="ml-[4px]"
+                                                        timestamps={newData?.contentLastUpdate}
+                                                        getYear
+                                                    />
+                                                </span>
+                                            </ArtistName>
                                         </div>
                                     ) : (
                                         <>
