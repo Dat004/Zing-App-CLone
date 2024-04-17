@@ -1,6 +1,6 @@
 import ApiRequest from '../utils';
 
-const detailsPlaylist = async (id) => {
+export const detailsPlaylist = async (id) => {
     try {
         const res = await ApiRequest.get('detailplaylist', {
             params: {
@@ -14,4 +14,16 @@ const detailsPlaylist = async (id) => {
     }
 };
 
-export default detailsPlaylist;
+export const sectionPlaylist = async (id) => {
+    try {
+        const res = await ApiRequest.getExtra('suggestedplaylist', {
+            params: {
+                id,
+            },
+        });
+
+        return res;
+    } catch (e) {
+        return { Error: { ...e, isError: true } };
+    }
+};

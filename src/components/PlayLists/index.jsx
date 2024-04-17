@@ -47,7 +47,7 @@ function PlayLists({
                                                 <div className="w-full h-full rounded-[50%]">
                                                     <ImageCard
                                                         className="h-0 pb-[100%] overflow-hidden"
-                                                        src={items?.thumbnailM}
+                                                        src={items?.thumbnailM || items?.thumbnail}
                                                         rounded
                                                         isScale
                                                     />
@@ -76,7 +76,7 @@ function PlayLists({
                                                 <div className="w-full h-full">
                                                     <ImageCard
                                                         className="h-0 pb-[100%] overflow-hidden"
-                                                        src={items?.thumbnailM}
+                                                        src={items?.thumbnailM || items?.thumbnail}
                                                         borderRadius="5px"
                                                         isScale
                                                     />

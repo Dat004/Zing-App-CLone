@@ -1,10 +1,11 @@
-import homeApi from './homeApi';
-import { hubApi, hubDetailsApi } from './hubApi';
-import top100Api from './top100Api';
-import newReleaseApi from './newReleaseApi';
-import { suggestionSearchApi } from './seachApi';
-import detailsArtistApi from './detailsArtistApi';
+import { detailsPlaylist, sectionPlaylist } from './detailsPlaylist';
 import newReleaseChartApi from './newReleaseChartApi';
+import detailsArtistApi from './detailsArtistApi';
+import { hubApi, hubDetailsApi } from './hubApi';
+import { suggestionSearchApi } from './seachApi';
+import newReleaseApi from './newReleaseApi';
+import top100Api from './top100Api';
+import homeApi from './homeApi';
 
 const apiService = {
     hubApi,
@@ -12,6 +13,8 @@ const apiService = {
     top100Api,
     newReleaseApi,
     hubDetailsApi,
+    sectionPlaylist,
+    detailsPlaylist,
     detailsArtistApi,
     newReleaseChartApi,
     suggestionSearchApi,
