@@ -12,6 +12,7 @@ export const customRequest = axios.create({
 
 export const extraRequest = axios.create({
     baseURL: 'https://node-mongodb-zingapi.onrender.com/api/data/',
+    timeout: 10000,
 });
 
 export const getRequest = async (path, options) => {
