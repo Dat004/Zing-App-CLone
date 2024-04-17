@@ -193,8 +193,8 @@ function Artist() {
                                                 <BoxContent
                                                     className="!mt-[0]"
                                                     title={items?.title}
-                                                    isSeeAll={isEnoughLength ? true : false}
                                                     isHeader
+                                                    // isSeeAll={isEnoughLength ? true : false}
                                                 >
                                                     <div className="flex mx-[-14px] LM:mx-[-12px]">
                                                         <div
@@ -225,44 +225,25 @@ function Artist() {
                         </div>
                         <div className="w-full">
                             {newData?.sections?.map((items, index) => {
-                                const isMV = items?.sectionId === 'aMV'; // Distinguish ui form
-                                const isArtist = items?.sectionId === 'aReArtist'; // Distinguish ui form
-                                const isAPlaylist = items?.sectionId === 'aPlaylist'; // Distinguish ui form
+                                const isTitle = !!items?.title;
+                                const isMV = items?.sectionType === 'video'; // Distinguish ui form
+                                const isArtist = items?.sectionType === 'artist'; // Distinguish ui form
+                                const isPlaylist = items?.sectionType === 'playlist'; // Distinguish ui form
+                                const isShowArtists = items?.sectionId === 'aPlaylist'; // Distinguish ui form
                                 const isDatePlaylist = items?.itemType === 'release-date'; // Distinguish ui form
                                 const isEnoughLength = items?.items?.length > 5; // Check if items have enough length then show btn show more
 
                                 return (
                                     <Fragment key={index}>
-                                        {/* Show playlist ui has been created */}
-                                        {isDatePlaylist && (
+                                        {(isPlaylist || isArtist) && (
                                             <Playlists
                                                 data={items?.items}
                                                 title={items?.title}
-                                                isSeeAll={isEnoughLength ? true : false}
-                                                isHeader
-                                                isShowTitlePlaylist
-                                                isShowTimeRelease
-                                            />
-                                        )}
-                                        {/* Show playlist ui have names artists */}
-                                        {isAPlaylist && (
-                                            <Playlists
-                                                data={items?.items}
-                                                title={items?.title}
-                                                isSeeAll={isEnoughLength ? true : false}
-                                                isHeader
-                                                isShowTitlePlaylist
-                                                isShowArtists
-                                            />
-                                        )}
-                                        {/* Show playlist ui with artist ui type */}
-                                        {isArtist && (
-                                            <Playlists
-                                                data={items?.items}
-                                                title={items?.title}
-                                                isSeeAll={isEnoughLength ? true : false}
-                                                isTypeArtist
-                                                isHeader
+                                                isHeader={isTitle}
+                                                isShowTitlePlaylist // Show title of playlist
+                                                isTypeArtist={isArtist} // Show playlist ui with artist ui type
+                                                isShowArtists={isShowArtists}  // Show playlist ui have names artists
+                                                isShowTimeRelease={isDatePlaylist} // Show playlist ui has been created
                                             />
                                         )}
                                         {isMV && (

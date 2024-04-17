@@ -21,7 +21,7 @@ function MV({
                         isScale
                     />
                 </div>
-                <div className="absolute right-[5px] bottom-[5px]">
+                <div className="absolute right-[5px] bottom-[5px] pointer-events-none">
                     <p className="flex items-center justify-center py-[3px] px-[5px] bg-purple-bg-layer-time rounded-[3px]">
                         <DurationTime
                             className="text-purple-text-primary !font-normal"
