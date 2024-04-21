@@ -3,14 +3,11 @@ import { useEffect, useState } from 'react';
 import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
 import { PlayBoldIcon } from '../components/CustomIcon';
-import LineChart from '../components/Charts/LineChart';
-import { MusicCard } from '../components/Card';
 import { useLoadingState } from '../hooks';
-import Button from '../components/Button';
 import apiService from '../apiProvider';
+import ZingChartPageComponent from '../components/ZingChartPageComponent';
 
 function ZingChart() {
-    const [isShowMore, setIsShowMore] = useState(false);
     const [newData, setNewData] = useState({
         chart: {
             data: {},
@@ -68,12 +65,6 @@ function ZingChart() {
         })();
     }, []);
 
-    const handleShowMore = () => {
-        if (!isShowMore) {
-            setIsShowMore(true);
-        }
-    };
-
     return (
         <div className="mt-[70px] pt-[40px]">
             <header className="flex items-center mb-[20px]">
@@ -89,50 +80,7 @@ function ZingChart() {
                     <CardMusicSkeleton />
                 </PageLoader>
             ) : (
-                <section className="pb-[30px]">
-                    <section className="mb-[55px]">
-                        <LineChart
-                            height="300px"
-                            dataInfoTooltip={newData.chart.topTrendMusic.filter(
-                                (item, index) => item?.encodeId === newData.newRealease.top10[index]?.encodeId,
-                            )}
-                            dataCharts={Object.values(newData.chart.data?.items)
-                                .map((data) => ({ dataCharts: [...data] }))
-                                .map((data) => data.dataCharts)}
-                            dataLabels={newData.chart.data?.times}
-                            maxScore={newData.chart.data?.maxScore}
-                            minScore={newData.chart.data?.minScore}
-                        ></LineChart>
-                    </section>
-                    <div className="mb-[20px]">
-                        <MusicCard
-                            isSuggest
-                            isShowAlbum
-                            data={[newData.randomSuggestSong.listSuggestSong[newData.randomSuggestSong.randomId]]}
-                        />
-                        <MusicCard
-                            isShowRankingNumber
-                            isShowAlbum
-                            data={
-                                isShowMore
-                                    ? [...newData.newRealease.top10, ...newData.newRealease.topRemaning]
-                                    : newData.newRealease.top10
-                            }
-                        />
-                    </div>
-                    {!isShowMore && (
-                        <div className="flex items-center justify-center w-full">
-                            <Button
-                                onClick={handleShowMore}
-                                className="py-[8px] px-[25px] text-[14px] font-medium border-purple-bd-white-color"
-                                outline
-                                medium
-                            >
-                                Xem top 100
-                            </Button>
-                        </div>
-                    )}
-                </section>
+                <ZingChartPageComponent data={newData} />
             )}
         </div>
     );

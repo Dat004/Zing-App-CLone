@@ -71,6 +71,7 @@ export default {
           "bd-player": "rgb(19, 12, 28)",
           "bg-wrapper": "rgb(52, 34, 79);",
           "bg-side-bar": "rgba(255, 255, 255, 0.05)",
+          "bg-chart-box": "rgba(32, 19, 53, 0.9)",
           "bg-select-box": "rgba(255, 255, 255, 0.15)",
           "bg-sidebar-mini": "rgb(42, 33, 58)",
           "bg-btn": "rgb(255, 255, 255, 0.15)",

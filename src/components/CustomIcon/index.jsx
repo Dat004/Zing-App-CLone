@@ -418,8 +418,8 @@ export const Top100Banner = () => (
     </svg>
 );
 
-export const PlayBoldIcon = () => (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+export const PlayBoldIcon = ({ width = '44px', height = '44px' }) => (
+    <svg style={{ width: width, height: height }} viewBox="0 0 44 44" fill="none">
         <g filter="url(#filter0_d_3141_46346)">
             <circle cx="22" cy="21" r="18" fill="#FEFFFF"></circle>
         </g>
