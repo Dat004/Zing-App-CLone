@@ -6,7 +6,7 @@ import SkeletonLoading from '../components/SkeletonLoading';
 import { Top100Banner } from '../components/CustomIcon';
 import Playlists from '../components/PlayLists';
 import { useLoadingState } from '../hooks';
-import apiService from '../apiProvider';
+import apiService from '../services';
 
 function Top100() {
     const [newData, setNewData] = useState([]);
@@ -23,8 +23,6 @@ function Top100() {
             }
         })();
     }, []);
-
-    console.log(newData);
 
     return (
         <Fragment>

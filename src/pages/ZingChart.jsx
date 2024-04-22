@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
 import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
+import ZingChartPageComponent from '../components/ZingChartPageComponent';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
 import { PlayBoldIcon } from '../components/CustomIcon';
 import { useLoadingState } from '../hooks';
-import apiService from '../apiProvider';
-import ZingChartPageComponent from '../components/ZingChartPageComponent';
+import apiService from '../services';
 
 function ZingChart() {
     const [newData, setNewData] = useState({

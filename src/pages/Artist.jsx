@@ -11,7 +11,7 @@ import Playlists from '..//components/PlayLists';
 import { MusicCard, ImageCard } from '../components/Card';
 import { useLoadingState } from '../hooks';
 import Button from '../components/Button';
-import apiService from '../apiProvider';
+import apiService from '../services';
 import MV from '../components/MV';
 
 function Artist() {

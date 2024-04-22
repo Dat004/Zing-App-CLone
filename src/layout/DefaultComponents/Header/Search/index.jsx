@@ -10,7 +10,7 @@ import SearchResults from './SearchResults';
 import KeyWords from './SearchResults/KeyWords';
 import Results from './SearchResults/Results';
 import Button from '../../../../components/Button';
-import apiService from '../../../../apiProvider';
+import apiService from '../../../../services';
 
 function Search() {
     const DATA_SEARCH_SUGGESTIONS = DATAS.DATA_SEARCH_SUGGESTIONS;

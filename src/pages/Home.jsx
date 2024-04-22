@@ -9,7 +9,7 @@ import NewRelease from '../components/NewRelease';
 import PlayLists from '../components/PlayLists';
 import { useLoadingState } from '../hooks';
 import Banner from '../components/Banner';
-import apiService from '../apiProvider';
+import apiService from '../services';
 
 function Home() {
     const [dataHome, setDataHome] = useState({});
@@ -66,18 +66,6 @@ function Home() {
                             (items?.sectionType === 'playlist' && !items?.options?.autoSlider)
                                 ? items?.items?.slice(0, 5)
                                 : items?.items;
-
-                        // console.log(
-                        //     isTitle,
-                        //     isPlaylist,
-                        //     isSliderBanner,
-                        //     isNewRelease,
-                        //     isPlayListHasDes,
-                        //     isBanner,
-                        //     isPlaylistHaveTitleAndArtists,
-                        //     isSliderPlaylist,
-                        //     getData,
-                        // );
 
                         return (
                             <Fragment key={index}>

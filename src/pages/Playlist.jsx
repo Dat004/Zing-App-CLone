@@ -6,10 +6,10 @@ import { TimeTracker, DurationTime } from '../components/TimeComponent';
 import { ImageCard, MusicCard, HeaderCard } from '../components/Card';
 import ArtistName from '../components/ArtistName';
 import BoxContent from '../components/BoxContent';
-import Playlists from '../components/Playlists';
+import PlayLists from '../components/PlayLists';
 import { useLoadingState } from '../hooks';
 import Button from '../components/Button';
-import apiService from '../apiProvider';
+import apiService from '../services';
 
 function Playlist() {
     const [newData, setNewData] = useState({});
@@ -30,8 +30,6 @@ function Playlist() {
             }
         })();
     }, [idplaylist]);
-
-    console.log(newData);
 
     return (
         <div className="w-full mt-[70px]">
@@ -212,7 +210,7 @@ function Playlist() {
                                 return (
                                     <Fragment key={index}>
                                         {(isArtist || isPlaylist) && (
-                                            <Playlists
+                                            <PlayLists
                                                 data={items?.items}
                                                 title={items?.title}
                                                 isHeader={isTitle}

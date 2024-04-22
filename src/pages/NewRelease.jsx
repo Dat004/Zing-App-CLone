@@ -5,7 +5,7 @@ import PageLoader from '../layout/DefaultComponents/PageLoader';
 import { PlayBoldIcon } from '../components/CustomIcon';
 import { MusicCard } from '../components/Card';
 import { useLoadingState } from '../hooks';
-import apiService from '../apiProvider';
+import apiService from '../services';
 
 function NewRelease() {
     const [newData, setNewData] = useState({});

@@ -7,7 +7,7 @@ import { ImageCard } from '../components/Card';
 import HubItems from '../components/HubItems';
 import { useLoadingState } from '../hooks';
 import Button from '../components/Button';
-import apiService from '../apiProvider';
+import apiService from '../services';
 
 function Hub() {
     const hubsRef = useRef([]);

@@ -1,3 +1,4 @@
+import ThumbnailSkeleton from './ThumbnailSkeleton';
 import SkeletonLoading from '../SkeletonLoading';
 
 function CardMusicSkeleton({ countData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }) {
@@ -7,9 +8,7 @@ function CardMusicSkeleton({ countData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }) {
                 <div className="w-full" key={index}>
                     <section className="flex items-center justify-between p-[10px] rounded-[5px]">
                         <div className="flex items-center w-[50%] flex-shrink">
-                            <div className="w-[30px] h-[30px] flex-shrink-0 mr-[10px]">
-                                <SkeletonLoading />
-                            </div>
+                            <ThumbnailSkeleton className="mr-[12px]" tinySize />
                             <div className="w-full flex-shrink">
                                 <div className="w-full">
                                     <div className="max-w-[80%]">

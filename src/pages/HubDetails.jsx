@@ -8,7 +8,7 @@ import { ImageCard, MusicCard } from '../components/Card';
 import BoxContent from '../components/BoxContent';
 import PlayLists from '../components/PlayLists';
 import { useLoadingState } from '../hooks';
-import apiService from '../apiProvider';
+import apiService from '../services';
 import MV from '../components/MV';
 
 function HubDetails() {
