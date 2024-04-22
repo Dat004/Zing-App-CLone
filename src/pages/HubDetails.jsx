@@ -1,6 +1,9 @@
 import { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import PlaylistSkeleton from '../components/SkeletonLoading/PlaylistSkeleton';
+import PageLoader from '../layout/DefaultComponents/PageLoader';
+import SkeletonLoading from '../components/SkeletonLoading';
 import { ImageCard, MusicCard } from '../components/Card';
 import BoxContent from '../components/BoxContent';
 import PlayLists from '../components/PlayLists';
@@ -31,7 +34,29 @@ function HubDetails() {
 
     return (
         <div className="mt-[70px]">
-            {isLoading ? null : (
+            {isLoading ? (
+                <PageLoader className="!mt-0" isMaskLayer>
+                    <div className="relative w-full pb-[30%]">
+                        <div className="absolute inset-0">
+                            <SkeletonLoading />
+                        </div>
+                    </div>
+                    <div className="flex items-center mx-[-14px] LM:mx-[-12px] mt-[30px]">
+                        {Array.from([1, 2]).map((_, index) => (
+                            <div key={index} className="w-1/2 px-[14px] LM:px-[12px] flex-shrink-0">
+                                <div className="relative w-full pb-[29%]">
+                                    <div className="absolute inset-0">
+                                        <SkeletonLoading />
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="mt-[30px]">
+                        <PlaylistSkeleton />
+                    </div>
+                </PageLoader>
+            ) : (
                 // Show Banner
                 <>
                     <div className="mx-[-59px] XM:px-[-29px]">
