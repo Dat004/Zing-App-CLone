@@ -11,12 +11,13 @@ function SkeletonLoading({ className, duration = 2, count = 1, borderRadius = '4
         <SkeletonTheme
             width="100%"
             height="100%"
+            borderRadius="8px"
             baseColor="rgba(255, 255, 255, 0.1)"
             highlightColor="rgba(255, 255, 255, 0.1)"
         >
             <Skeleton
-                borderRadius={borderRadius}
                 circle={circle}
+                borderRadius={borderRadius}
                 className={skeletonClasses}
                 duration={duration}
                 count={count}

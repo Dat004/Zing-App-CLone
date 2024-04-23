@@ -2,8 +2,12 @@ import { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaPlay } from 'react-icons/fa6';
 
+import ThumbnailSkeleton from '../components/SkeletonLoading/ThumbnailSkeleton';
+import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
 import { TimeTracker, DurationTime } from '../components/TimeComponent';
 import { ImageCard, MusicCard, HeaderCard } from '../components/Card';
+import PageLoader from '../layout/DefaultComponents/PageLoader';
+import SkeletonLoading from '../components/SkeletonLoading';
 import ArtistName from '../components/ArtistName';
 import BoxContent from '../components/BoxContent';
 import PlayLists from '../components/PlayLists';
@@ -34,7 +38,50 @@ function Playlist() {
     return (
         <div className="w-full mt-[70px]">
             <div className="pt-[40px]">
-                {isLoading ? null : (
+                {isLoading ? (
+                    <PageLoader className="!mt-0" isMaskLayer>
+                        <div className="flex LS:flex-col">
+                            <div className="flex flex-col LS:flex-row LS:w-full LS:pb-[30px] w-[300px] flex-shrink-0">
+                                <ThumbnailSkeleton
+                                    className="LS:size-size-2.0 mr-[20px]"
+                                    borderRadius="8px"
+                                    extraLargeSize
+                                />
+                                <div className="flex flex-col LS:justify-between mt-[15px] flex-grow LS:mt-0">
+                                    <div className="flex flex-col items-center LS:items-start">
+                                        <div className="w-full max-w-[80%] h-[20px]">
+                                            <SkeletonLoading />
+                                        </div>
+                                        <div className="w-full max-w-[60%] h-[10px]">
+                                            <SkeletonLoading className="mt-[15px]" />
+                                        </div>
+                                        <div className="w-full max-w-[60%] mt-[15px] h-[10px]">
+                                            <SkeletonLoading className="mt-[15px]" />
+                                        </div>
+                                    </div>
+                                    <div className="flex justify-center LS:justify-start mt-[40px] LS:mt-0">
+                                        <div className="flex flex-col LS:flex-row items-center gap-[12px]">
+                                            <div className="w-[150px] h-[35px]">
+                                                <SkeletonLoading className="!rounded-[999px]" />
+                                            </div>
+                                            <div className="flex gap-[10px]">
+                                                <div className="w-[35px] h-[35px]">
+                                                    <SkeletonLoading className="!rounded-[50%]" />
+                                                </div>
+                                                <div className="w-[35px] h-[35px]">
+                                                    <SkeletonLoading className="!rounded-[50%]" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex-grow flex-shrink w-full ml-[30px] LS:ml-0">
+                                <CardMusicSkeleton />
+                            </div>
+                        </div>
+                    </PageLoader>
+                ) : (
                     <>
                         <div className="flex flex-nowrap LS:flex-wrap w-full">
                             <div className="w-[300px] LS:flex-grow LS:w-full flex-shrink-0 pb-[30px]">

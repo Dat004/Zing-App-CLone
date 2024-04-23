@@ -5,6 +5,7 @@ import SkeletonLoading from './index';
 
 function ThumbnailSkeleton({
     className,
+    borderRadius = '4px',
     circle = false,
     tinySize = false,
     extraSmallSize = false,
@@ -30,7 +31,7 @@ function ThumbnailSkeleton({
 
     return (
         <div className={thumbnailClasses}>
-            <SkeletonLoading />
+            <SkeletonLoading borderRadius={borderRadius} />
         </div>
     );
 }

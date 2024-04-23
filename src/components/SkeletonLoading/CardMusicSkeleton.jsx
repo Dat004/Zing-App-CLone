@@ -6,19 +6,15 @@ function CardMusicSkeleton({ countData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }) {
         <div className="w-full">
             {countData.map((_, index) => (
                 <div className="w-full" key={index}>
-                    <section className="flex items-center justify-between p-[10px] rounded-[5px]">
-                        <div className="flex items-center w-[50%] flex-shrink">
+                    <section className="flex items-center justify-between px-[10px] py-[15px] rounded-[5px]">
+                        <div className="flex items-center w-[50%] mr-[10px] flex-shrink">
                             <ThumbnailSkeleton className="mr-[12px]" tinySize />
-                            <div className="w-full flex-shrink">
-                                <div className="w-full">
-                                    <div className="max-w-[80%]">
-                                        <SkeletonLoading className='!h-[10px]' />
-                                    </div>
+                            <div className="flex flex-col w-full flex-grow flex-shrink">
+                                <div className="w-full leading-[0] max-w-[80%] h-[10px]">
+                                    <SkeletonLoading />
                                 </div>
-                                <div className="w-full">
-                                    <div className="max-w-[50%]">
-                                        <SkeletonLoading className='!h-[10px]' />
-                                    </div>
+                                <div className="w-full mt-[10px] leading-[0] max-w-[50%] h-[10px]">
+                                    <SkeletonLoading />
                                 </div>
                             </div>
                         </div>
