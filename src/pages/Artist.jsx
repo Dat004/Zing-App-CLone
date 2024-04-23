@@ -1,14 +1,18 @@
 import { useState, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 
+import ThumbnailSkeleton from '../components/SkeletonLoading/ThumbnailSkeleton';
+import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
 import { ZingChoiceIcon, ZingAwardsIcon } from '../components/CustomIcon';
+import PageLoader from '../layout/DefaultComponents/PageLoader';
+import SkeletonLoading from '../components/SkeletonLoading';
 import { TimeTracker } from '../components/TimeComponent';
+import { MusicCard, ImageCard } from '../components/Card';
 import ArtistName from '../components/ArtistName';
 import CustomLink from '../components/CustomLink';
 import BoxContent from '../components/BoxContent';
 import { NumberDots } from '../components/Number';
 import Playlists from '..//components/PlayLists';
-import { MusicCard, ImageCard } from '../components/Card';
 import { useLoadingState } from '../hooks';
 import Button from '../components/Button';
 import apiService from '../services';
@@ -29,34 +33,118 @@ function Artist() {
         avatar: '',
     });
 
-    useEffect(() => {
-        if (!nameArtist) return;
+    // useEffect(() => {
+    //     if (!nameArtist) return;
 
-        (async () => {
-            handleSetLoadingState(true); // Update loading state when nameArtist change
-            const data = await apiService.detailsArtistApi(nameArtist);
+    //     (async () => {
+    //         handleSetLoadingState(true); // Update loading state when nameArtist change
+    //         const data = await apiService.detailsArtistApi(nameArtist);
 
-            if (data.Error?.isError) {
-                handleSetLoadingState(true);
-            } else {
-                setNewData((prev) => ({
-                    ...prev,
-                    ...data?.data?.data,
-                    cover: {
-                        coverImage: data?.data?.data?.cover,
-                        isCover: !(data?.data?.data?.cover === noCover),
-                    },
-                    newRelease: data?.data?.data?.topAlbum ? { ...data?.data?.data?.topAlbum } : undefined,
-                    avatar: data?.data?.data?.thumbnailM,
-                }));
-                handleSetLoadingState(false);
-            }
-        })();
-    }, [nameArtist]);
+    //         if (data.Error?.isError) {
+    //             handleSetLoadingState(true);
+    //         } else {
+    //             setNewData((prev) => ({
+    //                 ...prev,
+    //                 ...data?.data?.data,
+    //                 cover: {
+    //                     coverImage: data?.data?.data?.cover,
+    //                     isCover: !(data?.data?.data?.cover === noCover),
+    //                 },
+    //                 newRelease: data?.data?.data?.topAlbum ? { ...data?.data?.data?.topAlbum } : undefined,
+    //                 avatar: data?.data?.data?.thumbnailM,
+    //             }));
+    //             handleSetLoadingState(false);
+    //         }
+    //     })();
+    // }, [nameArtist]);
 
     return (
         <Fragment>
-            {isLoading ? null : (
+            {isLoading ? (
+                <PageLoader isMaskLayer>
+                    <div className="flex justify-between pb-[24px] mb-[30px] mx-[-14px] LM:mx-[-12px]">
+                        <div className="flex items-center w-[58.3333%] px-[14px] LM:px-[12px]">
+                            <ThumbnailSkeleton className="mr-[10px]" smallMediumSize circle />
+                            <div className="flex-grow flex-shrink">
+                                <div className="w-full h-[54px]">
+                                    <SkeletonLoading />
+                                </div>
+                                <div className="flex items-center mx-[-14px] LM:mx-[-12px] mt-[30px]">
+                                    <div className="px-[14px] LM:px-[12px] flex-grow flex-shrink">
+                                        <div className="w-full h-[14px]">
+                                            <SkeletonLoading />
+                                        </div>
+                                    </div>
+                                    <div className="px-[14px] LM:px-[12px] flex-grow flex-shrink">
+                                        <div className="w-full h-[14px]">
+                                            <SkeletonLoading />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex flex-grow flex-shrink items-end justify-end gap-[10px] px-[14px] LM:px-[12px]">
+                            <ThumbnailSkeleton smallSize />
+                            <ThumbnailSkeleton smallSize />
+                        </div>
+                    </div>
+                    <div className="pb-[24px] pl-[60px]">
+                        <div className="flex items-start mx-[-14px] LM:mx-[-12px]">
+                            <div className="w-1/3 flex-shrink-0 px-[14px] LM:px-[12px]">
+                                <div className="h-[30px] w-[80%] flex-shrink-0 mb-[30px]">
+                                    <SkeletonLoading />
+                                </div>
+                                <div className="flex mx-[-14px] LM:mx-[-12px] items-start">
+                                    <div className="flex-shrink-0 px-[14px] LM:px-[12px]">
+                                        <ThumbnailSkeleton mediumSize />
+                                    </div>
+                                    <div className="flex-shrink flex-grow px-[14px] LM:px-[12px]">
+                                        <div className="flex flex-col justify-start gap-[4px]">
+                                            <div className="w-full max-w-[30px] h-[24px]">
+                                                <SkeletonLoading />
+                                            </div>
+                                            <div className="w-full h-[24px]">
+                                                <SkeletonLoading />
+                                            </div>
+                                            <div className="w-full h-[24px]">
+                                                <SkeletonLoading />
+                                            </div>
+                                            <div className="w-full max-w-[100px] h-[24px]">
+                                                <SkeletonLoading />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex-grow px-[14px] LM:px-[12px] flex-shrink-0">
+                                <div className="w-full max-w-[250px] h-[30px] mb-[30px] flex-shrink">
+                                    <SkeletonLoading />
+                                </div>
+                                <div className="flex flex-col gap-[4px]">
+                                    {Array.from([1, 2, 3]).map((_, index) => (
+                                        <div key={index} className="w-full h-[36px]">
+                                            <SkeletonLoading />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="mt-[40px]">
+                            <div className="w-full max-w-[250px] h-[30px] mb-[30px] flex-shrink">
+                                <SkeletonLoading />
+                            </div>
+                            <div className="flex items-start">
+                                <div className="flex-shrink-0">
+                                    <ThumbnailSkeleton largeSize />
+                                </div>
+                                <div className="flex-shrink flex-grow pl-[10px] w-full">
+                                    <CardMusicSkeleton countData={[1, 2, 3, 4, 5]} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </PageLoader>
+            ) : (
                 <div>
                     {/* if isCover then set height is 410px  */}
                     <div
@@ -242,7 +330,7 @@ function Artist() {
                                                 isHeader={isTitle}
                                                 isShowTitlePlaylist // Show title of playlist
                                                 isTypeArtist={isArtist} // Show playlist ui with artist ui type
-                                                isShowArtists={isShowArtists}  // Show playlist ui have names artists
+                                                isShowArtists={isShowArtists} // Show playlist ui have names artists
                                                 isShowTimeRelease={isDatePlaylist} // Show playlist ui has been created
                                             />
                                         )}

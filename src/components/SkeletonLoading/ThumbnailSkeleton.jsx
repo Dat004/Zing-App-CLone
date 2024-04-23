@@ -31,7 +31,7 @@ function ThumbnailSkeleton({
 
     return (
         <div className={thumbnailClasses}>
-            <SkeletonLoading borderRadius={borderRadius} />
+            <SkeletonLoading circle={circle} borderRadius={borderRadius} />
         </div>
     );
 }
