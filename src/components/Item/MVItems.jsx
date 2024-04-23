@@ -3,7 +3,7 @@ import { ImageCard, TitleCard } from '../Card';
 import CustomLink from '../CustomLink';
 import ArtistName from '../ArtistName';
 
-function MV({
+function MVItems({
     data = {},
     className,
     isAvatar = false, // Default is false, if true then show avatar
@@ -51,4 +51,4 @@ function MV({
     );
 }
 
-export default MV;
+export default MVItems;

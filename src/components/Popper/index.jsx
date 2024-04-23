@@ -9,4 +9,9 @@ function PopperWrapper({ children, className }) {
     return <div className={wrapperClasses}>{children}</div>;
 }
 
+PopperWrapper.propTypes = {
+    chidren: PropTypes.node,
+    classNames: PropTypes.string,
+};
+
 export default PopperWrapper;

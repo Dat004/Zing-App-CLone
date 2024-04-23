@@ -5,7 +5,7 @@ import { PiEquals } from 'react-icons/pi';
 import { LuMusic } from 'react-icons/lu';
 
 import InputCheckbox from '../InputSlider/InputCheckbox';
-import { UserListMusicPlaylist } from '../../Context';
+import { UserListMusicPlaylist } from '../../context';
 import { DurationTime } from '../TimeComponent';
 import { NumberOutline } from '../Number';
 import CustomLink from '../CustomLink';

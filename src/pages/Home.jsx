@@ -5,8 +5,8 @@ import { SliderBanner, SliderPlaylist } from '../components/Slider';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
 import SkeletonLoading from '../components/SkeletonLoading';
 import PartnerLayout from '../components/PartnerLayout';
+import { PlaylistItems } from '../components/Item';
 import NewRelease from '../components/NewRelease';
-import PlayLists from '../components/PlayLists';
 import { useLoadingState } from '../hooks';
 import Banner from '../components/Banner';
 import apiService from '../services';
@@ -74,7 +74,7 @@ function Home() {
                                     <NewRelease data={getData} title={items?.title} isHeader={isTitle ? true : false} />
                                 )}
                                 {isPlaylist && (
-                                    <PlayLists
+                                    <PlaylistItems
                                         data={getData}
                                         title={items?.title}
                                         to={items?.link?.split('.')[0]}

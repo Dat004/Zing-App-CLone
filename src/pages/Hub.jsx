@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 
+import { HubItems, PlaylistItems } from '../components/Item';
 import BoxContent from '../components/BoxContent';
 import CustomLink from '../components/CustomLink';
-import PlayLists from '../components/PlayLists';
 import { ImageCard } from '../components/Card';
-import HubItems from '../components/HubItems';
 import { useLoadingState } from '../hooks';
 import Button from '../components/Button';
 import apiService from '../services';
@@ -145,7 +144,7 @@ function Hub() {
                         const getPathName = items?.link?.split('.')[0];
 
                         return (
-                            <PlayLists
+                            <PlaylistItems
                                 key={index}
                                 isHeader={!!items?.title ? true : false}
                                 data={items?.playlists}

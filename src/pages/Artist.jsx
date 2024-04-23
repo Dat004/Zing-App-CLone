@@ -6,17 +6,16 @@ import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
 import { ZingChoiceIcon, ZingAwardsIcon } from '../components/CustomIcon';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
 import SkeletonLoading from '../components/SkeletonLoading';
+import { MVItems, PlaylistItems } from '../components/Item';
 import { TimeTracker } from '../components/TimeComponent';
 import { MusicCard, ImageCard } from '../components/Card';
 import ArtistName from '../components/ArtistName';
 import CustomLink from '../components/CustomLink';
 import BoxContent from '../components/BoxContent';
 import { NumberDots } from '../components/Number';
-import Playlists from '..//components/PlayLists';
 import { useLoadingState } from '../hooks';
 import Button from '../components/Button';
 import apiService from '../services';
-import MV from '../components/MV';
 
 function Artist() {
     const { nameArtist } = useParams();
@@ -33,30 +32,30 @@ function Artist() {
         avatar: '',
     });
 
-    // useEffect(() => {
-    //     if (!nameArtist) return;
+    useEffect(() => {
+        if (!nameArtist) return;
 
-    //     (async () => {
-    //         handleSetLoadingState(true); // Update loading state when nameArtist change
-    //         const data = await apiService.detailsArtistApi(nameArtist);
+        (async () => {
+            handleSetLoadingState(true); // Update loading state when nameArtist change
+            const data = await apiService.detailsArtistApi(nameArtist);
 
-    //         if (data.Error?.isError) {
-    //             handleSetLoadingState(true);
-    //         } else {
-    //             setNewData((prev) => ({
-    //                 ...prev,
-    //                 ...data?.data?.data,
-    //                 cover: {
-    //                     coverImage: data?.data?.data?.cover,
-    //                     isCover: !(data?.data?.data?.cover === noCover),
-    //                 },
-    //                 newRelease: data?.data?.data?.topAlbum ? { ...data?.data?.data?.topAlbum } : undefined,
-    //                 avatar: data?.data?.data?.thumbnailM,
-    //             }));
-    //             handleSetLoadingState(false);
-    //         }
-    //     })();
-    // }, [nameArtist]);
+            if (data.Error?.isError) {
+                handleSetLoadingState(true);
+            } else {
+                setNewData((prev) => ({
+                    ...prev,
+                    ...data?.data?.data,
+                    cover: {
+                        coverImage: data?.data?.data?.cover,
+                        isCover: !(data?.data?.data?.cover === noCover),
+                    },
+                    newRelease: data?.data?.data?.topAlbum ? { ...data?.data?.data?.topAlbum } : undefined,
+                    avatar: data?.data?.data?.thumbnailM,
+                }));
+                handleSetLoadingState(false);
+            }
+        })();
+    }, [nameArtist]);
 
     return (
         <Fragment>
@@ -324,7 +323,7 @@ function Artist() {
                                 return (
                                     <Fragment key={index}>
                                         {(isPlaylist || isArtist) && (
-                                            <Playlists
+                                            <PlaylistItems
                                                 data={items?.items}
                                                 title={items?.title}
                                                 isHeader={isTitle}
@@ -342,7 +341,7 @@ function Artist() {
                                                             className="w-1/3 XM:w-1/2 flex-shrink-0 px-[14px] LM:px-[12px]"
                                                             key={id}
                                                         >
-                                                            <MV data={vd} isAvatar />
+                                                            <MVItems data={vd} isAvatar />
                                                         </div>
                                                     ))}
                                                 </div>

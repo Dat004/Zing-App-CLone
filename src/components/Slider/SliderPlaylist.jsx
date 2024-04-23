@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import PlayLists from '../PlayLists';
+import { PlaylistItems } from '../Item';
 
 function SliderPlaylist({
     data = [],
@@ -87,7 +87,7 @@ function SliderPlaylist({
 
     return (
         <div className="w-full" onMouseEnter={handleStopSlider} onMouseLeave={handlePlaySlider}>
-            <PlayLists
+            <PlaylistItems
                 refElement={sliderRef}
                 isHeader={isHeader}
                 isSeeAll={isSeeAll}

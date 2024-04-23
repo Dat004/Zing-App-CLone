@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { FiFilter } from 'react-icons/fi';
 
-import { UserListMusicPlaylist } from '../../Context';
+import { UserListMusicPlaylist } from '../../context';
 
 function HeaderCart({ data = [], isAllowSort = false, iShowTitleAlbum = false }) {
     const [state, dispatch] = UserListMusicPlaylist();

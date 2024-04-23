@@ -8,9 +8,9 @@ import { TimeTracker, DurationTime } from '../components/TimeComponent';
 import { ImageCard, MusicCard, HeaderCard } from '../components/Card';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
 import SkeletonLoading from '../components/SkeletonLoading';
+import { PlaylistItems } from '../components/Item';
 import ArtistName from '../components/ArtistName';
 import BoxContent from '../components/BoxContent';
-import PlayLists from '../components/PlayLists';
 import { useLoadingState } from '../hooks';
 import Button from '../components/Button';
 import apiService from '../services';
@@ -248,7 +248,7 @@ function Playlist() {
                             </div>
                         </div>
                         {/* Show section data  */}
-                        {!!newData?.data.length &&
+                        {!!newData?.data?.length &&
                             newData?.data?.map((items, index) => {
                                 const isTitle = !!items?.title;
                                 const isArtist = items?.sectionType === 'artist';
@@ -257,7 +257,7 @@ function Playlist() {
                                 return (
                                     <Fragment key={index}>
                                         {(isArtist || isPlaylist) && (
-                                            <PlayLists
+                                            <PlaylistItems
                                                 data={items?.items}
                                                 title={items?.title}
                                                 isHeader={isTitle}

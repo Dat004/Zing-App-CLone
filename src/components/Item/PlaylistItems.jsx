@@ -7,7 +7,7 @@ import ArtistName from '../ArtistName';
 import BoxContent from '../BoxContent';
 import CustomLink from '../CustomLink';
 
-function PlayLists({
+function PlaylistItems({
     data = [],
     className,
     title = '',
@@ -133,7 +133,7 @@ function PlayLists({
     );
 }
 
-PlayLists.propTypes = {
+PlaylistItems.propTypes = {
     data: PropTypes.array,
     title: PropTypes.string,
     countCols: PropTypes.number,
@@ -144,4 +144,4 @@ PlayLists.propTypes = {
     isSeeAll: PropTypes.bool,
 };
 
-export default PlayLists;
+export default PlaylistItems;

@@ -2,7 +2,7 @@ import { useReducer } from 'react';
 
 import { addMusic, removeMusic } from '../reducers/actions';
 import reducer, { initState } from '../reducers';
-import { ListMusicPlaylist } from '../Context';
+import { ListMusicPlaylist } from '../context';
 
 function ListMusicPlaylistProvider({ children }) {
     const [state, dispatch] = useReducer(reducer, initState.listMusic);

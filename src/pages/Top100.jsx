@@ -4,7 +4,7 @@ import PlaylistSkeleton from '../components/SkeletonLoading/PlaylistSkeleton';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
 import SkeletonLoading from '../components/SkeletonLoading';
 import { Top100Banner } from '../components/CustomIcon';
-import Playlists from '../components/PlayLists';
+import { PlaylistItems } from '../components/Item';
 import { useLoadingState } from '../hooks';
 import apiService from '../services';
 
@@ -28,7 +28,7 @@ function Top100() {
         <Fragment>
             {isLoading ? (
                 <PageLoader isMaskLayer>
-                    <div className='w-full h-[280px] mb-[30px]'>
+                    <div className="w-full h-[280px] mb-[30px]">
                         <SkeletonLoading />
                     </div>
                     <PlaylistSkeleton />
@@ -41,7 +41,7 @@ function Top100() {
                         </i>
                     </div>
                     {newData?.map((items, index) => (
-                        <Playlists
+                        <PlaylistItems
                             className={`${items?.viewType === 'slider' ? 'flex-nowrap' : 'flex-wrap'} gap-y-[30px]`}
                             key={index}
                             data={items?.items}

@@ -5,11 +5,10 @@ import PlaylistSkeleton from '../components/SkeletonLoading/PlaylistSkeleton';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
 import SkeletonLoading from '../components/SkeletonLoading';
 import { ImageCard, MusicCard } from '../components/Card';
+import { PlaylistItems, MVItems } from '../components/Item';
 import BoxContent from '../components/BoxContent';
-import PlayLists from '../components/PlayLists';
 import { useLoadingState } from '../hooks';
 import apiService from '../services';
-import MV from '../components/MV';
 
 function HubDetails() {
     const { idHub } = useParams();
@@ -87,7 +86,7 @@ function HubDetails() {
                             return (
                                 <Fragment key={index}>
                                     {(isPlaylist || isArtist) && (
-                                        <PlayLists
+                                        <PlaylistItems
                                             data={items?.items}
                                             title={items?.title}
                                             isTypeArtist={isArtist}
@@ -104,7 +103,7 @@ function HubDetails() {
                                                         className="w-1/3 XM:w-1/2 flex-shrink-0 px-[14px] LM:px-[12px]"
                                                         key={id}
                                                     >
-                                                        <MV data={video} isAvatar />
+                                                        <MVItems data={video} isAvatar />
                                                     </div>
                                                 ))}
                                             </div>
