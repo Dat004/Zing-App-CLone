@@ -1,13 +1,12 @@
+import { MusicCard, TitleCard } from '../Card';
 import { PlayBoldIcon } from '../CustomIcon';
-import TitleMusic from '../TitleMusic';
-import { MusicCard } from '../Card';
 import Button from '../Button';
 
 function Charts({ data = [], title = '' }) {
     return (
         <div className="w-full py-[20px] px-[10px] bg-purple-bg-side-bar rounded-[16px]">
             <div className="flex items-center pb-[10px] pl-[40px]">
-                <TitleMusic className="!text-[24px] !font-bold !leading-[1]">{title}</TitleMusic>
+                <TitleCard className="!text-[24px] !font-bold !leading-[1]">{title}</TitleCard>
                 <PlayBoldIcon width="29px" height="29px" />
             </div>
             <div className="mb-[15px]">

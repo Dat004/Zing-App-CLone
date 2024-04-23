@@ -1,8 +1,7 @@
 import { DurationTime } from '../TimeComponent';
+import { ImageCard, TitleCard } from '../Card';
 import CustomLink from '../CustomLink';
 import ArtistName from '../ArtistName';
-import TitleMusic from '../TitleMusic';
-import { ImageCard } from '../Card';
 
 function MV({
     data = {},
@@ -41,7 +40,7 @@ function MV({
                         </div>
                     )}
                     <div className="w-0 flex-grow flex-shrink">
-                        <TitleMusic>{data?.title}</TitleMusic>
+                        <TitleCard>{data?.title}</TitleCard>
                         <div className="mt-[3px]">
                             <ArtistName artistData={data?.artists} smallSize />
                         </div>

@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { ImageCard, TitleCard } from '../Card';
 import { NumberAbbreviated } from '../Number';
 import ArtistName from '../ArtistName';
 import BoxContent from '../BoxContent';
-import TitleMusic from '../TitleMusic';
 import CustomLink from '../CustomLink';
-import { ImageCard } from '../Card';
 
 function PlayLists({
     data = [],
@@ -95,11 +94,11 @@ function PlayLists({
                                             >
                                                 {/* Show title */}
                                                 {isShowTitlePlaylist ? (
-                                                    <TitleMusic
+                                                    <TitleCard
                                                         to={`/playlist/${getPathNamePlaylists}/${items?.encodeId}`}
                                                     >
                                                         {items?.title}
-                                                    </TitleMusic>
+                                                    </TitleCard>
                                                 ) : (
                                                     // Show default is description
                                                     <span className="whitespace-pre-line">

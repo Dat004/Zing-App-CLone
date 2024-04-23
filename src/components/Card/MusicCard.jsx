@@ -10,8 +10,8 @@ import { DurationTime } from '../TimeComponent';
 import { NumberOutline } from '../Number';
 import CustomLink from '../CustomLink';
 import ArtistName from '../ArtistName';
-import TitleMusic from '../TitleMusic';
 import ImageCard from './ImageCard';
+import { TitleCard } from '../Card';
 
 function MusicCard({
     data = [],
@@ -145,7 +145,7 @@ function MusicCard({
                                         <ImageCard src={items?.thumbnailM} small />
                                     </div>
                                     <div className="w-0 flex-shrink flex-grow">
-                                        <TitleMusic>{items?.title}</TitleMusic>
+                                        <TitleCard>{items?.title}</TitleCard>
                                         <ArtistName className="mt-[3px]" artistData={items?.artists} smallSize />
                                     </div>
                                 </div>
