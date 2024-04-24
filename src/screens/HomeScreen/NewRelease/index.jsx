@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import BoxContent from '../BoxContent';
-import Tabs from './Tabs';
+import BoxContent from '../../../components/BoxContent';
 import ListsMusic from './ListsMusis';
+import Tabs from './Tabs';
 
 function NewRelease({ data = [], title = '', isHeader = false, isSeeAll = false }) {
     const [isActive, setIsActive] = useState('all');

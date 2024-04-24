@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
-import ZingChartPageComponent from '../components/ZingChartPageComponent';
+import ZingChartHomeScreen from '../screens/ZingChartHomeScreen';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
 import { PlayBoldIcon } from '../components/CustomIcon';
 import { useLoadingState } from '../hooks';
@@ -80,7 +80,7 @@ function ZingChart() {
                     <CardMusicSkeleton />
                 </PageLoader>
             ) : (
-                <ZingChartPageComponent data={newData} />
+                <ZingChartHomeScreen data={newData} />
             )}
         </div>
     );

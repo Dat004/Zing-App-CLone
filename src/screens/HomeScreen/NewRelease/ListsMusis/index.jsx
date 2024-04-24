@@ -1,6 +1,6 @@
-import { ImageCard, TitleCard } from '../../Card';
-import ActionMusic from '../../ActionsMusic';
-import ArtistName from '../../ArtistName';
+import { ImageCard, TitleCard } from '../../../../components/Card';
+import ActionsMusic from '../../../../components/ActionsMusic';
+import ArtistName from '../../../../components/ArtistName';
 
 function ListsMusic({ data = [] }) {
     return (
@@ -22,7 +22,7 @@ function ListsMusic({ data = [] }) {
                                 </div>
                             </div>
                             <div className="hidden group-hover/card:block ml-[10px]">
-                                <ActionMusic widthBtn="38px" heightBtn="38px" />
+                                <ActionsMusic widthBtn="38px" heightBtn="38px" />
                             </div>
                         </div>
                     </div>

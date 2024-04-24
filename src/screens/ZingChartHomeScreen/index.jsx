@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-import LineChart from '../Charts/LineChart';
+import LineChart from '../../components/Charts/LineChart';
+import { MusicCard } from '../../components/Card';
+import Button from '../../components/Button';
 import images from '../../assets/images';
-import { MusicCard } from '../Card';
-import Button from '../Button';
 import Charts from './Charts';
 
-function ZingChartPageComponent({ data = {} }) {
+function ZingChartHomeScreen({ data = {} }) {
     const [isShowAll, setIsShowAll] = useState(false);
 
     const handleShowAll = () => {
@@ -84,4 +84,4 @@ function ZingChartPageComponent({ data = {} }) {
     );
 }
 
-export default ZingChartPageComponent;
+export default ZingChartHomeScreen;

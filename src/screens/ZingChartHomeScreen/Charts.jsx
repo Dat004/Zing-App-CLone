@@ -1,6 +1,6 @@
-import { MusicCard, TitleCard } from '../Card';
-import { PlayBoldIcon } from '../CustomIcon';
-import Button from '../Button';
+import { MusicCard, TitleCard } from '../../components/Card';
+import { PlayBoldIcon } from '../../components/CustomIcon';
+import Button from '../../components/Button';
 
 function Charts({ data = [], title = '' }) {
     return (

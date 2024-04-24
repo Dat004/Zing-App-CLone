@@ -1,4 +1,4 @@
-import Button from '../Button';
+import Button from "../../../components/Button";
 
 function Tabs({ children, onClick = () => {}, isActive = false }) {
     return (
