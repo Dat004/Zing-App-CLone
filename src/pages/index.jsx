@@ -1,3 +1,4 @@
+import WeekChartCountry from './WeekChartCountry';
 import ArtistSongs from './ArtistSongs';
 import NewRelease from './NewRelease';
 import HubDetails from './HubDetails';
@@ -13,6 +14,7 @@ import Home from './Home';
 import Hub from './Hub';
 
 const pages = {
+    WeekChartCountry,
     ArtistSongs,
     NewRelease,
     HubDetails,

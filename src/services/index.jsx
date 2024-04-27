@@ -1,5 +1,5 @@
 import { detailsPlaylist, sectionPlaylist } from './detailsPlaylist';
-import newReleaseChartApi from './newReleaseChartApi';
+import { newReleaseChartApi, weekChartApi } from './newReleaseChartApi';
 import detailsArtistApi from './detailsArtistApi';
 import { hubApi, hubDetailsApi } from './hubApi';
 import { suggestionSearchApi } from './seachApi';
@@ -11,6 +11,7 @@ const apiService = {
     hubApi,
     homeApi,
     top100Api,
+    weekChartApi,
     newReleaseApi,
     hubDetailsApi,
     sectionPlaylist,

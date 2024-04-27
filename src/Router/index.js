@@ -3,6 +3,7 @@ import config from '../config';
 import pages from '../pages';
 
 const routerApp = [
+    { path: config.routes.week_chart, component: pages.WeekChartCountry, layout: DefaultLayout },
     { path: config.routes.artist_songs, component: pages.ArtistSongs, layout: DefaultLayout },
     { path: config.routes.new_release, component: pages.NewRelease, layout: DefaultLayout },
     { path: config.routes.hub_details, component: pages.HubDetails, layout: DefaultLayout },

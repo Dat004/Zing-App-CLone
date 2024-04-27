@@ -1,6 +1,6 @@
 import ApiRequest from '../utils';
 
-const newReleaseChartApi = async () => {
+export const newReleaseChartApi = async () => {
     try {
         const res = await ApiRequest.get('charthome');
 
@@ -10,4 +10,16 @@ const newReleaseChartApi = async () => {
     }
 };
 
-export default newReleaseChartApi;
+export const weekChartApi = async (id) => {
+    try {
+        const res = await ApiRequest.getExtra('weekchart', {
+            params: {
+                id,
+            },
+        });
+
+        return res;
+    } catch (e) {
+        return { Error: { ...e, isError: true } };
+    }
+};

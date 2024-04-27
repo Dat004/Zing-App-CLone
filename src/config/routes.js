@@ -1,4 +1,5 @@
 const routes = {
+    week_chart: '/zing-chart-tuan/:country/:idWeekChart',
     playlist: '/playlist/:nameplaylist/:idplaylist',
     artist_songs: '/:nameArtist/bai-hat',
     album: '/album/:nameAlbum/:idAlbum',

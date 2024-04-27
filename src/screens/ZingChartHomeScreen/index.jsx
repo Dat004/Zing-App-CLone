@@ -70,13 +70,25 @@ function ZingChartHomeScreen({ data = {} }) {
                 <h1 className="mb-[20px] text-[40px] text-purple-text-primary font-bold">Bảng Xếp Hạng Tuần</h1>
                 <div className="relative flex flex-wrap items-center gap-y-[30px] mx-[-14px] LM:mx-[-12px] pb-[30px] z-10">
                     <div className="w-1/3 ML:w-full px-[14px] LM:px-[12px] flex-shrink-0">
-                        <Charts title="Việt Nam" data={data.weekChart.vn?.items?.slice(0, 5)} />
+                        <Charts
+                            title="Việt Nam"
+                            to={data.weekChart.vn?.link?.split('.')[0]}
+                            data={data.weekChart.vn?.items?.slice(0, 5)}
+                        />
                     </div>
                     <div className="w-1/3 ML:w-full px-[14px] LM:px-[12px] flex-shrink-0">
-                        <Charts title="US-UK" data={data.weekChart.us?.items?.slice(0, 5)} />
+                        <Charts
+                            title="US-UK"
+                            to={data.weekChart.us?.link?.split('.')[0]}
+                            data={data.weekChart.us?.items?.slice(0, 5)}
+                        />
                     </div>
                     <div className="w-1/3 ML:w-full px-[14px] LM:px-[12px] flex-shrink-0">
-                        <Charts title="K-Pop" data={data.weekChart.korea?.items?.slice(0, 5)} />
+                        <Charts
+                            title="K-Pop"
+                            to={data.weekChart.korea?.link?.split('.')[0]}
+                            data={data.weekChart.korea?.items?.slice(0, 5)}
+                        />
                     </div>
                 </div>
             </div>
