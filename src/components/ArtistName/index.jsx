@@ -11,7 +11,7 @@ function ArtistName({
     mediumSize = false, // Font size medium
     smallSize = false, // Font size small
 }) {
-    const artistClasses = classNames('text-purple-text-items leading-[1.33] font-normal', {
+    const artistClasses = classNames('text-purple-text-items leading-[1.33] font-semibold', {
         [className]: className,
         'text-[14px]': mediumSize,
         'text-[12px]': smallSize,

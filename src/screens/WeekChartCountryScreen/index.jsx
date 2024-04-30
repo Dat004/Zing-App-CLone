@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import CardMusicSkeleton from '../../components/SkeletonLoading/CardMusicSkeleton';
-import { MusicCard } from '../../components/Card';
+import { MusicCards } from '../../components/Card';
 import apiService from '../../services';
 
 function WeekChartCountryScreen({ isLoading = true, handleLoading = () => {} }) {
@@ -12,10 +12,12 @@ function WeekChartCountryScreen({ isLoading = true, handleLoading = () => {} }) 
     useEffect(() => {
         (async () => {
             handleClearState();
-            const data = await apiService.weekChartApi(idWeekChart);
+            const data = (await apiService.weekChar) + tApi(idWeekChart);
+
+            console.log(data);
 
             if (data.Error?.isError) {
-                handleLoading(true);
+                handleClearState();
             }
 
             setData({ ...data?.data?.data });
@@ -28,7 +30,15 @@ function WeekChartCountryScreen({ isLoading = true, handleLoading = () => {} }) 
         setData({});
     };
 
-    return <>{isLoading ? <CardMusicSkeleton /> : <MusicCard data={data?.items} isShowRankingNumber isShowAlbum />}</>;
+    return (
+        <>
+            {isLoading ? (
+                <CardMusicSkeleton />
+            ) : (
+                <MusicCards data={data?.items} isShowRightCard isShowDurationTimeMusic isShowNameAlbum isAllowSellect />
+            )}
+        </>
+    );
 }
 
 export default WeekChartCountryScreen;
