@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { LuTrendingUp } from 'react-icons/lu';
 import { TfiSearch } from 'react-icons/tfi';
 
+import CustomLink from '../../../../../components/CustomLink';
+
 function KeyWords({ data, keyWords = '', isRelate = false }) {
     let IconContent = isRelate ? TfiSearch : LuTrendingUp;
 
@@ -22,9 +24,12 @@ function KeyWords({ data, keyWords = '', isRelate = false }) {
                           return (
                               <li
                                   key={items?.keyword}
-                                  className="list-none py-[8px] px-[10px] rounded-[4px] overflow-hidden hover:bg-purple-bg-btn-alpha"
+                                  className="list-none rounded-[4px] overflow-hidden hover:bg-purple-bg-btn-alpha"
                               >
-                                  <Link className="flex items-center gap-[10px] text-purple-text-primary">
+                                  <CustomLink
+                                      to={`/tim-kiem/${items?.keyword}`}
+                                      className="flex items-center gap-[10px] py-[8px] px-[10px] text-purple-text-primary"
+                                  >
                                       <IconContent className="text-[16px] text-purple-text-items" />
                                       {keyWords ? (
                                           <>
@@ -38,7 +43,7 @@ function KeyWords({ data, keyWords = '', isRelate = false }) {
                                               <span className="text-[14px] font-normal">{items?.keyword}</span>
                                           </>
                                       )}
-                                  </Link>
+                                  </CustomLink>
                               </li>
                           );
                       })

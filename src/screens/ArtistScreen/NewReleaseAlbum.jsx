@@ -56,10 +56,10 @@ function NewReleaseAlbum({ data = {} }) {
                     {data?.sections?.map((items, index) => {
                         // Default have two columns to show songs
                         let col1, col2;
+                        const isMutipleCard = items?.items?.length > 3; // If have three items
+                        const isLittleCard = items?.items?.length <= 3;
 
-                        const isEnoughLength = items?.items?.length > 5;
-
-                        if (items?.sectionType === 'song') {
+                        if (items?.sectionType === 'song' && isMutipleCard) {
                             col1 = items?.items?.slice(0, 3); // Copy three elements to get data from api
                             col2 = items?.items?.slice(3, 6); // Copy three elements to get data from api
                         }
@@ -73,38 +73,49 @@ function NewReleaseAlbum({ data = {} }) {
                                         isHeader
                                         // isSeeAll={isEnoughLength ? true : false}
                                     >
-                                        <div className="flex mx-[-14px] LM:mx-[-12px]">
-                                            <div
-                                                className={`flex-grow flex-shrink-0 w-1/2 ${
-                                                    data?.newRelease ? 'LX:w-full' : ''
-                                                } px-[14px] LM:px-[12px]`}
-                                            >
-                                                <div className="w-full">
-                                                    <MusicCards
-                                                        className="size-size-0.4"
-                                                        data={col1}
-                                                        smallCard
-                                                        isShowRightCard
-                                                        isShowDurationTimeMusic
-                                                    />
+                                        {isMutipleCard && (
+                                            <div className="flex mx-[-14px] LM:mx-[-12px]">
+                                                <div
+                                                    className={`flex-grow flex-shrink-0 w-1/2 ${
+                                                        data?.newRelease ? 'LX:w-full' : ''
+                                                    } px-[14px] LM:px-[12px]`}
+                                                >
+                                                    <div className="w-full">
+                                                        <MusicCards
+                                                            className="size-size-0.4"
+                                                            data={col1}
+                                                            smallCard
+                                                            isShowRightCard
+                                                            isShowDurationTimeMusic
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className={`flex-grow flex-shrink-0 w-1/2 ${
+                                                        data?.newRelease ? 'LX:hidden' : ''
+                                                    } px-[14px] LM:px-[12px]`}
+                                                >
+                                                    <div className="w-full">
+                                                        <MusicCards
+                                                            className="size-size-0.4"
+                                                            data={col2}
+                                                            smallCard
+                                                            isShowRightCard
+                                                            isShowDurationTimeMusic
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div
-                                                className={`flex-grow flex-shrink-0 w-1/2 ${
-                                                    data?.newRelease ? 'LX:hidden' : ''
-                                                } px-[14px] LM:px-[12px]`}
-                                            >
-                                                <div className="w-full">
-                                                    <MusicCards
-                                                        className="size-size-0.4"
-                                                        data={col2}
-                                                        smallCard
-                                                        isShowRightCard
-                                                        isShowDurationTimeMusic
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
+                                        )}
+                                        {isLittleCard && (
+                                            <MusicCards
+                                                className="size-size-0.4"
+                                                data={items?.items}
+                                                isShowRightCard
+                                                isShowNameAlbum
+                                                isShowDurationTimeMusic
+                                            />
+                                        )}
                                     </BoxContent>
                                 )}
                             </Fragment>
