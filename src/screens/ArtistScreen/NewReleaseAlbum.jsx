@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 
 import { TimeTracker } from '../../components/TimeComponent';
-import { ImageCard, MusicCard } from '../../components/Card';
+import { ImageCard, MusicCards } from '../../components/Card';
 import BoxContent from '../../components/BoxContent';
 import CustomLink from '../../components/CustomLink';
 import ArtistName from '../../components/ArtistName';
@@ -80,7 +80,13 @@ function NewReleaseAlbum({ data = {} }) {
                                                 } px-[14px] LM:px-[12px]`}
                                             >
                                                 <div className="w-full">
-                                                    <MusicCard data={col1} />
+                                                    <MusicCards
+                                                        className="size-size-0.4"
+                                                        data={col1}
+                                                        smallCard
+                                                        isShowRightCard
+                                                        isShowDurationTimeMusic
+                                                    />
                                                 </div>
                                             </div>
                                             <div
@@ -89,7 +95,13 @@ function NewReleaseAlbum({ data = {} }) {
                                                 } px-[14px] LM:px-[12px]`}
                                             >
                                                 <div className="w-full">
-                                                    <MusicCard data={col2} />
+                                                    <MusicCards
+                                                        className="size-size-0.4"
+                                                        data={col2}
+                                                        smallCard
+                                                        isShowRightCard
+                                                        isShowDurationTimeMusic
+                                                    />
                                                 </div>
                                             </div>
                                         </div>

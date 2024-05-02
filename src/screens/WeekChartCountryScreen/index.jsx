@@ -12,16 +12,14 @@ function WeekChartCountryScreen({ isLoading = true, handleLoading = () => {} }) 
     useEffect(() => {
         (async () => {
             handleClearState();
-            const data = (await apiService.weekChar) + tApi(idWeekChart);
-
-            console.log(data);
+            const data = await apiService.weekChartApi(idWeekChart);
 
             if (data.Error?.isError) {
                 handleClearState();
+            } else {
+                setData({ ...data?.data?.data });
+                handleLoading(false);
             }
-
-            setData({ ...data?.data?.data });
-            handleLoading(false);
         })();
     }, [idWeekChart]);
 
@@ -35,7 +33,16 @@ function WeekChartCountryScreen({ isLoading = true, handleLoading = () => {} }) 
             {isLoading ? (
                 <CardMusicSkeleton />
             ) : (
-                <MusicCards data={data?.items} isShowRightCard isShowDurationTimeMusic isShowNameAlbum isAllowSellect />
+                <MusicCards
+                    className="size-size-0.4"
+                    data={data?.items}
+                    isShowLeftCard
+                    isShowRightCard
+                    isShowDurationTimeMusic
+                    isShowNameAlbum
+                    isShowRanking
+                    isShowStateRanking
+                />
             )}
         </>
     );

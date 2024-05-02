@@ -2,7 +2,7 @@ import { ImageCard, TitleCard } from '../../../../components/Card';
 import ActionsMusic from '../../../../components/ActionsMusic';
 import ArtistName from '../../../../components/ArtistName';
 
-function ListsMusic({ data = [] }) {
+function ListsMusic({ children, data = [], largeSize = false }) {
     return (
         <div className="w-full">
             <section className="flex flex-wrap w-full h-full">
@@ -14,8 +14,15 @@ function ListsMusic({ data = [] }) {
                             </div>
                             <div className="w-0 flex-grow flex-shrink mr-[10px]">
                                 <div className="flex flex-col">
-                                    <TitleCard>{items?.title}</TitleCard>
-                                    <ArtistName className="mt-[3px]" smallSize artistData={items?.artists}></ArtistName>
+                                    <TitleCard className={`${largeSize ? 'text-[18px]' : 'text-[14px]'}`}>
+                                        {items?.title}
+                                    </TitleCard>
+                                    <ArtistName
+                                        className="mt-[3px]"
+                                        mediumSize={largeSize}
+                                        smallSize={!largeSize}
+                                        artistData={items?.artists}
+                                    ></ArtistName>
                                     <p className="text-[12px] font-medium mt-[3px] leading-[18px] text-purple-text-items">
                                         <span>2 ngày trước</span>
                                     </p>

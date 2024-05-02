@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import LineChart from '../../components/Charts/LineChart';
-import { MusicCard } from '../../components/Card';
+import { MusicCards } from '../../components/Card';
 import Button from '../../components/Button';
 import images from '../../assets/images';
 import Charts from './Charts';
@@ -33,19 +33,28 @@ function ZingChartHomeScreen({ data = {} }) {
                     ></LineChart>
                 </section>
                 <div className="mb-[20px]">
-                    <MusicCard
-                        isSuggest
-                        isShowAlbum
+                    <MusicCards
+                        className="size-size-0.4"
                         data={[data.randomSuggestSong.listSuggestSong[data.randomSuggestSong.randomId]]}
+                        isShowLeftCard
+                        isShowRightCard
+                        isSuggesttion
+                        isShowNameAlbum
+                        isShowDurationTimeMusic
                     />
-                    <MusicCard
-                        isShowRankingNumber
-                        isShowAlbum
+                    <MusicCards
+                        className="size-size-0.4"
                         data={
                             isShowAll
                                 ? [...data.newRealease.top10, ...data.newRealease.topRemaning]
                                 : data.newRealease.top10
                         }
+                        isShowLeftCard
+                        isShowRightCard
+                        isShowDurationTimeMusic
+                        isShowNameAlbum
+                        isShowRanking
+                        isShowStateRanking
                     />
                 </div>
                 {!isShowAll && (

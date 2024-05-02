@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { FaPlay } from 'react-icons/fa6';
 
 import { TimeTracker, DurationTime } from '../../components/TimeComponent';
-import { ImageCard, MusicCard, HeaderCard } from '../../components/Card';
+import { ImageCard, HeaderCard, MusicCards } from '../../components/Card';
 import BoxContent from '../../components/BoxContent';
 import ArtistName from '../../components/ArtistName';
 import Button from '../../components/Button';
@@ -103,7 +103,15 @@ function DetailsPlaylist({ data = {} }) {
                     <Fragment>
                         <div className="mb-[10px]">
                             <HeaderCard isAllowSort={data?.song?.items?.length > 1} />
-                            <MusicCard data={data?.song?.items} isAllowSelect isShowAlbumNumber />
+                            <MusicCards
+                                className="size-size-0.4"
+                                data={data?.song?.items}
+                                isShowLeftCard
+                                isShowRightCard
+                                isAllowSellect
+                                isShowAlbumNumber
+                                isShowDurationTimeMusic
+                            />
                         </div>
                         <div>
                             <h3 className="mt-[20px] mb-[8px] text-purple-text-primary text-[14px] font-bold leading-[20px]">
@@ -128,7 +136,15 @@ function DetailsPlaylist({ data = {} }) {
                     <Fragment>
                         <div className="mb-[10px]">
                             <HeaderCard isAllowSort iShowTitleAlbum />
-                            <MusicCard data={data?.song?.items} isAllowSelect isShowAlbum />
+                            <MusicCards
+                                className="size-size-0.4"
+                                data={data?.song?.items}
+                                isShowLeftCard
+                                isShowRightCard
+                                isAllowSellect
+                                isShowNameAlbum
+                                isShowDurationTimeMusic
+                            />
                         </div>
                         <div className="mt-[16px]">
                             <p className="flex items-center text-[13px] text-purple-text-items font-normal">
@@ -152,7 +168,15 @@ function DetailsPlaylist({ data = {} }) {
                             isHeader={data?.sections[0]?.items && data?.sections[0]?.title ? true : false}
                         >
                             {data?.sections[0]?.items && (
-                                <MusicCard data={data?.sections[0]?.items} isShowIconMusic isShowAlbum />
+                                <MusicCards
+                                    className="size-size-0.4"
+                                    data={data?.sections[0]?.items}
+                                    isShowLeftCard
+                                    isShowRightCard
+                                    isMusicIcon
+                                    isShowNameAlbum
+                                    isShowDurationTimeMusic
+                                />
                             )}
                         </BoxContent>
                     </div>

@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 
 import { PlaylistItems, MVItems } from '../../components/Item';
-import { ImageCard, MusicCard } from '../../components/Card';
+import { ImageCard, MusicCards } from '../../components/Card';
 import BoxContent from '../../components/BoxContent';
 
 function HubDetailsScreen({ data = {} }) {
@@ -63,13 +63,31 @@ function HubDetailsScreen({ data = {} }) {
                                 <BoxContent title={items?.title} isHeader={isTitle}>
                                     <div className="flex items-center mx-[-14px] LM:mx-[-12px] overflow-hidden">
                                         <div className="w-1/3 L:w-1/2 flex-shrink-0 px-[14px] LM:px-[12px]">
-                                            <MusicCard data={col1} />
+                                            <MusicCards
+                                                className="size-size-0.4"
+                                                data={col1}
+                                                smallCard
+                                                isShowRightCard
+                                                isShowDurationTimeMusic
+                                            />
                                         </div>
                                         <div className="w-1/3 L:w-1/2 flex-shrink-0 px-[14px] LM:px-[12px]">
-                                            <MusicCard data={col2} />
+                                            <MusicCards
+                                                className="size-size-0.4"
+                                                data={col2}
+                                                smallCard
+                                                isShowRightCard
+                                                isShowDurationTimeMusic
+                                            />
                                         </div>
                                         <div className="w-1/3 L:w-1/2 flex-shrink-0 px-[14px] LM:px-[12px]">
-                                            <MusicCard data={col3} />
+                                            <MusicCards
+                                                className="size-size-0.4"
+                                                data={col3}
+                                                smallCard
+                                                isShowRightCard
+                                                isShowDurationTimeMusic
+                                            />
                                         </div>
                                     </div>
                                 </BoxContent>

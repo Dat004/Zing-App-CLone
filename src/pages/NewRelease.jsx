@@ -3,7 +3,7 @@ import { useState, useEffect, Fragment } from 'react';
 import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
 import { PlayBoldIcon } from '../components/CustomIcon';
-import { MusicCard } from '../components/Card';
+import { MusicCards } from '../components/Card';
 import { useLoadingState } from '../hooks';
 import apiService from '../services';
 
@@ -41,7 +41,16 @@ function NewRelease() {
                 ) : (
                     <Fragment>
                         <div className="mb-[20px]">
-                            <MusicCard isShowRankingNumber isShowAlbum data={newData?.items} />
+                            <MusicCards
+                                className="size-size-0.4"
+                                data={newData?.items}
+                                isShowLeftCard
+                                isShowRightCard
+                                isShowDurationTimeMusic
+                                isShowNameAlbum
+                                isShowRanking
+                                isShowStateRanking
+                            />
                         </div>
                     </Fragment>
                 )}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import BoxContent from '../../../components/BoxContent';
+import { MusicCards } from '../../../components/Card';
 import ListsMusic from './ListsMusis';
 import Tabs from './Tabs';
 
@@ -65,39 +66,54 @@ function NewRelease({ data = [], title = '', isHeader = false, isSeeAll = false 
             {isActive === 'all' && (
                 <div className="flex h-[321px] min-h-[191px] mx-[-15px]">
                     <div className="L:w-[50%] w-[33.33%] px-[15px]">
-                        <ListsMusic data={newData.all.col1[0]} />
+                        <MusicCards className="size-size-0.6" smallCard isShowTimeRelease data={newData.all.col1[0]} />
                     </div>
                     <div className="L:w-[50%] w-[33.33%] px-[15px]">
-                        <ListsMusic data={newData.all.col2[0]} />
+                        <MusicCards className="size-size-0.6" smallCard isShowTimeRelease data={newData.all.col2[0]} />
                     </div>
                     <div className="w-[33.33%] L:hidden px-[15px]">
-                        <ListsMusic data={newData.all.col3[0]} />
+                        <MusicCards className="size-size-0.6" smallCard isShowTimeRelease data={newData.all.col3[0]} />
                     </div>
                 </div>
             )}
             {isActive === 'vietnamese' && (
                 <div className="flex h-[321px] min-h-[191px] mx-[-15px]">
                     <div className="L:w-[50%] w-[33.33%] px-[15px]">
-                        <ListsMusic data={newData.vPop.col1[0]} />
+                        <MusicCards className="size-size-0.6" smallCard isShowTimeRelease data={newData.vPop.col1[0]} />
                     </div>
                     <div className="L:w-[50%] w-[33.33%] px-[15px]">
-                        <ListsMusic data={newData.vPop.col2[0]} />
+                        <MusicCards className="size-size-0.6" smallCard isShowTimeRelease data={newData.vPop.col2[0]} />
                     </div>
                     <div className="w-[33.33%] L:hidden px-[15px]">
-                        <ListsMusic data={newData.vPop.col3[0]} />
+                        <MusicCards className="size-size-0.6" smallCard isShowTimeRelease data={newData.vPop.col3[0]} />
                     </div>
                 </div>
             )}
             {isActive === 'international' && (
                 <div className="flex h-[321px] min-h-[191px] mx-[-15px]">
                     <div className="L:w-[50%] w-[33.33%] px-[15px]">
-                        <ListsMusic data={newData.others.col1[0]} />
+                        <MusicCards
+                            className="size-size-0.6"
+                            smallCard
+                            isShowTimeRelease
+                            data={newData.others.col1[0]}
+                        />
                     </div>
                     <div className="L:w-[50%] w-[33.33%] px-[15px]">
-                        <ListsMusic data={newData.others.col2[0]} />
+                        <MusicCards
+                            className="size-size-0.6"
+                            smallCard
+                            isShowTimeRelease
+                            data={newData.others.col2[0]}
+                        />
                     </div>
                     <div className="w-[33.33%] L:hidden px-[15px]">
-                        <ListsMusic data={newData.others.col3[0]} />
+                        <MusicCards
+                            className="size-size-0.6"
+                            smallCard
+                            isShowTimeRelease
+                            data={newData.others.col3[0]}
+                        />
                     </div>
                 </div>
             )}
