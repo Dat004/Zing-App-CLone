@@ -1,9 +1,9 @@
-import { useLocation, NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import WeekChartCountryScreen from '../screens/WeekChartCountryScreen';
+import TabsButton from '../components/Button/TabsButton';
 import { PlayBoldIcon } from '../components/CustomIcon';
 import { useLoadingState } from '../hooks';
-import Button from '../components/Button';
 import DATAS from '../tempData';
 
 function WeekChartCountry() {
@@ -26,25 +26,13 @@ function WeekChartCountry() {
                         const isActive = location.pathname === items.code;
 
                         return (
-                            <NavLink className="relative py-[15px]" to={items.code} key={index}>
-                                <Button
-                                    className={`${
-                                        isActive ? 'text-purple-text-primary' : 'text-purple-text-secondary'
-                                    } text-[24px] uppercase font-bold hover:text-purple-text-primary`}
-                                >
-                                    {items?.name}
-                                </Button>
-                                {isActive && (
-                                    <span className="absolute left-0 bottom-0 w-full h-[3px] bg-bg-purple"></span>
-                                )}
-                            </NavLink>
+                            <TabsButton isActive={isActive} to={items.code} key={index} isHover>
+                                {items?.name}
+                            </TabsButton>
                         );
                     })}
                 </section>
-                <WeekChartCountryScreen
-                    isLoading={isLoading}
-                    handleLoading={handleSetLoadingState}
-                ></WeekChartCountryScreen>
+                <WeekChartCountryScreen isLoading={isLoading} handleLoading={handleSetLoadingState} />
             </div>
         </div>
     );
