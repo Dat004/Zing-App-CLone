@@ -30,17 +30,6 @@ function Search() {
     const [debounce] = useDebounce(searchValue, 550);
 
     useEffect(() => {
-        if (!debounce) {
-            setSuggestionDataSearch({
-                keywords: [],
-                results: [],
-            });
-
-            return;
-        }
-    }, [debounce]);
-
-    useEffect(() => {
         (async () => {
             if (!debounce) return;
 
@@ -61,6 +50,12 @@ function Search() {
 
     const handleChangeValue = (e) => {
         const value = e.target.value;
+
+        if (!value) {
+            handleClearValue();
+
+            return;
+        }
 
         if (value.startsWith(' ')) {
             // Check value if starts with a space

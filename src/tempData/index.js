@@ -2,6 +2,7 @@ import { DATA_SUB_PACKAGE, DATA_MENU_SETTINGS, DATA_OPTIONS_CURRENT_MUSIC } from
 import { DATA_MENU_TOP, DATA_MENU_BOTTOM_CLIENT } from './DataMenuSideBar';
 import DATA_CODE_WEEK_CHARTS from './DataCodeWeekCharts.jsx';
 import DATA_SEARCH_SUGGESTIONS from './DataSearchSuggest';
+import DATA_MENU_SEARCH from './DataMenuSearch';
 import DATA_PARTNERS from './DataPartner.jsx';
 
 const DATAS = {
@@ -11,6 +12,7 @@ const DATAS = {
     DATA_CODE_WEEK_CHARTS,
     DATA_MENU_SETTINGS,
     DATA_SUB_PACKAGE,
+    DATA_MENU_SEARCH,
     DATA_MENU_TOP,
     DATA_PARTNERS,
 };
