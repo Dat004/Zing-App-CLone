@@ -5,7 +5,7 @@ import { TfiSearch } from 'react-icons/tfi';
 
 import CustomLink from '../../../../../components/CustomLink';
 
-function KeyWords({ data, keyWords = '', isRelate = false }) {
+function KeyWords({ data, onClose = () => {}, keyWords = '', isRelate = false }) {
     let IconContent = isRelate ? TfiSearch : LuTrendingUp;
 
     return (
@@ -24,6 +24,9 @@ function KeyWords({ data, keyWords = '', isRelate = false }) {
                           return (
                               <li
                                   key={items?.keyword}
+                                  onMouseDown={(e) => e.preventDefault()}
+                                  onMouseUp={(e) => e.preventDefault()}
+                                  onClick={() => onClose()}
                                   className="list-none rounded-[4px] overflow-hidden hover:bg-purple-bg-btn-alpha"
                               >
                                   <CustomLink
