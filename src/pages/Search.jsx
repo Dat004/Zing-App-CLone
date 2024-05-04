@@ -64,7 +64,8 @@ function Search() {
                     </div>
                 </div>
             </div>
-            {isLoading ? null : <SearchResultsScreen data={data} tabIndex={tabIndex} />}
+            {/* {isLoading ? null : <SearchResultsScreen data={data} tabIndex={tabIndex} />} */}
+            <SearchResultsScreen data={data} tabIndex={tabIndex} />
         </div>
     );
 }
