@@ -5,7 +5,6 @@ import ArtistName from '../ArtistName';
 
 function MVItems({
     data = {},
-    className,
     isAvatar = false, // Default is false, if true then show avatar
     ...passProps
 }) {

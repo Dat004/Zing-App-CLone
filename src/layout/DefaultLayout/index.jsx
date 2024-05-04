@@ -28,7 +28,7 @@ function DefaultLayout({ children }) {
     return (
         <div className="flex bg-purple-bg-layout">
             <Sidebar />
-            <Header isSticky={position >= 50 ? true : false} />
+            <Header isSticky={position >= 25 ? true : false} />
             <div className="relative ml-[240px] flex-auto LM:ml-[70px] min-h-height-layout">
                 <main
                     ref={mainRef}

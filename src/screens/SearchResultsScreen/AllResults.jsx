@@ -15,7 +15,12 @@ function AllResults({ data = {} }) {
                             {data?.songs?.slice(0, 3)?.map((items, index) => (
                                 <div className="w-1/3 px-[14px] LM:px-[12px] flex-shrink-0" key={index}>
                                     <div className="w-full bg-purple-bg-box-hot hover:bg-purple-bg-blur-color p-[10px] rounded-[5px]">
-                                        <InformationCard className="size-[84px]" data={items} />
+                                        <InformationCard
+                                            className="size-[84px]"
+                                            data={items}
+                                            isShowTypeCard
+                                            isArtistCard
+                                        />
                                     </div>
                                 </div>
                             ))}
