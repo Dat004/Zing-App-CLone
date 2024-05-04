@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import SearchResultsScreen from '../screens/SearchResultsScreen';
 import TabsButton from '../components/Button/TabsButton';
 import { useLoadingState } from '../hooks';
 import apiService from '../services';
@@ -9,15 +10,31 @@ import DATAS from '../tempData';
 function Search() {
     const { keyword } = useParams();
     const { isLoading, handleSetLoadingState } = useLoadingState();
+    const [data, setData] = useState({});
 
-    const [idTab, setIdTab] = useState(0);
+    const [tabIndex, setTabIndex] = useState(0);
 
-    // useEffect(() => {
-    //     (async () => {})();
-    // }, [keyword]);
+    useEffect(() => {
+        (async () => {
+            handleClearState();
+            const data = await apiService.searchResultsApi(keyword);
+
+            if (data.Error?.isError) {
+                handleClearState();
+            } else {
+                handleSetLoadingState(false);
+                setData({ ...data?.data?.data });
+            }
+        })();
+    }, [keyword]);
+
+    const handleClearState = () => {
+        handleSetLoadingState(true);
+        setData({});
+    };
 
     const handleActive = (id) => {
-        setIdTab(id);
+        setTabIndex(id);
     };
 
     return (
@@ -35,7 +52,7 @@ function Search() {
                                 <TabsButton
                                     className="!text-[14px] !font-medium"
                                     onClick={() => handleActive(index)}
-                                    isActive={index === idTab}
+                                    isActive={index === tabIndex}
                                     heightBarActive="2px"
                                     key={index}
                                     isHover
@@ -47,6 +64,7 @@ function Search() {
                     </div>
                 </div>
             </div>
+            {isLoading ? null : <SearchResultsScreen data={data} tabIndex={tabIndex} />}
         </div>
     );
 }

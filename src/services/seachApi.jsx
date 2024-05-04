@@ -13,3 +13,17 @@ export const suggestionSearchApi = async (keyword) => {
         return { Erorr: e };
     }
 };
+
+export const searchResultsApi = async (keyword) => {
+    try {
+        const res = await ApiRequest.get('search', {
+            params: {
+                keyword,
+            },
+        });
+
+        return res;
+    } catch (e) {
+        return { Error: { ...e, isError: true } };
+    }
+};

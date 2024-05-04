@@ -50,7 +50,7 @@ function MusicCards({
                     <div
                         ref={(ref) => (cardMusicRef.current[index] = ref)}
                         key={index}
-                        className="w-full group/cards hover:bg-purple-bg-btn-alpha rounded-[3px]"
+                        className="w-full group/cards hover:bg-purple-bg-btn-alpha border-b border-solid border-purple-bd-secondary-color rounded-[3px]"
                     >
                         <section className="relative w-full">
                             <div className="w-full p-[10px]">

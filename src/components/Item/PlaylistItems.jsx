@@ -111,7 +111,7 @@ function PlaylistItems({
                                                 <ArtistName
                                                     className="mt-[4px] line-clamp-2"
                                                     artistData={items?.artists}
-                                                    mediumSize
+                                                    smallSize
                                                     isWrap
                                                 ></ArtistName>
                                             )}

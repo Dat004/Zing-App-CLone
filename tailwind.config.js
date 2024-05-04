@@ -74,6 +74,7 @@ export default {
         purple: {
           "bg-layout": "rgba(23, 15, 35)",
           "bg-blur-color": "rgba(254, 255, 255, 0.1)",
+          "bg-box-hot": "rgba(254, 255, 255, 0.05)",
           "bg-artist-layout": "rgba(41, 21, 71, 0.8)",
           "bg-header": "rgba(23, 15, 35, 0.8)",
           "bd-player": "rgb(19, 12, 28)",
