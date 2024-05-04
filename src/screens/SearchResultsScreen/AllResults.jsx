@@ -23,14 +23,13 @@ function AllResults({ data = {} }) {
     return (
         <>
             {!ALL_EMTY_DATA && (
-                <div className="mt-[30px]">
-                    <h3 className="text-[18px] text-purple-text-primary mb-[10px] font-bold">Tất Cả</h3>
+                <BoxContent className="!mt-[30px] !gap-[10px]" title="Tất Cả" isHeader>
                     <ContainerMessage logo={NO_DATA.background} message={NO_DATA.title} />
-                </div>
+                </BoxContent>
             )}
             {!!data?.songs?.length && (
                 <>
-                    <BoxContent title="Nổi Bật" isHeader>
+                    <BoxContent className="!mt-[30px]" title="Nổi Bật" isHeader>
                         <div className="flex items-center mx-[-14px] LM:mx-[-12px]">
                             {data?.songs?.slice(0, 3)?.map((items, index) => (
                                 <div className="w-1/3 px-[14px] LM:px-[12px] flex-shrink-0" key={index}>
@@ -39,14 +38,14 @@ function AllResults({ data = {} }) {
                                             className="size-[84px]"
                                             data={items}
                                             isShowTypeCard
-                                            isArtistCard
+                                            isSongCard
                                         />
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </BoxContent>
-                    <BoxContent title="Bài Hát" isHeader>
+                    <BoxContent className="!mt-[30px]" title="Bài Hát" isHeader>
                         <div className="flex items-center mx-[-14px] LM:mx-[-12px]">
                             <div className="flex-grow flex-shrink px-[14px] LM:px-[12px]">
                                 <MusicCards
@@ -71,19 +70,15 @@ function AllResults({ data = {} }) {
                 </>
             )}
             {!!data?.playlists?.length && (
-                <PlaylistItems
-                    data={data?.playlists?.slice(0, 5)}
-                    title="Playlist/Album"
-                    isShowTitlePlaylist
-                    isShowArtists
-                    isHeader
-                />
+                <BoxContent className="!mt-[30px]" title="Playlist/Album" isHeader>
+                    <PlaylistItems data={data?.playlists?.slice(0, 5)} isShowTitlePlaylist isShowArtists />
+                </BoxContent>
             )}
             {!!data?.videos?.length && (
-                <BoxContent title="MV" isHeader>
-                    <div className="flex items-center mx-[-14px] LM:mx-[-12px]">
+                <BoxContent className="!mt-[30px]" title="MV" isHeader>
+                    <div className="flex items-center mx-[-14px] LM:mx-[-12px] overflow-hidden">
                         {data?.videos?.slice(0, 3)?.map((items, index) => (
-                            <div key={index} className="w-1/3 flex-shrink-0 px-[14px] LM:px-[12px]">
+                            <div key={index} className="w-1/3 XM:w-1/2 flex-shrink-0 px-[14px] LM:px-[12px]">
                                 <MVItems data={items} isAvatar />
                             </div>
                         ))}
@@ -91,7 +86,9 @@ function AllResults({ data = {} }) {
                 </BoxContent>
             )}
             {!!data?.artists?.length && (
-                <PlaylistItems data={data?.artists?.slice(0, 5)} title="Nghệ Sĩ/OA" isTypeArtist isHeader />
+                <BoxContent className="!mt-[30px]" title="Nghệ Sĩ/OA" isHeader>
+                    <PlaylistItems data={data?.artists?.slice(0, 5)} isTypeArtist />
+                </BoxContent>
             )}
         </>
     );

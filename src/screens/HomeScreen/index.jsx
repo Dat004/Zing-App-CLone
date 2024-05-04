@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import { SliderBanner, SliderPlaylist } from '../../components/Slider';
 import PartnerLayout from '../../components/PartnerLayout';
 import { PlaylistItems } from '../../components/Item';
+import BoxContent from '../../components/BoxContent';
 import Banner from '../../components/Banner';
 import NewRelease from './NewRelease';
 
@@ -30,25 +31,28 @@ function HomeScreen({ dataHome = [] }) {
                             <NewRelease data={getData} title={items?.title} isHeader={isTitle ? true : false} />
                         )}
                         {isPlaylist && (
-                            <PlaylistItems
-                                data={getData}
+                            <BoxContent
                                 title={items?.title}
                                 to={items?.link?.split('.')[0]}
-                                isShowTitlePlaylist={!isPlayListHasDes ? true : false}
-                                isShowArtists={!isPlayListHasDes ? true : false}
                                 isHeader={isTitle ? true : false}
                                 isSeeAll
-                            />
+                            >
+                                <PlaylistItems
+                                    data={getData}
+                                    isShowTitlePlaylist={!isPlayListHasDes ? true : false}
+                                    isShowArtists={!isPlayListHasDes ? true : false}
+                                />
+                            </BoxContent>
                         )}
                         {isBanner && <Banner data={getData} />}
                         {isSliderPlaylist && (
-                            <SliderPlaylist
-                                data={getData}
-                                title={items?.title}
-                                isHeader={isTitle ? true : false}
-                                isShowTitlePlaylist={!isPlayListHasDes ? true : false}
-                                isShowArtists={!isPlayListHasDes ? true : false}
-                            />
+                            <BoxContent title={items?.title} isHeader={isTitle ? true : false}>
+                                <SliderPlaylist
+                                    data={getData}
+                                    isShowTitlePlaylist={!isPlayListHasDes ? true : false}
+                                    isShowArtists={!isPlayListHasDes ? true : false}
+                                />
+                            </BoxContent>
                         )}
                     </Fragment>
                 );

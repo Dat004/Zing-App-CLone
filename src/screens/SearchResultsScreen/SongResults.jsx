@@ -13,16 +13,9 @@ function SongResults({ data = [] }) {
 
     return (
         <>
-            <div className="mt-[30px]">
-                <h3
-                    className={`${
-                        !!data?.length ? 'text-[20px]' : 'text-[18px]'
-                    } text-purple-text-primary font-bold mb-[10px]`}
-                >
-                    Bài Hát
-                </h3>
+            <BoxContent className="!mt-[30px] !gap-[10px]" title="Bài Hát" isHeader>
                 {!!data?.length ? (
-                    <BoxContent title="Bài Hát" isHeader>
+                    <div className="w-full">
                         <MusicCards
                             className="size-size-0.4"
                             data={data}
@@ -30,11 +23,11 @@ function SongResults({ data = [] }) {
                             isShowNameAlbum
                             isShowDurationTimeMusic
                         />
-                    </BoxContent>
+                    </div>
                 ) : (
                     <ContainerMessage logo={NO_DATA.background} message={NO_DATA.title} />
                 )}
-            </div>
+            </BoxContent>
         </>
     );
 }

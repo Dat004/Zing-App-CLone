@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 import { PlaylistItems } from '../../components/Item';
+import BoxContent from '../../components/BoxContent';
 import ContainerMessage from './ContainerMessage';
 import images from '../../assets/images';
 
@@ -12,27 +13,13 @@ function PlaylistResults({ data = [] }) {
 
     return (
         <>
-            <div className="mt-[30px]">
-                <h3
-                    className={`${
-                        !!data?.length ? 'text-[20px]' : 'text-[18px]'
-                    } text-purple-text-primary font-bold mb-[10px]`}
-                >
-                    Playlist/Album
-                </h3>
+            <BoxContent className="!mt-[30px] !gap-[10px]" title="Playlist/Album" isHeader>
                 {!!data?.length ? (
-                    <PlaylistItems
-                        className="flex-wrap gap-y-[30px]"
-                        data={data}
-                        title="Playlist/Album"
-                        isHeader
-                        isShowTitlePlaylist
-                        isShowArtists
-                    />
+                    <PlaylistItems className="flex-wrap gap-y-[30px]" data={data} isShowTitlePlaylist isShowArtists />
                 ) : (
                     <ContainerMessage logo={NO_DATA.background} message={NO_DATA.title} />
                 )}
-            </div>
+            </BoxContent>
         </>
     );
 }

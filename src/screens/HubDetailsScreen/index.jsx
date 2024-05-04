@@ -23,6 +23,8 @@ function HubDetailsScreen({ data = {} }) {
                     const isArtist = items?.sectionType === 'artist';
                     const isSong = items?.sectionType === 'song';
                     const isMV = items?.sectionType === 'video';
+                    const sliderPlaylist = items?.viewType === 'slider';
+                    const listPlaylist = items?.viewType === 'list';
 
                     // Get data to display in columns
                     let col1, col2, col3;
@@ -36,14 +38,21 @@ function HubDetailsScreen({ data = {} }) {
                     return (
                         <Fragment key={index}>
                             {(isPlaylist || isArtist) && (
-                                <PlaylistItems
-                                    data={items?.items}
-                                    title={items?.title}
-                                    isTypeArtist={isArtist}
-                                    isHeader={isTitle}
-                                    isShowTitlePlaylist
-                                    isShowArtists
-                                />
+                                <BoxContent title={items?.title} isHeader={isTitle}>
+                                    <PlaylistItems
+                                        className={`${
+                                            sliderPlaylist
+                                                ? 'flex-nowrap'
+                                                : listPlaylist
+                                                ? 'flex-wrap gap-y-[30px]'
+                                                : 'flex-nowrap'
+                                        }`}
+                                        data={items?.items}
+                                        isTypeArtist={isArtist}
+                                        isShowTitlePlaylist
+                                        isShowArtists
+                                    />
+                                </BoxContent>
                             )}
                             {isMV && (
                                 <BoxContent title={items?.title} isHeader={isTitle}>

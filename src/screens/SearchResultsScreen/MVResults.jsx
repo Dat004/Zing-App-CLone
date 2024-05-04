@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 
+import BoxContent from '../../components/BoxContent';
 import ContainerMessage from './ContainerMessage';
 import { MVItems } from '../../components/Item';
 import images from '../../assets/images';
@@ -12,18 +13,11 @@ function MVResults({ data = [] }) {
 
     return (
         <>
-            <div className="mt-[30px]">
-                <h3
-                    className={`${
-                        !!data?.length ? 'text-[20px]' : 'text-[18px]'
-                    } text-purple-text-primary font-bold mb-[10px]`}
-                >
-                    MV
-                </h3>
+            <BoxContent className="!mt-[30px] !gap-[10px]" title="MV" isHeader>
                 {!!data?.length ? (
                     <div className="flex flex-wrap items-center gap-y-[30px] mx-[-14px] LM:mx-[-12px]">
                         {data?.map((items, index) => (
-                            <div key={index} className="px-[14px] LM:px-[12px] w-1/3 flex-shrink-0">
+                            <div key={index} className="px-[14px] LM:px-[12px] w-1/3 XM:w-1/2 flex-shrink-0">
                                 <MVItems data={items} isAvatar />
                             </div>
                         ))}
@@ -31,7 +25,7 @@ function MVResults({ data = [] }) {
                 ) : (
                     <ContainerMessage logo={NO_DATA.background} message={NO_DATA.title} />
                 )}
-            </div>
+            </BoxContent>
         </>
     );
 }

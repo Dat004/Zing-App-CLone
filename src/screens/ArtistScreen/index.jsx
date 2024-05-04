@@ -9,7 +9,7 @@ function ArtistScreen({ data = {} }) {
     return (
         <>
             <CoverHeader data={data} />
-            <div className='mt-[30px]'>
+            <div className="mt-[30px]">
                 <NewReleaseAlbum data={data} />
                 <div className="w-full">
                     {data?.sections?.map((items, index) => {
@@ -19,20 +19,19 @@ function ArtistScreen({ data = {} }) {
                         const isPlaylist = items?.sectionType === 'playlist'; // Distinguish ui form
                         const isShowArtists = items?.sectionId === 'aPlaylist'; // Distinguish ui form
                         const isDatePlaylist = items?.itemType === 'release-date'; // Distinguish ui form
-                        const isEnoughLength = items?.items?.length > 5; // Check if items have enough length then show btn show more
-                
+
                         return (
                             <Fragment key={index}>
                                 {(isPlaylist || isArtist) && (
-                                    <PlaylistItems
-                                        data={items?.items}
-                                        title={items?.title}
-                                        isHeader={isTitle}
-                                        isShowTitlePlaylist // Show title of playlist
-                                        isTypeArtist={isArtist} // Show playlist ui with artist ui type
-                                        isShowArtists={isShowArtists} // Show playlist ui have names artists
-                                        isShowTimeRelease={isDatePlaylist} // Show playlist ui has been created
-                                    />
+                                    <BoxContent title={items?.title} isHeader={isTitle}>
+                                        <PlaylistItems
+                                            data={items?.items}
+                                            isShowTitlePlaylist // Show title of playlist
+                                            isTypeArtist={isArtist} // Show playlist ui with artist ui type
+                                            isShowArtists={isShowArtists} // Show playlist ui have names artists
+                                            isShowTimeRelease={isDatePlaylist} // Show playlist ui has been created
+                                        />
+                                    </BoxContent>
                                 )}
                                 {isMV && (
                                     <BoxContent title={items?.title} isHeader>

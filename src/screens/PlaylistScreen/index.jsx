@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 
 import { PlaylistItems } from '../../components/Item';
+import BoxContent from '../../components/BoxContent';
 import DetailsPlaylist from './DetailsPlaylist';
 
 function PlaylistScreen({ data = {} }) {
@@ -20,14 +21,14 @@ function PlaylistScreen({ data = {} }) {
                     return (
                         <Fragment key={index}>
                             {(isArtist || isPlaylist || isArtistOfPlaylist) && (
-                                <PlaylistItems
-                                    data={items?.items || infoArtist}
-                                    title={items?.title}
-                                    isHeader={isTitle}
-                                    isTypeArtist={isArtist || (!!infoArtist?.length && !!!items?.items?.length)}
-                                    isShowTitlePlaylist={isPlaylist || isArtistOfPlaylist}
-                                    isShowArtists={isPlaylist || isArtistOfPlaylist}
-                                />
+                                <BoxContent title={items?.title} isHeader={isTitle}>
+                                    <PlaylistItems
+                                        data={items?.items || infoArtist}
+                                        isTypeArtist={isArtist || (!!infoArtist?.length && !!!items?.items?.length)}
+                                        isShowTitlePlaylist={isPlaylist || isArtistOfPlaylist}
+                                        isShowArtists={isPlaylist || isArtistOfPlaylist}
+                                    />
+                                </BoxContent>
                             )}
                         </Fragment>
                     );

@@ -144,16 +144,15 @@ function Hub() {
                         const getPathName = items?.link?.split('.')[0];
 
                         return (
-                            <PlaylistItems
-                                key={index}
-                                isHeader={!!items?.title ? true : false}
-                                data={items?.playlists}
+                            <BoxContent
                                 title={items?.title}
                                 to={getPathName}
-                                isShowTitlePlaylist
-                                isShowArtists
+                                isHeader={!!items?.title ? true : false}
+                                key={index}
                                 isSeeAll
-                            />
+                            >
+                                <PlaylistItems data={items?.playlists} isShowTitlePlaylist isShowArtists />
+                            </BoxContent>
                         );
                     })}
                 </div>

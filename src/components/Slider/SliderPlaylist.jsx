@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 
 import { PlaylistItems } from '../Item';
 
-function SliderPlaylist({
-    data = [],
-    title = '',
-    isHeader = false,
-    isSeeAll = false,
-    isShowArtists = false,
-    isShowTitlePlaylist = false,
-}) {
+function SliderPlaylist({ data = [], isShowArtists = false, isShowTitlePlaylist = false }) {
     const sliderRef = useRef();
     const [stateSlider, setStateSlider] = useState({
         counter: 0,
@@ -88,13 +81,10 @@ function SliderPlaylist({
     return (
         <div className="w-full" onMouseEnter={handleStopSlider} onMouseLeave={handlePlaySlider}>
             <PlaylistItems
+                data={data}
                 refElement={sliderRef}
-                isHeader={isHeader}
-                isSeeAll={isSeeAll}
                 isShowArtists={isShowArtists}
                 isShowTitlePlaylist={isShowTitlePlaylist}
-                title={title}
-                data={data}
             />
         </div>
     );
@@ -103,6 +93,8 @@ function SliderPlaylist({
 SliderPlaylist.propTypes = {
     children: PropTypes.string,
     data: PropTypes.array,
+    isShowArtists: PropTypes.bool,
+    isShowTitlePlaylist: PropTypes.bool,
 };
 
 export default SliderPlaylist;
