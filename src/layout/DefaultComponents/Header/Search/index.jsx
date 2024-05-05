@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { useDebounce } from 'use-debounce';
 
 import { AiOutlineClose } from 'react-icons/ai';
@@ -16,7 +16,12 @@ import DATAS from '../../../../tempData';
 function Search() {
     const DATA_SEARCH_SUGGESTIONS = DATAS.DATA_SEARCH_SUGGESTIONS;
 
-    const { keyword } = useParams();
+    const location = useLocation();
+    const [searchParams] = useSearchParams();
+    const query = location.search?.split('?')[1]?.split('=')[0];
+
+    const keyword = searchParams.get(query);
+
     const naviagate = useNavigate();
     const inputRef = useRef();
 
@@ -88,7 +93,7 @@ function Search() {
         e.preventDefault();
 
         if (searchValue) {
-            naviagate(`/tim-kiem/${searchValue}`);
+            naviagate(`/tim-kiem?query=${searchValue}`);
 
             handleCloseWrapper();
         }

@@ -1,16 +1,25 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams, useLocation } from 'react-router-dom';
 
+import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
+import PlaylistSkeleton from '../components/SkeletonLoading/PlaylistSkeleton';
+import SkeletonLoading from '../components/SkeletonLoading';
 import SearchResultsScreen from '../screens/SearchResultsScreen';
+import PageLoader from '../layout/DefaultComponents/PageLoader';
 import TabsButton from '../components/Button/TabsButton';
 import { useLoadingState } from '../hooks';
 import apiService from '../services';
 import DATAS from '../tempData';
 
 function Search() {
-    const { keyword } = useParams();
+    const location = useLocation();
+    const query = location.search?.split('?')[1]?.split('=')[0];
+
     const { isLoading, handleSetLoadingState } = useLoadingState();
+    const [searchParams] = useSearchParams();
     const [data, setData] = useState({});
+
+    const keyword = searchParams.get(query);
 
     const [tabIndex, setTabIndex] = useState(0);
 
@@ -50,6 +59,7 @@ function Search() {
                         <div className="flex items-center gap-[40px] ml-[20px]">
                             {DATAS.DATA_MENU_SEARCH.map((items, index) => (
                                 <TabsButton
+                                    to={`${items.href}?query=${keyword}`}
                                     className="!text-[14px] !font-medium"
                                     onClick={() => handleActive(index)}
                                     isActive={index === tabIndex}
@@ -64,8 +74,22 @@ function Search() {
                     </div>
                 </div>
             </div>
-            {/* {isLoading ? null : <SearchResultsScreen data={data} tabIndex={tabIndex} />} */}
-            <SearchResultsScreen data={data} tabIndex={tabIndex} />
+            {isLoading ? (
+                <PageLoader className="!mt-[30px]" isMaskLayer>
+                    <PlaylistSkeleton countData={[1, 2]} />
+                    <div className="mb-[30px]">
+                        <div className="w-full max-w-[30%] h-[30px] mb-[10px]">
+                            <SkeletonLoading />
+                        </div>
+                        <div className="my-[30px]">
+                            <CardMusicSkeleton countData={[1, 2, 3, 4]} />
+                        </div>
+                    </div>
+                    <PlaylistSkeleton countData={[1, 2]} />
+                </PageLoader>
+            ) : (
+                <SearchResultsScreen data={data} tabIndex={tabIndex} />
+            )}
         </div>
     );
 }

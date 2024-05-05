@@ -3,27 +3,27 @@ import images from '../assets/images';
 export const DATA_MENU_SEARCH = [
     {
         name: 'tất cả',
-        href: '',
+        href: '/tim-kiem',
         type: 'menu',
     },
     {
         name: 'bài hát',
-        href: '',
+        href: '/tim-kiem',
         type: 'menu',
     },
     {
         name: 'playlist/album',
-        href: '',
+        href: '/tim-kiem',
         type: 'menu',
     },
     {
         name: 'nghệ sĩ/oa',
-        href: '',
+        href: '/tim-kiem',
         type: 'menu',
     },
     {
         name: 'mv',
-        href: '',
+        href: '/tim-kiem',
         type: 'menu',
     },
 ];

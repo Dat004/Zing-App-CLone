@@ -65,6 +65,7 @@ function MusicCards({
                                             isShowTimeRelease={isShowTimeRelease}
                                             className={className}
                                             data={items}
+                                            isSongCard
                                         >
                                             {isShowLeftCard && (
                                                 <div className="mr-[10px]">

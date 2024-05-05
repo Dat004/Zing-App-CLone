@@ -30,7 +30,7 @@ function KeyWords({ data, onClose = () => {}, keyWords = '', isRelate = false })
                                   className="list-none rounded-[4px] overflow-hidden hover:bg-purple-bg-btn-alpha"
                               >
                                   <CustomLink
-                                      to={`/tim-kiem/${items?.keyword}`}
+                                      to={`/tim-kiem?query=${items?.keyword}`}
                                       className="flex items-center gap-[10px] py-[8px] px-[10px] text-purple-text-primary"
                                   >
                                       <IconContent className="text-[16px] text-purple-text-items" />
