@@ -58,7 +58,7 @@ function MusicCards({
                                     {/* Left Card */}
                                     <div
                                         className={`w-[50%] MS:w-full ${
-                                            smallCard || !isAlbum ? 'flex-grow' : 'flex-grow-0'
+                                            smallCard || !isShowNameAlbum || !isAlbum ? 'flex-grow' : 'flex-grow-0'
                                         }`}
                                     >
                                         <InformationCard
@@ -68,7 +68,7 @@ function MusicCards({
                                             isSongCard
                                         >
                                             {isShowLeftCard && (
-                                                <div className="mr-[10px]">
+                                                <div className="relative mr-[10px]">
                                                     {isMusicIcon && (
                                                         <span>
                                                             <i className="text-[14px] text-purple-text-items">
@@ -80,12 +80,12 @@ function MusicCards({
                                                     {isAllowSellect && (
                                                         <>
                                                             <span
-                                                                className={`group-hover/cards:hidden ${
-                                                                    !!state.length ? 'hidden' : 'block'
+                                                                className={`min-w-[14px] block max-w-[62px] text-center group-hover/cards:opacity-0 group-hover/cards:invisible ${
+                                                                    !!state.length ? 'opacity-0 invisible' : 'block'
                                                                 }`}
                                                             >
                                                                 {isShowAlbumNumber ? (
-                                                                    <span className="ml-[3px] mr-[4px] text-[14px] text-purple-text-items font-medium">
+                                                                    <span className="text-[14px] text-purple-text-items font-medium">
                                                                         <span className="leading-[1.29]">
                                                                             {++count}
                                                                         </span>
@@ -97,7 +97,7 @@ function MusicCards({
                                                                 )}
                                                             </span>
                                                             <span
-                                                                className={`${
+                                                                className={`absolute top-[50%] left-[50%] min-w-[14px] translate-y-[-50%] translate-x-[-50%] ${
                                                                     !!state.length ? 'block' : 'hidden'
                                                                 } group-hover/cards:block`}
                                                             >
@@ -171,7 +171,11 @@ function MusicCards({
                                     {isShowNameAlbum && isAlbum && (
                                         <div className="flex justify-start flex-shrink flex-grow w-0 MS:hidden">
                                             <p className="text-[12px] text-purple-text-items">
-                                                <CustomLink isHover isUnderline>
+                                                <CustomLink
+                                                    to={items?.album?.link?.replace('album', 'playlist')?.split('.')[0]}
+                                                    isHover
+                                                    isUnderline
+                                                >
                                                     {items?.album?.title}
                                                 </CustomLink>
                                             </p>

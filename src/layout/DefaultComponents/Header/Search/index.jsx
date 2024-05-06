@@ -22,7 +22,7 @@ function Search() {
 
     const keyword = searchParams.get(query);
 
-    const naviagate = useNavigate();
+    const navigate = useNavigate();
     const inputRef = useRef();
 
     const [searchValue, setSearchValue] = useState('');
@@ -93,7 +93,10 @@ function Search() {
         e.preventDefault();
 
         if (searchValue) {
-            naviagate(`/tim-kiem?query=${searchValue}`);
+            navigate({
+                pathname: '/tim-kiem',
+                search: `query=${searchValue}`,
+            });
 
             handleCloseWrapper();
         }

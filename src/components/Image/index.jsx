@@ -4,13 +4,16 @@ import classNames from 'classnames';
 
 import images from '../../assets/images';
 
-function Image({ className, rounded = false, src, alt , ...props }) {
+function Image({ className, rounded = false, src, alt, ...props }) {
     const [fallBack, setFallBack] = useState(src);
 
-    const imagesClasses = classNames('w-full h-auto object-cover transition-transform duration-[700ms] will-change-auto', {
-        [className]: className,
-        'rounded-[50%]': rounded,
-    });
+    const imagesClasses = classNames(
+        'w-full h-auto object-cover transition-transform duration-[700ms] will-change-auto',
+        {
+            [className]: className,
+            'rounded-[50%]': rounded,
+        },
+    );
 
     const handleFallback = () => {
         setFallBack(images.logoTitle);

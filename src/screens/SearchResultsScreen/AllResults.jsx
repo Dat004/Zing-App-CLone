@@ -18,6 +18,7 @@ function AllResults({ data = {} }) {
     const littleCards = data?.songs?.length <= 3;
 
     const ALL_EMTY_DATA =
+        !!data?.topSuggest?.length ||
         !!data?.songs?.length ||
         !!data?.playlists?.length ||
         !!data?.videos?.length ||
@@ -34,13 +35,13 @@ function AllResults({ data = {} }) {
             {!!data?.songs?.length && (
                 <>
                     <BoxContent className="!mt-[30px]" title="Nổi Bật" isHeader>
-                        <div className="flex items-center mx-[-14px] LM:mx-[-12px]">
+                        <div className="flex items-center mx-[-14px] LM:mx-[-12px] overflow-hidden">
                             {data?.top?.objectType === 'artist' ? (
                                 <>
                                     {data?.artists
                                         ?.filter((items) => items?.id === data?.top?.id)
                                         ?.map((items, index) => (
-                                            <div className="w-1/3 px-[14px] LM:px-[12px] flex-shrink-0" key={index}>
+                                            <div className="w-1/3 LX:w-1/2 px-[14px] LM:px-[12px] flex-shrink-0" key={index}>
                                                 <div className="w-full bg-purple-bg-box-hot hover:bg-purple-bg-blur-color p-[10px] rounded-[5px]">
                                                     <InformationCard
                                                         className="size-[84px]"
@@ -53,7 +54,7 @@ function AllResults({ data = {} }) {
                                         ))}
                                 </>
                             ) : (
-                                <div className="w-1/3 px-[14px] LM:px-[12px] flex-shrink-0">
+                                <div className="w-1/3 LX:w-1/2 px-[14px] LM:px-[12px] flex-shrink-0">
                                     <div className="w-full bg-purple-bg-box-hot hover:bg-purple-bg-blur-color p-[10px] rounded-[5px]">
                                         <InformationCard
                                             className="size-[84px]"
@@ -61,12 +62,13 @@ function AllResults({ data = {} }) {
                                             isShowTypeCard
                                             isSongCard={data?.top?.objectType === 'song'}
                                             isHubCard={data?.top?.objectType === 'hub'}
+                                            isPlaylistCard={data?.top?.objectType === 'playlist'}
                                         />
                                     </div>
                                 </div>
                             )}
                             {data?.songs?.slice(0, 2)?.map((items, index) => (
-                                <div className="w-1/3 px-[14px] LM:px-[12px] flex-shrink-0" key={index}>
+                                <div className="w-1/3 LX:w-1/2 px-[14px] LM:px-[12px] flex-shrink-0" key={index}>
                                     <div className="w-full bg-purple-bg-box-hot hover:bg-purple-bg-blur-color p-[10px] rounded-[5px]">
                                         <InformationCard
                                             className="size-[84px]"

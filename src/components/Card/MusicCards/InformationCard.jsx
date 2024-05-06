@@ -14,6 +14,7 @@ function InformationCard({
     largeSize = false,
     isShowTypeCard = false,
     isArtistCard = false,
+    isPlaylistCard = false,
     isHubCard = false,
     isSongCard = false,
     isShowTimeRelease = false,
@@ -30,18 +31,24 @@ function InformationCard({
                         <ImageCard
                             rounded={isArtistCard}
                             className={classes}
-                            src={data?.thumbnailM || data.thumbnail}
+                            src={data?.thumbnailM || data?.thumbnail || data?.thumb || data?.avatar}
                         />
                     </div>
                 )}
                 <div className="w-0 flex-grow flex-shrink pr-[10px]">
                     {isShowTypeCard && (
                         <p className="mb-[6px] text-[12px] font-normal text-purple-text-items">
-                            {(isArtistCard && 'Nghệ sĩ') || (isSongCard && 'Bài hát') || (isHubCard && 'Thể loại')}
+                            {(isArtistCard && 'Nghệ sĩ') ||
+                                (isSongCard && 'Bài hát') ||
+                                (isHubCard && 'Thể loại') ||
+                                (isPlaylistCard && 'Playlist')}
                         </p>
                     )}
                     <div className="flex items-start">
-                        <TitleCard className={`${largeSize ? '!text-[18px font-bold' : 'text-[14px]'}`}>
+                        <TitleCard
+                            to={isArtistCard ? `/artist/${data?.alias}` : ''}
+                            className={`${largeSize ? '!text-[18px] font-bold' : 'text-[14px]'}`}
+                        >
                             {data?.title || data?.name}
                         </TitleCard>
                         {/* Show labels VIPS */}
@@ -51,7 +58,7 @@ function InformationCard({
                             </i>
                         )}
                     </div>
-                    {isSongCard && (
+                    {(isSongCard || isPlaylistCard) && (
                         <ArtistName
                             mediumSize={largeSize}
                             smallSize={!largeSize}
@@ -61,7 +68,7 @@ function InformationCard({
                     )}
                     {isArtistCard && (
                         <>
-                            <NumberAbbreviated className="mt-[2px]" number={data?.totalFollow} />
+                            <NumberAbbreviated className="mt-[2px]" number={data?.totalFollow || data?.followers} />
                             <span className="ml-[4px] text-[12px] text-purple-text-items font-normal leading-[1.33]">
                                 quan tâm
                             </span>

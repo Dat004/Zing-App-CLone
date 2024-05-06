@@ -59,7 +59,7 @@ function Search() {
                         <div className="flex items-center gap-[40px] ml-[20px]">
                             {DATAS.DATA_MENU_SEARCH.map((items, index) => (
                                 <TabsButton
-                                    to={`${items.href}?query=${keyword}`}
+                                    to={keyword ? `${items.href}?query=${keyword}` : ''}
                                     className="!text-[14px] !font-medium"
                                     onClick={() => handleActive(index)}
                                     isActive={index === tabIndex}

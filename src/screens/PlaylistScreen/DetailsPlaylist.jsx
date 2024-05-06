@@ -168,15 +168,17 @@ function DetailsPlaylist({ data = {} }) {
                             isHeader={data?.sections[0]?.items && data?.sections[0]?.title ? true : false}
                         >
                             {data?.sections[0]?.items && (
-                                <MusicCards
-                                    className="size-size-0.4"
-                                    data={data?.sections[0]?.items}
-                                    isShowLeftCard
-                                    isShowRightCard
-                                    isMusicIcon
-                                    isShowNameAlbum
-                                    isShowDurationTimeMusic
-                                />
+                                <div className="w-full">
+                                    <MusicCards
+                                        className="size-size-0.4"
+                                        data={data?.sections[0]?.items}
+                                        isShowLeftCard
+                                        isShowRightCard
+                                        isMusicIcon
+                                        isShowNameAlbum
+                                        isShowDurationTimeMusic
+                                    />
+                                </div>
                             )}
                         </BoxContent>
                     </div>
