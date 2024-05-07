@@ -1,8 +1,8 @@
 import { BsSkipStartFill, BsSkipEndFill, BsPlayCircle } from 'react-icons/bs';
 import { IoRepeat, IoShuffle } from 'react-icons/io5';
 
-import InputSlider from '../../../components/InputSlider';
-import TippyBox from '../../../components/Tippy/TippyBox';
+import InputSlider from '../../../../components/InputSlider';
+import TippyBox from '../../../../components/Tippy/TippyBox';
 
 function BarController() {
     return (

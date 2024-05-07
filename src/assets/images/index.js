@@ -8,6 +8,7 @@ import noMusicResult from './NoMusic.svg';
 import noPlaylistSearch from './NoPlaylist.svg';
 import noArtistSearch from './NoArtist.svg';
 import noVideoSearch from './NoVideo.svg';
+import imageLoaderPlaylist from './ImageLoader.svg';
 
 const images = {
     logoTitle,
@@ -20,6 +21,7 @@ const images = {
     noPlaylistSearch,
     noArtistSearch,
     noVideoSearch,
+    imageLoaderPlaylist
 };
 
 export default images;

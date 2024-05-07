@@ -1,17 +1,16 @@
 import { useState } from 'react';
-import { PiLayout, PiMicrophoneStage } from 'react-icons/pi';
-import { MdMusicVideo } from 'react-icons/md';
-import { RiPlayList2Fill } from 'react-icons/ri';
 import { SlVolume2, SlVolumeOff } from 'react-icons/sl';
+import { RiPlayList2Fill } from 'react-icons/ri';
 
-import ActionsMusic from '../../../components/ActionsMusic';
-import TippyBox from '../../../components/Tippy/TippyBox';
-import InputSlider from '../../../components/InputSlider';
-import { LayerCard } from '../../../components/Card';
-import Button from '../../../components/Button';
+import ActionsMusic from '../../../../components/ActionsMusic';
+import TippyBox from '../../../../components/Tippy/TippyBox';
+import InputSlider from '../../../../components/InputSlider';
+import { LayerCard } from '../../../../components/Card';
+import Button from '../../../../components/Button';
 import BarController from './BarController';
+import DATAS from '../../../../tempData';
 
-function MusicPlayer() {
+function HandlerPlayer({ onShowPLaylistPLayer = () => {} }) {
     const [muteVolume, setMuteVolume] = useState(false);
 
     const handleMuteVolume = () => {
@@ -22,7 +21,7 @@ function MusicPlayer() {
         <div className="fixed bottom-0 left-0 h-[90px] w-full bg-purple-bg-layout">
             <div className="flex items-center w-full h-full bg-purple-bd-player px-[20px] border-t border-t-purple-bd-primary-color">
                 <div className="flex items-center justify-start w-[30%]">
-                    <LayerCard className="p-0" />
+                    {/* <LayerCard className="p-0" /> */}
                     <div className="ml-[10px]">
                         <ActionsMusic widthBtn="32px" heightBtn="32px" isAddLibrary />
                     </div>
@@ -32,21 +31,13 @@ function MusicPlayer() {
                 </div>
                 <div className="flex items-center justify-end w-[30%]">
                     <div className="flex items-center pr-[20px] mr-[20px] border-r border-r-purple-bd-primary-color">
-                        <TippyBox content="MV" placement="top" arrow offset={[0, 10]}>
-                            <Button rounded className="w-[32px] h-[32px] mx-[2px] !text-purple-text-actions">
-                                <MdMusicVideo className="text-[20px]" />
-                            </Button>
-                        </TippyBox>
-                        <TippyBox content="Xem lời bài hát" placement="top" arrow offset={[0, 10]}>
-                            <Button rounded className="w-[32px] h-[32px] mx-[2px] !text-purple-text-actions">
-                                <PiMicrophoneStage className="text-[20px]" />
-                            </Button>
-                        </TippyBox>
-                        <TippyBox content="Chế độ cửa sổ" placement="top" arrow offset={[0, 10]}>
-                            <Button rounded className="w-[32px] h-[32px] mx-[2px] !text-purple-text-actions">
-                                <PiLayout className="text-[20px]" />
-                            </Button>
-                        </TippyBox>
+                        {DATAS.DATA_ACTIONS_PLAYER.map((items, index) => (
+                            <TippyBox key={index} content={items.name} placement="top" arrow offset={[0, 10]}>
+                                <Button rounded className="w-[32px] h-[32px] mx-[2px] !text-purple-text-actions">
+                                    {items.icon}
+                                </Button>
+                            </TippyBox>
+                        ))}
                         <div className="flex items-center">
                             <Button
                                 rounded
@@ -70,9 +61,9 @@ function MusicPlayer() {
                     </div>
                     <div>
                         <TippyBox content="Danh sách phát" placement="top" arrow offset={[0, 10]}>
-                            <button className="flex items-center justify-center h-[30px] px-[5px] bg-purple-bg-btn-alpha rounded-[4px] !text-purple-text-actions">
+                            <Button onClick={onShowPLaylistPLayer} className="h-[30px] px-[5px] bg-purple-bg-btn-alpha rounded-[4px] !text-purple-text-actions">
                                 <RiPlayList2Fill className="text-[18px]" />
-                            </button>
+                            </Button>
                         </TippyBox>
                     </div>
                 </div>
@@ -81,4 +72,4 @@ function MusicPlayer() {
     );
 }
 
-export default MusicPlayer;
+export default HandlerPlayer;
