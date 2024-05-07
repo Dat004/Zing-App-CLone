@@ -11,19 +11,19 @@ function Home() {
     const [dataHome, setDataHome] = useState({});
     const { isLoading, handleSetLoadingState } = useLoadingState();
 
-    useEffect(() => {
-        (async () => {
-            const data = await apiService.homeApi();
-            if (data.Error?.isError) {
-                handleSetLoadingState(true);
-            } else {
-                setDataHome({
-                    ...data?.data?.data,
-                });
-                handleSetLoadingState(false);
-            }
-        })();
-    }, []);
+    // useEffect(() => {
+    //     (async () => {
+    //         const data = await apiService.homeApi();
+    //         if (data.Error?.isError) {
+    //             handleSetLoadingState(true);
+    //         } else {
+    //             setDataHome({
+    //                 ...data?.data?.data,
+    //             });
+    //             handleSetLoadingState(false);
+    //         }
+    //     })();
+    // }, []);
 
     return (
         <div className="w-full h-full mt-[70px]">

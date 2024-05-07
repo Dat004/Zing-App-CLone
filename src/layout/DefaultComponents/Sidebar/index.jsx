@@ -8,6 +8,10 @@ import Menu from './Menu';
 function Sidebar() {
     const [isExtend, setIsExtend] = useState(false);
 
+    const variant = {
+
+    };
+
     const handleResizeSidebar = () => {
         setIsExtend((state) => !state);
     };

@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
-import Header from '../DefaultComponents/Header';
-import MusicPlayer from '../DefaultComponents/PlayerVideo';
+import MusicPlayer from '../DefaultComponents/MusicPlayer';
 import Sidebar from '../DefaultComponents/Sidebar';
+import Header from '../DefaultComponents/Header';
 
 function DefaultLayout({ children }) {
     const mainRef = useRef();
