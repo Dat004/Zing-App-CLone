@@ -1,13 +1,7 @@
 import PropTypes from 'prop-types';
 import { FiFilter } from 'react-icons/fi';
 
-import { UserListMusicPlaylist } from '../../context';
-
 function HeaderCart({ data = [], isAllowSort = false, iShowTitleAlbum = false }) {
-    const [state, dispatch] = UserListMusicPlaylist();
-
-    console.log(state);
-
     return (
         <div className="w-full border-b-[1px] border-b-purple-bd-secondary-color">
             <div className="flex items-center justify-between p-[10px]">

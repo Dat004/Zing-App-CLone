@@ -4,7 +4,6 @@ import { VscTriangleUp, VscTriangleDown } from 'react-icons/vsc';
 import { PiEquals } from 'react-icons/pi';
 import { LuMusic } from 'react-icons/lu';
 
-import { UserListMusicPlaylist } from '../../../context';
 import Checkbox from '../../InputSlider/InputCheckbox';
 import { DurationTime } from '../../TimeComponent';
 import InformationCard from './InformationCard';
@@ -28,15 +27,12 @@ function MusicCards({
     isShowDurationTimeMusic = false,
 }) {
     const cardMusicRef = useRef([]);
-    const [state, dispatch, handle] = UserListMusicPlaylist();
 
     const handleSelectMusic = (e, index) => {
         if (e.target.checked) {
             cardMusicRef.current[index].classList.add('bg-purple-bg-select-box'); // add effect on songs selected
-            dispatch(handle.addMusic(data[index]));
         } else {
             cardMusicRef.current[index].classList.remove('bg-purple-bg-select-box'); // add effect on songs selected
-            dispatch(handle.removeMusic(data[index].encodeId));
         }
     };
 
@@ -79,11 +75,7 @@ function MusicCards({
 
                                                     {isAllowSellect && (
                                                         <>
-                                                            <span
-                                                                className={`min-w-[14px] block max-w-[62px] text-center group-hover/cards:opacity-0 group-hover/cards:invisible ${
-                                                                    !!state.length ? 'opacity-0 invisible' : 'block'
-                                                                }`}
-                                                            >
+                                                            <span className="min-w-[14px] block max-w-[62px] text-center group-hover/cards:opacity-0 group-hover/cards:invisible">
                                                                 {isShowAlbumNumber ? (
                                                                     <span className="text-[14px] text-purple-text-items font-medium">
                                                                         <span className="leading-[1.29]">
@@ -96,11 +88,7 @@ function MusicCards({
                                                                     </i>
                                                                 )}
                                                             </span>
-                                                            <span
-                                                                className={`absolute top-[50%] left-[50%] min-w-[14px] translate-y-[-50%] translate-x-[-50%] ${
-                                                                    !!state.length ? 'block' : 'hidden'
-                                                                } group-hover/cards:block`}
-                                                            >
+                                                            <span className="absolute top-[50%] left-[50%] min-w-[14px] translate-y-[-50%] translate-x-[-50%] group-hover/cards:block">
                                                                 <Checkbox
                                                                     data-index={index}
                                                                     handleChange={handleSelectMusic}
