@@ -1,7 +1,8 @@
-import playlistMusicSlice from "../slice/playlistMusicSlice/playlistMusicSlice";
+import { playlistMusicSlice, historyMusicSlice } from '../slice';
 
 const reducers = {
-    playlist: playlistMusicSlice.reducer,
+    playlistMusic: playlistMusicSlice.reducer,
+    historyMusic: historyMusicSlice.reducer,
 };
 
 export default reducers;

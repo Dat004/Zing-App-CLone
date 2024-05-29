@@ -15,6 +15,7 @@ export default {
         LX: { max: "1280px" },
         ML: [{ max: "1350px" }, { min: "1225px", max: "1350px" }],
         XL: { min: "1351px" },
+        XXL: { min: "1591px" },
       },
       flex: {
         auto: "1 1 auto",

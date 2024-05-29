@@ -2,13 +2,16 @@ import { useState, useEffect, Fragment } from 'react';
 
 import CardMusicSkeleton from '../components/SkeletonLoading/CardMusicSkeleton';
 import PageLoader from '../layout/DefaultComponents/PageLoader';
+import MusicActions from '../redux/actions/MusicActions';
 import { PlayBoldIcon } from '../components/CustomIcon';
 import { MusicCards } from '../components/Card';
 import { useLoadingState } from '../hooks';
 import apiService from '../services';
 
 function NewRelease() {
+    const { ADD_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
     const [newData, setNewData] = useState({});
+
     const { isLoading, handleSetLoadingState } = useLoadingState();
 
     useEffect(() => {
@@ -22,6 +25,13 @@ function NewRelease() {
             }
         })();
     }, []);
+
+    const handleGetData = (data, id) => {
+        const index = data.findIndex((items) => items.encodeId === id);
+
+        ADD_PLAYLIST(data, index);
+        ADD_MUSIC_TO_HISTORY();
+    };
 
     return (
         <div className="mt-[70px]">
@@ -41,16 +51,22 @@ function NewRelease() {
                 ) : (
                     <Fragment>
                         <div className="mb-[20px]">
-                            <MusicCards
-                                className="size-size-0.4"
-                                data={newData?.items}
-                                isShowLeftCard
-                                isShowRightCard
-                                isShowDurationTimeMusic
-                                isShowNameAlbum
-                                isShowRanking
-                                isShowStateRanking
-                            />
+                            {newData?.items?.map((items, index) => (
+                                <MusicCards
+                                    onGetMusic={() => handleGetData(newData?.items, items?.encodeId)}
+                                    className="size-size-0.4"
+                                    id={index}
+                                    key={index}
+                                    data={items}
+                                    isShowRanking
+                                    isShowLeftCard
+                                    isShowSeparator
+                                    isShowRightCard
+                                    isShowNameAlbum
+                                    isShowStateRanking
+                                    isShowDurationTimeMusic
+                                />
+                            ))}
                         </div>
                     </Fragment>
                 )}

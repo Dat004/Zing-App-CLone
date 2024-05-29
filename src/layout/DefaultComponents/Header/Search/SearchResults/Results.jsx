@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import InformationCard from '../../../../../components/Card/MusicCards/InformationCard';
 

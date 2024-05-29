@@ -10,13 +10,14 @@ function InformationCard({
     children,
     className,
     data = {},
-    isHideThumbnail = false,
+    onClick = () => {},
     largeSize = false,
-    isShowTypeCard = false,
-    isArtistCard = false,
-    isPlaylistCard = false,
     isHubCard = false,
     isSongCard = false,
+    isArtistCard = false,
+    isPlaylistCard = false,
+    isHideThumbnail = false,
+    isShowTypeCard = false,
     isShowTimeRelease = false,
 }) {
     const classes = classNames(className);
@@ -27,7 +28,7 @@ function InformationCard({
             {children}
             <div className="flex items-center flex-grow">
                 {!isHideThumbnail && (
-                    <div className="mr-[10px] flex-shrink-0">
+                    <div onClick={onClick} className="mr-[10px] flex-shrink-0 cursor-pointer">
                         <ImageCard
                             rounded={isArtistCard}
                             className={classes}

@@ -1,13 +1,83 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMoreHorizontal } from 'react-icons/fi';
+import { MdOutlineDeleteOutline } from 'react-icons/md';
+import classNames from 'classnames';
 
+import MusicActions from '../../../../redux/actions/MusicActions';
 import TippyBox from '../../../../components/Tippy/TippyBox';
+import PopperWrapper from '../../../../components/Popper';
 import Button from '../../../../components/Button';
-import images from '../../../../assets/images';
+import Tippy from '../../../../components/Tippy';
+import PlaylistData from './PlaylistData';
 
-function PlaylistPlayer({ showPlaylistPlayer = false }) {
+function PlaylistPlayer({ data = {}, showDefault = false, showPlaylistPlayer = false }) {
     const [active, setActive] = useState(1);
+    const [showPopup, setShowPopup] = useState(false);
+
+    const { isHasPlaylist } = data.playlistMusic;
+
+    const {
+        ADD_PLAYLIST,
+        ADD_MUSIC_TO_PLAYLIST,
+        ADD_MUSIC_TO_HISTORY,
+        UPDATE_CURRENT_PLAYLIST_MUSIC,
+        REMOVE_PLAYLIST,
+        REMOVE_MUSIC_FROM_PLAYLIST,
+    } = MusicActions();
+    const { playlistMusic, historyMusic } = data;
+    const { itemsPlaylist } = playlistMusic.dataPlaylist;
+    const { currentIndexMusic, currentDataMusic } = playlistMusic.currentMusicOfPlaylist;
+
+    const playerStyles = classNames('fixed max-h-[calc(100%-90px)]] top-0 right-0 overflow-hidden', {
+        'bottom-[90px]': isHasPlaylist,
+        'bottom-0': !isHasPlaylist,
+    });
+
+    const handleTogglePopup = () => {
+        setShowPopup((state) => !state);
+    };
+
+    const handleDeletePlaylist = () => {
+        REMOVE_PLAYLIST();
+        handleTogglePopup();
+    };
+
+    const handleActionsMusic = (data, index) => {
+        switch (active) {
+            case 1:
+                UPDATE_CURRENT_PLAYLIST_MUSIC(index, data[index]);
+                ADD_MUSIC_TO_HISTORY(currentDataMusic);
+
+                break;
+            case 2:
+                UPDATE_CURRENT_PLAYLIST_MUSIC(itemsPlaylist.length, data[index]);
+                ADD_MUSIC_TO_PLAYLIST([data[index]]);
+                ADD_MUSIC_TO_HISTORY(currentDataMusic);
+
+                break;
+            default:
+                throw new Error('Invalid actions on active tab');
+        }
+    };
+
+    const POPUP_PLAYER = () => (
+        <PopperWrapper className="w-[250px] py-[10px]">
+            <div className="w-full">
+                <Button
+                    onClick={handleDeletePlaylist}
+                    leftIcon={
+                        <i className="block pr-[7px]">
+                            <MdOutlineDeleteOutline className="text-[20px]" />
+                        </i>
+                    }
+                    className="!justify-start py-[8px] px-[15px] w-full text-[14px] text-purple-text-secondary hover:bg-purple-bg-btn-alpha"
+                >
+                    <span>Xóa danh sách phát</span>
+                </Button>
+            </div>
+        </PopperWrapper>
+    );
 
     const variants = {
         hide: { x: '100%' },
@@ -16,8 +86,8 @@ function PlaylistPlayer({ showPlaylistPlayer = false }) {
 
     return (
         <AnimatePresence>
-            {showPlaylistPlayer && (
-                <section transition="duration-500" className="fixed bottom-[90px] top-0 right-0">
+            {((showDefault || isHasPlaylist) && showPlaylistPlayer) ? (
+                <section transition="duration-500" className={playerStyles}>
                     <motion.div
                         key="playlist-player"
                         variants={variants}
@@ -59,27 +129,40 @@ function PlaylistPlayer({ showPlaylistPlayer = false }) {
                                 </div>
                                 <div className="ml-[8px]">
                                     <TippyBox content="Khác" placement="bottom" arrow offset={[0, 10]}>
-                                        <Button rounded className="size-[32px] !bg-purple-bg-btn-alpha">
-                                            <FiMoreHorizontal />
-                                        </Button>
+                                        <Tippy
+                                            visible={showPopup}
+                                            onClickOutside={handleTogglePopup}
+                                            offset={[0, 10]}
+                                            placement="bottom-end"
+                                            renderComponent={<POPUP_PLAYER />}
+                                        >
+                                            <Button
+                                                onClick={handleTogglePopup}
+                                                rounded
+                                                className="size-[32px] !bg-purple-bg-btn-alpha"
+                                            >
+                                                <FiMoreHorizontal />
+                                            </Button>
+                                        </Tippy>
                                     </TippyBox>
                                 </div>
                             </div>
                         </div>
-                        <div
-                            style={{ backgroundImage: `url(${images.imageLoaderPlaylist})` }}
-                            className="mt-[24px] ml-[12px] mr-[15px] opacity-50 bg-[50%] bg-no-repeat bg-cover h-[240px]"
-                        ></div>
-                        <div className="absolute my-[20px] top-[50%] left-0 right-0 translate-y-[-50%]">
-                            <div className="px-[33px] text-center">
-                                <p className="whitespace-pre-line text-[14px] leading-[1.6] text-purple-text-primary">
-                                    Khám phá thêm các bài hát mới của Zing MP3
-                                </p>
-                            </div>
-                        </div>
+                        <PlaylistData
+                            data={
+                                active === 1
+                                    ? playlistMusic.dataPlaylist.itemsPlaylist
+                                    : active === 2
+                                    ? historyMusic.dataHistory
+                                    : null
+                            }
+                            currentMusicIndex={currentIndexMusic}
+                            onClick={handleActionsMusic}
+                            activeTab={active}
+                        />
                     </motion.div>
                 </section>
-            )}
+            ) : null}
         </AnimatePresence>
     );
 }

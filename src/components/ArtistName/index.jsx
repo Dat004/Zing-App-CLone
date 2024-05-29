@@ -16,7 +16,7 @@ function ArtistName({
         'text-[14px]': mediumSize,
         'text-[12px]': smallSize,
     });
-
+    
     return (
         <div>
             <p className={artistClasses}>
@@ -24,7 +24,7 @@ function ArtistName({
                     <Fragment key={index}>
                         <CustomLink
                             className={`inline flex-shrink-0 ${isWrap ? 'whitespace-pre-line' : 'whitespace-nowrap'}`}
-                            to={`/artist/${artist?.alias}`}
+                            to={`/artist/${artist?.alias || artist?.aliasName}`}
                             isHover
                             isUnderline
                         >

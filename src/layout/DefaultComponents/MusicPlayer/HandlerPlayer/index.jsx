@@ -2,15 +2,15 @@ import { useState } from 'react';
 import { SlVolume2, SlVolumeOff } from 'react-icons/sl';
 import { RiPlayList2Fill } from 'react-icons/ri';
 
+import InformationCard from '../../../../components/Card/MusicCards/InformationCard';
 import ActionsMusic from '../../../../components/ActionsMusic';
 import TippyBox from '../../../../components/Tippy/TippyBox';
 import InputSlider from '../../../../components/InputSlider';
-import { LayerCard } from '../../../../components/Card';
 import Button from '../../../../components/Button';
 import BarController from './BarController';
 import DATAS from '../../../../tempData';
 
-function HandlerPlayer({ onShowPLaylistPLayer = () => {} }) {
+function HandlerPlayer({ data = {}, onShowPLaylistPLayer = () => {} }) {
     const [muteVolume, setMuteVolume] = useState(false);
 
     const handleMuteVolume = () => {
@@ -22,12 +22,19 @@ function HandlerPlayer({ onShowPLaylistPLayer = () => {} }) {
             <div className="flex items-center w-full h-full bg-purple-bd-player px-[20px] border-t border-t-purple-bd-primary-color">
                 <div className="flex items-center justify-start w-[30%]">
                     {/* <LayerCard className="p-0" /> */}
+                    <div className="w-full">
+                        <InformationCard
+                            className="size-[64px]"
+                            data={data.currentMusicOfPlaylist.currentDataMusic}
+                            isSongCard
+                        />
+                    </div>
                     <div className="ml-[10px]">
                         <ActionsMusic widthBtn="32px" heightBtn="32px" isAddLibrary />
                     </div>
                 </div>
                 <div className="flex-auto">
-                    <BarController />
+                    <BarController data={data} />
                 </div>
                 <div className="flex items-center justify-end w-[30%]">
                     <div className="flex items-center pr-[20px] mr-[20px] border-r border-r-purple-bd-primary-color">
@@ -61,7 +68,10 @@ function HandlerPlayer({ onShowPLaylistPLayer = () => {} }) {
                     </div>
                     <div>
                         <TippyBox content="Danh sách phát" placement="top" arrow offset={[0, 10]}>
-                            <Button onClick={onShowPLaylistPLayer} className="h-[30px] px-[5px] bg-purple-bg-btn-alpha rounded-[4px] !text-purple-text-actions">
+                            <Button
+                                onClick={onShowPLaylistPLayer}
+                                className="h-[30px] px-[5px] bg-purple-bg-btn-alpha rounded-[4px] !text-purple-text-actions"
+                            >
                                 <RiPlayList2Fill className="text-[18px]" />
                             </Button>
                         </TippyBox>

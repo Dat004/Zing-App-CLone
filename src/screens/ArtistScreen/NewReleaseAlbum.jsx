@@ -1,12 +1,22 @@
 import { Fragment } from 'react';
 
-import { TimeTracker } from '../../components/TimeComponent';
 import { ImageCard, MusicCards } from '../../components/Card';
+import { TimeTracker } from '../../components/TimeComponent';
+import MusicActions from '../../redux/actions/MusicActions';
 import BoxContent from '../../components/BoxContent';
 import CustomLink from '../../components/CustomLink';
 import ArtistName from '../../components/ArtistName';
 
 function NewReleaseAlbum({ data = {} }) {
+    const { ADD_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
+
+    const handleGetData = (data, id) => {
+        const index = data.findIndex((items) => items.encodeId === id);
+
+        ADD_PLAYLIST(data, index);
+        ADD_MUSIC_TO_HISTORY();
+    };
+
     return (
         <>
             {/* if there is new song released */}
@@ -81,13 +91,21 @@ function NewReleaseAlbum({ data = {} }) {
                                                     } px-[14px] LM:px-[12px]`}
                                                 >
                                                     <div className="w-full">
-                                                        <MusicCards
-                                                            className="size-size-0.4"
-                                                            data={col1}
-                                                            smallCard
-                                                            isShowRightCard
-                                                            isShowDurationTimeMusic
-                                                        />
+                                                        {col1?.map((items, index) => (
+                                                            <MusicCards
+                                                                onGetMusic={() =>
+                                                                    handleGetData(items?.items, items?.encodeId)
+                                                                }
+                                                                className="size-size-0.4"
+                                                                id={index}
+                                                                key={index}
+                                                                data={items}
+                                                                smallCard
+                                                                isShowSeparator
+                                                                isShowRightCard
+                                                                isShowDurationTimeMusic
+                                                            />
+                                                        ))}
                                                     </div>
                                                 </div>
                                                 <div
@@ -96,25 +114,41 @@ function NewReleaseAlbum({ data = {} }) {
                                                     } px-[14px] LM:px-[12px]`}
                                                 >
                                                     <div className="w-full">
-                                                        <MusicCards
-                                                            className="size-size-0.4"
-                                                            data={col2}
-                                                            smallCard
-                                                            isShowRightCard
-                                                            isShowDurationTimeMusic
-                                                        />
+                                                        {col2?.map((items, index) => (
+                                                            <MusicCards
+                                                                onGetMusic={() =>
+                                                                    handleGetData(items?.items, items?.encodeId)
+                                                                }
+                                                                className="size-size-0.4"
+                                                                id={index}
+                                                                key={index}
+                                                                data={items}
+                                                                smallCard
+                                                                isShowSeparator
+                                                                isShowRightCard
+                                                                isShowDurationTimeMusic
+                                                            />
+                                                        ))}
                                                     </div>
                                                 </div>
                                             </div>
                                         )}
                                         {isLittleCard && (
-                                            <MusicCards
-                                                className="size-size-0.4"
-                                                data={items?.items}
-                                                isShowRightCard
-                                                isShowNameAlbum
-                                                isShowDurationTimeMusic
-                                            />
+                                            <>
+                                                {items?.items?.map((items, index) => (
+                                                    <MusicCards
+                                                        onGetMusic={() => handleGetData(items?.items, items?.encodeId)}
+                                                        className="size-size-0.4"
+                                                        id={index}
+                                                        key={index}
+                                                        data={items}
+                                                        isShowSeparator
+                                                        isShowRightCard
+                                                        isShowNameAlbum
+                                                        isShowDurationTimeMusic
+                                                    />
+                                                ))}
+                                            </>
                                         )}
                                     </BoxContent>
                                 )}

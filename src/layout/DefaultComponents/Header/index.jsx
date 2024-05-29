@@ -127,7 +127,7 @@ function Header({ isSticky = false }) {
 
     return (
         <header
-            className={`fixed left-[240px] LM:left-[70px] right-0 top-0 h-[70px] min-w-[660px] ${
+            className={`fixed left-[240px] LM:left-[70px] right-0 top-0 h-[70px] min-w-[660px] XXL:mr-[330px] ${
                 isSticky ? 'backdrop-blur-[50px] bg-purple-bg-header' : ''
             } z-50`}
         >

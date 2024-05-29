@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import InformationCard from '../../components/Card/MusicCards/InformationCard';
 import { MusicCards, ImageCard, TitleCard } from '../../components/Card';
 import { PlaylistItems, MVItems } from '../../components/Item';
+import MusicActions from '../../redux/actions/MusicActions';
 import BoxContent from '../../components/BoxContent';
 import CustomLink from '../../components/CustomLink';
 import ContainerMessage from './ContainerMessage';
 import images from '../../assets/images';
 
 function AllResults({ data = {} }) {
+    const { ADD_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
+
     const NO_DATA = {
         background: images.noResultSearch,
         title: 'Không có kết quả được tìm thấy',
@@ -24,6 +27,13 @@ function AllResults({ data = {} }) {
         !!data?.videos?.length ||
         !!data?.videos?.length ||
         !!data?.artists?.length;
+
+    const handleGetData = (data, id) => {
+        const index = data.findIndex((items) => items.encodeId === id);
+
+        ADD_PLAYLIST(data, index);
+        ADD_MUSIC_TO_HISTORY();
+    };
 
     return (
         <>
@@ -41,7 +51,10 @@ function AllResults({ data = {} }) {
                                     {data?.artists
                                         ?.filter((items) => items?.id === data?.top?.id)
                                         ?.map((items, index) => (
-                                            <div className="w-1/3 LX:w-1/2 px-[14px] LM:px-[12px] flex-shrink-0" key={index}>
+                                            <div
+                                                className="w-1/3 LX:w-1/2 px-[14px] LM:px-[12px] flex-shrink-0"
+                                                key={index}
+                                            >
                                                 <div className="w-full bg-purple-bg-box-hot hover:bg-purple-bg-blur-color p-[10px] rounded-[5px]">
                                                     <InformationCard
                                                         className="size-[84px]"
@@ -85,33 +98,53 @@ function AllResults({ data = {} }) {
                         {mutipleCards && (
                             <div className="flex items-center mx-[-14px] LM:mx-[-12px]">
                                 <div className="flex-grow flex-shrink px-[14px] LM:px-[12px]">
-                                    <MusicCards
-                                        className="size-size-0.4"
-                                        data={data?.songs?.slice(0, 3)}
-                                        smallCard
-                                        isShowRightCard
-                                        isShowDurationTimeMusic
-                                    />
+                                    {data?.songs?.slice(0, 3)?.map((items, index) => (
+                                        <MusicCards
+                                            onGetMusic={() => handleGetData(data?.songs, items?.encodeId)}
+                                            className="size-size-0.4"
+                                            id={index}
+                                            key={index}
+                                            data={items}
+                                            smallCard
+                                            isShowSeparator
+                                            isShowRightCard
+                                            isShowDurationTimeMusic
+                                        />
+                                    ))}
                                 </div>
                                 <div className="flex-grow flex-shrink px-[14px] LM:px-[12px]">
-                                    <MusicCards
-                                        className="size-size-0.4"
-                                        data={data?.songs?.slice(3, 6)}
-                                        smallCard
-                                        isShowRightCard
-                                        isShowDurationTimeMusic
-                                    />
+                                    {data?.songs?.slice(3, 6)?.map((items, index) => (
+                                        <MusicCards
+                                            onGetMusic={() => handleGetData(data?.songs, items?.encodeId)}
+                                            className="size-size-0.4"
+                                            id={index}
+                                            key={index}
+                                            data={items}
+                                            smallCard
+                                            isShowSeparator
+                                            isShowRightCard
+                                            isShowDurationTimeMusic
+                                        />
+                                    ))}
                                 </div>
                             </div>
                         )}
                         {littleCards && (
-                            <MusicCards
-                                className="size-size-0.4"
-                                data={data?.songs}
-                                isShowRightCard
-                                isShowNameAlbum
-                                isShowDurationTimeMusic
-                            />
+                            <>
+                                {data?.songs?.map((items, index) => (
+                                    <MusicCards
+                                        onGetMusic={() => handleGetData(data?.songs, items?.encodeId)}
+                                        className="size-size-0.4"
+                                        id={index}
+                                        key={index}
+                                        data={items}
+                                        isShowSeparator
+                                        isShowRightCard
+                                        isShowNameAlbum
+                                        isShowDurationTimeMusic
+                                    />
+                                ))}
+                            </>
                         )}
                     </BoxContent>
                 </>

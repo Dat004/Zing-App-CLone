@@ -1,13 +1,51 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { FaPlay } from 'react-icons/fa6';
 
 import { TimeTracker, DurationTime } from '../../components/TimeComponent';
 import { ImageCard, HeaderCard, MusicCards } from '../../components/Card';
+import MusicActions from '../../redux/actions/MusicActions';
 import BoxContent from '../../components/BoxContent';
 import ArtistName from '../../components/ArtistName';
 import Button from '../../components/Button';
 
 function DetailsPlaylist({ data = {} }) {
+    const [listSelected, setListSelected] = useState([]);
+
+    const { ADD_PLAYLIST, ADD_MUSIC_TO_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
+
+    const handleAddMusicToPlaylist = (data, dataSelect) => {
+        const newData = dataSelect.sort((a, b) => a - b).map((items) => data[items]);
+
+        ADD_MUSIC_TO_PLAYLIST(newData);
+    };
+
+    const handleSelectAll = (e, data) => {
+        if (e.target.checked) {
+            setListSelected([...data.map((_, index) => index)]);
+
+            return;
+        }
+
+        setListSelected([]);
+    };
+
+    const handleSelect = (e, index) => {
+        if (e.target.checked) {
+            setListSelected((state) => [...state, +index]);
+
+            return;
+        }
+
+        setListSelected((state) => [...state.filter((items) => items !== +index)]);
+    };
+
+    const handleGetData = (data, id) => {
+        const index = data.findIndex((items) => items.encodeId === id);
+
+        ADD_PLAYLIST(data, index);
+        ADD_MUSIC_TO_HISTORY();
+    };
+
     return (
         <div className="flex flex-nowrap LS:flex-wrap w-full">
             <div className="w-[300px] LS:flex-grow LS:w-full flex-shrink-0 pb-[30px]">
@@ -102,16 +140,32 @@ function DetailsPlaylist({ data = {} }) {
                 {data?.isAlbum ? (
                     <Fragment>
                         <div className="mb-[10px]">
-                            <HeaderCard isAllowSort={data?.song?.items?.length > 1} />
-                            <MusicCards
-                                className="size-size-0.4"
+                            <HeaderCard
+                                onSelect={handleSelectAll}
+                                onAdd={handleAddMusicToPlaylist}
                                 data={data?.song?.items}
-                                isShowLeftCard
-                                isShowRightCard
-                                isAllowSellect
-                                isShowAlbumNumber
-                                isShowDurationTimeMusic
+                                dataSelect={listSelected}
+                                isAllowSort={data?.song?.items?.length > 1}
                             />
+                            {data?.song?.items?.map((items, index) => (
+                                <MusicCards
+                                    onGetMusic={() => handleGetData(data?.song?.items, items?.encodeId)}
+                                    onSelectMusic={handleSelect}
+                                    isSelected={listSelected.includes(index)}
+                                    listSelectData={listSelected}
+                                    className="size-size-0.4"
+                                    id={index}
+                                    key={index}
+                                    data={items}
+                                    smallCard
+                                    isAllowSelect
+                                    isShowLeftCard
+                                    isShowSeparator
+                                    isShowRightCard
+                                    isShowAlbumNumber
+                                    isShowDurationTimeMusic
+                                />
+                            ))}
                         </div>
                         <div>
                             <h3 className="mt-[20px] mb-[8px] text-purple-text-primary text-[14px] font-bold leading-[20px]">
@@ -135,16 +189,32 @@ function DetailsPlaylist({ data = {} }) {
                     // Else
                     <Fragment>
                         <div className="mb-[10px]">
-                            <HeaderCard isAllowSort iShowTitleAlbum />
-                            <MusicCards
-                                className="size-size-0.4"
+                            <HeaderCard
+                                onSelect={handleSelectAll}
+                                onAdd={handleAddMusicToPlaylist}
                                 data={data?.song?.items}
-                                isShowLeftCard
-                                isShowRightCard
-                                isAllowSellect
-                                isShowNameAlbum
-                                isShowDurationTimeMusic
+                                dataSelect={listSelected}
+                                isAllowSort={data?.song?.items?.length > 1}
+                                iShowTitleAlbum
                             />
+                            {data?.song?.items?.map((items, index) => (
+                                <MusicCards
+                                    onGetMusic={() => handleGetData(data?.song?.items, items?.encodeId)}
+                                    onSelectMusic={handleSelect}
+                                    isSelected={listSelected.includes(index)}
+                                    listSelectData={listSelected}
+                                    className="size-size-0.4"
+                                    id={index}
+                                    key={index}
+                                    data={items}
+                                    isShowLeftCard
+                                    isShowRightCard
+                                    isAllowSelect
+                                    isShowSeparator
+                                    isShowNameAlbum
+                                    isShowDurationTimeMusic
+                                />
+                            ))}
                         </div>
                         <div className="mt-[16px]">
                             <p className="flex items-center text-[13px] text-purple-text-items font-normal">
@@ -165,19 +235,25 @@ function DetailsPlaylist({ data = {} }) {
                     <div className="mt-[48px]">
                         <BoxContent
                             title={data?.sections[0]?.title}
-                            isHeader={data?.sections[0]?.items && data?.sections[0]?.title ? true : false}
+                            isHeader={!!data?.sections[0]?.items.length && data?.sections[0]?.title ? true : false}
                         >
-                            {data?.sections[0]?.items && (
+                            {!!data?.sections[0]?.items.length && (
                                 <div className="w-full">
-                                    <MusicCards
-                                        className="size-size-0.4"
-                                        data={data?.sections[0]?.items}
-                                        isShowLeftCard
-                                        isShowRightCard
-                                        isMusicIcon
-                                        isShowNameAlbum
-                                        isShowDurationTimeMusic
-                                    />
+                                    {data?.sections[0]?.items?.map((items, index) => (
+                                        <MusicCards
+                                            onGetMusic={() => handleGetData(data?.song?.items, items?.encodeId)}
+                                            className="size-size-0.4"
+                                            id={index}
+                                            key={index}
+                                            data={items}
+                                            isMusicIcon
+                                            isShowLeftCard
+                                            isShowSeparator
+                                            isShowRightCard
+                                            isShowNameAlbum
+                                            isShowDurationTimeMusic
+                                        />
+                                    ))}
                                 </div>
                             )}
                         </BoxContent>

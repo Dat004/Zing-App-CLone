@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import CardMusicSkeleton from '../../components/SkeletonLoading/CardMusicSkeleton';
+import MusicActions from '../../redux/actions/MusicActions';
 import { MusicCards } from '../../components/Card';
 import apiService from '../../services';
 
 function WeekChartCountryScreen({ isLoading = true, handleLoading = () => {} }) {
+    const { ADD_MUSIC_TO_HISTORY, ADD_PLAYLIST } = MusicActions();
     const { idWeekChart } = useParams();
     const [data, setData] = useState({});
 
@@ -23,6 +25,13 @@ function WeekChartCountryScreen({ isLoading = true, handleLoading = () => {} }) 
         })();
     }, [idWeekChart]);
 
+    const handleGetData = (data, id) => {
+        const index = data.findIndex(items => items.encodeId === id);
+
+        ADD_PLAYLIST(data, index);
+        ADD_MUSIC_TO_HISTORY();
+    };
+
     const handleClearState = () => {
         handleLoading(true);
         setData({});
@@ -33,16 +42,24 @@ function WeekChartCountryScreen({ isLoading = true, handleLoading = () => {} }) 
             {isLoading ? (
                 <CardMusicSkeleton />
             ) : (
-                <MusicCards
-                    className="size-size-0.4"
-                    data={data?.items}
-                    isShowLeftCard
-                    isShowRightCard
-                    isShowDurationTimeMusic
-                    isShowNameAlbum
-                    isShowRanking
-                    isShowStateRanking
-                />
+                <>
+                    {data?.items?.map((items, index) => (
+                        <MusicCards
+                            onGetMusic={() => handleGetData(data?.items, items?.encodeId)}
+                            className="size-size-0.4"
+                            id={index}
+                            key={index}
+                            data={items}
+                            isShowRanking
+                            isShowLeftCard
+                            isShowSeparator
+                            isShowRightCard
+                            isShowNameAlbum
+                            isShowStateRanking
+                            isShowDurationTimeMusic
+                        />
+                    ))}
+                </>
             )}
         </>
     );

@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import MusicActions from '../../redux/actions/MusicActions';
 import LineChart from '../../components/Charts/LineChart';
 import { MusicCards } from '../../components/Card';
 import Button from '../../components/Button';
@@ -7,7 +8,22 @@ import images from '../../assets/images';
 import Charts from './Charts';
 
 function ZingChartHomeScreen({ data = {} }) {
+    let newData;
+
+    const { ADD_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
     const [isShowAll, setIsShowAll] = useState(false);
+
+    useEffect(() => {
+        if (isShowAll) newData = [...data.newRealease.top10, ...data.newRealease.topRemaning];
+        newData = data.newRealease.top10;
+    }, [isShowAll]);
+
+    const handleGetData = (data, id) => {
+        const index = data.findIndex((items) => items.encodeId === id);
+
+        ADD_PLAYLIST(data, index, {});
+        ADD_MUSIC_TO_HISTORY();
+    };
 
     const handleShowAll = () => {
         if (!isShowAll) {
@@ -33,29 +49,42 @@ function ZingChartHomeScreen({ data = {} }) {
                     ></LineChart>
                 </section>
                 <div className="mb-[20px]">
-                    <MusicCards
-                        className="size-size-0.4"
-                        data={[data.randomSuggestSong.listSuggestSong[data.randomSuggestSong.randomId]]}
-                        isShowLeftCard
-                        isShowRightCard
-                        isSuggesttion
-                        isShowNameAlbum
-                        isShowDurationTimeMusic
-                    />
-                    <MusicCards
-                        className="size-size-0.4"
-                        data={
-                            isShowAll
-                                ? [...data.newRealease.top10, ...data.newRealease.topRemaning]
-                                : data.newRealease.top10
-                        }
-                        isShowLeftCard
-                        isShowRightCard
-                        isShowDurationTimeMusic
-                        isShowNameAlbum
-                        isShowRanking
-                        isShowStateRanking
-                    />
+                    {[data.randomSuggestSong.listSuggestSong[data.randomSuggestSong.randomId]]?.map((items, index) => (
+                        <MusicCards
+                            onGetMusic={() =>
+                                handleGetData(
+                                    [data.randomSuggestSong.listSuggestSong[data.randomSuggestSong.randomId]],
+                                    items?.encodeId,
+                                )
+                            }
+                            className="size-size-0.4"
+                            id={index}
+                            key={index}
+                            data={items}
+                            isSuggesttion
+                            isShowLeftCard
+                            isShowSeparator
+                            isShowRightCard
+                            isShowNameAlbum
+                            isShowDurationTimeMusic
+                        />
+                    ))}
+                    {newData?.map((items, index) => (
+                        <MusicCards
+                            onGetMusic={() => handleGetData(newData, items?.encodeId)}
+                            className="size-size-0.4"
+                            id={index}
+                            key={index}
+                            data={items}
+                            isShowRanking
+                            isShowLeftCard
+                            isShowRightCard
+                            isShowSeparator
+                            isShowNameAlbum
+                            isShowStateRanking
+                            isShowDurationTimeMusic
+                        />
+                    ))}
                 </div>
                 {!isShowAll && (
                     <div className="flex items-center justify-center w-full">
@@ -82,21 +111,21 @@ function ZingChartHomeScreen({ data = {} }) {
                         <Charts
                             title="Việt Nam"
                             to={data.weekChart.vn?.link?.split('.')[0]}
-                            data={data.weekChart.vn?.items?.slice(0, 5)}
+                            data={data.weekChart.vn?.items}
                         />
                     </div>
                     <div className="w-1/3 ML:w-full px-[14px] LM:px-[12px] flex-shrink-0">
                         <Charts
                             title="US-UK"
                             to={data.weekChart.us?.link?.split('.')[0]}
-                            data={data.weekChart.us?.items?.slice(0, 5)}
+                            data={data.weekChart.us?.items}
                         />
                     </div>
                     <div className="w-1/3 ML:w-full px-[14px] LM:px-[12px] flex-shrink-0">
                         <Charts
                             title="K-Pop"
                             to={data.weekChart.korea?.link?.split('.')[0]}
-                            data={data.weekChart.korea?.items?.slice(0, 5)}
+                            data={data.weekChart.korea?.items}
                         />
                     </div>
                 </div>
