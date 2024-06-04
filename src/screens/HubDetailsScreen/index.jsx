@@ -6,13 +6,12 @@ import MusicActions from '../../redux/actions/MusicActions';
 import BoxContent from '../../components/BoxContent';
 
 function HubDetailsScreen({ data = {} }) {
-    const { ADD_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
+    const { ADD_PLAYLIST } = MusicActions();
 
     const handleGetData = (data, id) => {
         const index = data.findIndex(items => items.encodeId === id);
 
         ADD_PLAYLIST(data, index);
-        ADD_MUSIC_TO_HISTORY();
     };
 
     return (

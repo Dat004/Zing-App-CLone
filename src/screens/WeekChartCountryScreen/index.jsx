@@ -7,7 +7,7 @@ import { MusicCards } from '../../components/Card';
 import apiService from '../../services';
 
 function WeekChartCountryScreen({ isLoading = true, handleLoading = () => {} }) {
-    const { ADD_MUSIC_TO_HISTORY, ADD_PLAYLIST } = MusicActions();
+    const { ADD_PLAYLIST } = MusicActions();
     const { idWeekChart } = useParams();
     const [data, setData] = useState({});
 
@@ -29,7 +29,6 @@ function WeekChartCountryScreen({ isLoading = true, handleLoading = () => {} }) 
         const index = data.findIndex(items => items.encodeId === id);
 
         ADD_PLAYLIST(data, index);
-        ADD_MUSIC_TO_HISTORY();
     };
 
     const handleClearState = () => {

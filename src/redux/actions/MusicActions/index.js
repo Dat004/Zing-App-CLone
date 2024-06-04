@@ -1,7 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { playlistRemainingSelector } from '../../selector';
+import { setIsShuffle, setModeRepeat } from '../../slice/playlistMusicSlice/filterPlaylistSlice'; 
 import { addMusicToHistory } from '../../slice/historyMusicSlice';
+import { playlistRemainingSelector } from '../../selector';
+import {
+    onPlayingMusic,
+    onFetchingMusic,
+    onSeekedMusic,
+    onErrorMusic,
+    onChangeSrcCurrentSrc,
+    onDeleteCurrentSrc,
+    onChangeCurrentTime,
+    onSoundChanges,
+} from '../../slice/musicSlice';
 import {
     addPlaylist,
     addMusicToPlaylist,
@@ -13,7 +24,7 @@ import {
 const MusicActions = () => {
     const dispatch = useDispatch();
     const playlistMusicData = useSelector(playlistRemainingSelector);
-    
+
     const { itemsPlaylist } = playlistMusicData.dataPlaylist;
     const { currentIndexMusic, currentDataMusic } = playlistMusicData.currentMusicOfPlaylist;
 
@@ -31,6 +42,7 @@ const MusicActions = () => {
                 informationPlaylist: informationPlaylist,
             }),
         );
+        ADD_MUSIC_TO_HISTORY();
     };
 
     const ADD_MUSIC_TO_PLAYLIST = (data = [], encodeId = '') => {
@@ -48,12 +60,13 @@ const MusicActions = () => {
                 encodeId,
             }),
         );
+        ADD_MUSIC_TO_HISTORY();
     };
     const ADD_MUSIC_TO_HISTORY = () => {
         if (Object.keys(currentDataMusic).length === 0) {
             return;
         }
-        
+
         dispatch(addMusicToHistory(currentDataMusic));
     };
 
@@ -72,6 +85,7 @@ const MusicActions = () => {
                 music: currentMusic,
             }),
         );
+        ADD_MUSIC_TO_HISTORY();
     };
 
     const NEXTMUSIC = () => {
@@ -81,6 +95,7 @@ const MusicActions = () => {
                 music: itemsPlaylist[currentIndexMusic + 1],
             }),
         );
+        ADD_MUSIC_TO_HISTORY();
     };
 
     const PREVMUSIC = () => {
@@ -90,6 +105,52 @@ const MusicActions = () => {
                 music: itemsPlaylist[currentIndexMusic - 1],
             }),
         );
+        ADD_MUSIC_TO_HISTORY();
+    };
+
+    const ON_FETCHING_MUSIC = (state) => {
+        dispatch(onFetchingMusic(state));
+    };
+
+    const ON_PLAYING_MUSIC = (state) => {
+        dispatch(onPlayingMusic(state));
+    };
+
+    const ON_SEEKED_MUSIC = (state) => {
+        dispatch(onSeekedMusic(state));
+    };
+
+    const ON_ERROR_MUSIC = (state) => {
+        dispatch(onErrorMusic(state));
+    };
+
+    const ON_CHANGE_CURRENT_SRC = (src) => {
+        dispatch(onChangeSrcCurrentSrc(src));
+    };
+
+    const ON_DELETE_CURRENT_SRC = () => {
+        dispatch(onDeleteCurrentSrc());
+    };
+
+    const ON_CHANGE_CURRENT_TIME = (currentTime) => {
+        dispatch(onChangeCurrentTime(currentTime));
+    };
+
+    const ON_CHANGE_SOUND = (currentSound) => {
+        const value = {
+            muted: currentSound === 0 ? true : false,
+            currentSound,
+        };
+
+        dispatch(onSoundChanges(value));
+    };
+
+    const SET_IS_SHUFFLE = (state) => {
+        dispatch(setIsShuffle(state));
+    };
+
+    const SET_MODE_REPEAT = (state) => {
+        dispatch(setModeRepeat(state));
     };
 
     return {
@@ -101,6 +162,16 @@ const MusicActions = () => {
         UPDATE_CURRENT_PLAYLIST_MUSIC,
         NEXTMUSIC,
         PREVMUSIC,
+        ON_FETCHING_MUSIC,
+        ON_PLAYING_MUSIC,
+        ON_SEEKED_MUSIC,
+        ON_ERROR_MUSIC,
+        ON_CHANGE_CURRENT_SRC,
+        ON_DELETE_CURRENT_SRC,
+        ON_CHANGE_CURRENT_TIME,
+        ON_CHANGE_SOUND,
+        SET_IS_SHUFFLE,
+        SET_MODE_REPEAT,
     };
 };
 

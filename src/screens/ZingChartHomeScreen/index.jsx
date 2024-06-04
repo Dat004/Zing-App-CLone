@@ -10,7 +10,7 @@ import Charts from './Charts';
 function ZingChartHomeScreen({ data = {} }) {
     let newData;
 
-    const { ADD_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
+    const { ADD_PLAYLIST } = MusicActions();
     const [isShowAll, setIsShowAll] = useState(false);
 
     useEffect(() => {
@@ -22,7 +22,6 @@ function ZingChartHomeScreen({ data = {} }) {
         const index = data.findIndex((items) => items.encodeId === id);
 
         ADD_PLAYLIST(data, index, {});
-        ADD_MUSIC_TO_HISTORY();
     };
 
     const handleShowAll = () => {

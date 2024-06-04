@@ -6,7 +6,7 @@ import { MusicCards } from '../../../components/Card';
 import Tabs from './Tabs';
 
 function NewRelease({ data = [], title = '', isHeader = false, isSeeAll = false }) {
-    const { ADD_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
+    const { ADD_PLAYLIST } = MusicActions();
 
     const [isActive, setIsActive] = useState('all');
     const [newData, setNewData] = useState({
@@ -56,7 +56,6 @@ function NewRelease({ data = [], title = '', isHeader = false, isSeeAll = false 
         const index = data?.findIndex((items) => items?.encodeId === id);
 
         ADD_PLAYLIST(data, index, {});
-        ADD_MUSIC_TO_HISTORY();
     };
 
     return (

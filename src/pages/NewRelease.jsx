@@ -9,7 +9,7 @@ import { useLoadingState } from '../hooks';
 import apiService from '../services';
 
 function NewRelease() {
-    const { ADD_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
+    const { ADD_PLAYLIST } = MusicActions();
     const [newData, setNewData] = useState({});
 
     const { isLoading, handleSetLoadingState } = useLoadingState();
@@ -30,7 +30,6 @@ function NewRelease() {
         const index = data.findIndex((items) => items.encodeId === id);
 
         ADD_PLAYLIST(data, index);
-        ADD_MUSIC_TO_HISTORY();
     };
 
     return (

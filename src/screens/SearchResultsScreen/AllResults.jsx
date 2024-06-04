@@ -10,7 +10,7 @@ import ContainerMessage from './ContainerMessage';
 import images from '../../assets/images';
 
 function AllResults({ data = {} }) {
-    const { ADD_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
+    const { ADD_PLAYLIST } = MusicActions();
 
     const NO_DATA = {
         background: images.noResultSearch,
@@ -32,7 +32,6 @@ function AllResults({ data = {} }) {
         const index = data.findIndex((items) => items.encodeId === id);
 
         ADD_PLAYLIST(data, index);
-        ADD_MUSIC_TO_HISTORY();
     };
 
     return (

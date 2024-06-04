@@ -7,13 +7,12 @@ import ContainerMessage from './ContainerMessage';
 import images from '../../assets/images';
 
 function SongResults({ data = [] }) {
-    const { ADD_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
+    const { ADD_PLAYLIST } = MusicActions();
 
     const handleGetData = (data, id) => {
         const index = data.findIndex(items => items.encodeId === id);
 
         ADD_PLAYLIST(data, index);
-        ADD_MUSIC_TO_HISTORY();
     };
 
     const NO_DATA = {

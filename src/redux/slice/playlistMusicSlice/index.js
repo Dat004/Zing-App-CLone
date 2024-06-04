@@ -4,7 +4,6 @@ const initialValue = {
     dataPlaylist: {
         informationPlaylist: {},
         itemsPlaylist: [],
-        encodeId: '',
     },
     currentMusicOfPlaylist: {
         currentIndexMusic: 0,

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import { playlistRemainingSelector } from '../../redux/selector';
 import MusicPlayer from '../DefaultComponents/MusicPlayer';
+import AudioApp from '../DefaultComponents/AudioApp';
 import Sidebar from '../DefaultComponents/Sidebar';
 import Header from '../DefaultComponents/Header';
 
@@ -85,7 +86,8 @@ function DefaultLayout({ children }) {
                     <div className="mb-[30px]">{children}</div>
                 </main>
             </div>
-            <MusicPlayer showDefault={fullScreen} />
+            {(fullScreen || isHasPlaylist) && <MusicPlayer showDefault={fullScreen} />}
+            <AudioApp data={playlistMusic} />
         </div>
     );
 }

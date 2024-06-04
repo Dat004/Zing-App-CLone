@@ -5,13 +5,12 @@ import CustomLink from '../../components/CustomLink';
 import Button from '../../components/Button';
 
 function Charts({ data = [], title = '', to = '' }) {
-    const { ADD_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
+    const { ADD_PLAYLIST } = MusicActions();
 
     const handleGetData = (data, id) => {
         const index = data.findIndex((items) => items.encodeId === id);
 
         ADD_PLAYLIST(data, index);
-        ADD_MUSIC_TO_HISTORY();
     };
 
     return (

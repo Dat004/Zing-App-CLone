@@ -1,27 +1,48 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SlVolume2, SlVolumeOff } from 'react-icons/sl';
 import { RiPlayList2Fill } from 'react-icons/ri';
+import { PiLayout, PiMicrophoneStage } from 'react-icons/pi';
+import { MdMusicVideo } from 'react-icons/md';
 
 import InformationCard from '../../../../components/Card/MusicCards/InformationCard';
+import MusicActions from '../../../../redux/actions/MusicActions';
 import ActionsMusic from '../../../../components/ActionsMusic';
 import TippyBox from '../../../../components/Tippy/TippyBox';
 import InputSlider from '../../../../components/InputSlider';
 import Button from '../../../../components/Button';
 import BarController from './BarController';
-import DATAS from '../../../../tempData';
 
-function HandlerPlayer({ data = {}, onShowPLaylistPLayer = () => {} }) {
-    const [muteVolume, setMuteVolume] = useState(false);
+function PlayHandler({ data = {}, onShowPLaylistPLayer = () => {} }) {
+    const [valueVolume, setValueVolume] = useState(1);
+    const [isMuted, setIsMuted] = useState(false);
 
-    const handleMuteVolume = () => {
-        setMuteVolume((state) => !state);
+    const { currentDataMusic, currentIndexMusic } = data.currentMusicOfPlaylist;
+    const { hasLyric, mvlink } = currentDataMusic;
+    const { ON_CHANGE_SOUND } = MusicActions();
+
+    // console.log(data);
+
+    const MAX_VALUE_VOLUME = 1;
+    const MIN_VALUE_VOLUME = 0;
+
+    const handleToggleMuted = () => {
+        setIsMuted((state) => !state);
+        setValueVolume(isMuted ? 1 : 0);
+        ON_CHANGE_SOUND(isMuted ? 1 : 0);
+    };
+
+    const handleChangeValueVolume = (e) => {
+        const value = +e.target.value;
+
+        setValueVolume(value);
+        setIsMuted(value === 0 ? true : false);
+        ON_CHANGE_SOUND(value);
     };
 
     return (
         <div className="fixed bottom-0 left-0 h-[90px] w-full bg-purple-bg-layout">
             <div className="flex items-center w-full h-full bg-purple-bd-player px-[20px] border-t border-t-purple-bd-primary-color">
                 <div className="flex items-center justify-start w-[30%]">
-                    {/* <LayerCard className="p-0" /> */}
                     <div className="w-full">
                         <InformationCard
                             className="size-[64px]"
@@ -38,26 +59,46 @@ function HandlerPlayer({ data = {}, onShowPLaylistPLayer = () => {} }) {
                 </div>
                 <div className="flex items-center justify-end w-[30%]">
                     <div className="flex items-center pr-[20px] mr-[20px] border-r border-r-purple-bd-primary-color">
-                        {DATAS.DATA_ACTIONS_PLAYER.map((items, index) => (
-                            <TippyBox key={index} content={items.name} placement="top" arrow offset={[0, 10]}>
-                                <Button rounded className="w-[32px] h-[32px] mx-[2px] !text-purple-text-actions">
-                                    {items.icon}
-                                </Button>
-                            </TippyBox>
-                        ))}
+                        <TippyBox content="MV" placement="top" arrow offset={[0, 10]}>
+                            <Button
+                                disabled={!!!mvlink}
+                                rounded
+                                className="w-[32px] h-[32px] mx-[2px] !text-purple-text-actions"
+                            >
+                                <MdMusicVideo className="text-[20px]" />
+                            </Button>
+                        </TippyBox>
+                        <TippyBox content="Xem lời bài hát" placement="top" arrow offset={[0, 10]}>
+                            <Button
+                                disabled={!hasLyric}
+                                rounded
+                                className="w-[32px] h-[32px] mx-[2px] !text-purple-text-actions"
+                            >
+                                <PiMicrophoneStage className="text-[20px]" />
+                            </Button>
+                        </TippyBox>
+                        <TippyBox content="Chế độ cửa sổ" placement="top" arrow offset={[0, 10]}>
+                            <Button rounded className="w-[32px] h-[32px] mx-[2px] !text-purple-text-actions">
+                                <PiLayout className="text-[20px]" />
+                            </Button>
+                        </TippyBox>
                         <div className="flex items-center">
                             <Button
                                 rounded
                                 className="w-[32px] h-[32px] mx-[2px] !text-purple-text-actions"
-                                onClick={handleMuteVolume}
+                                onClick={handleToggleMuted}
                             >
-                                {muteVolume ? (
+                                {isMuted ? (
                                     <SlVolumeOff className="text-[20px]" />
                                 ) : (
                                     <SlVolume2 className="text-[20px]" />
                                 )}
                             </Button>
                             <InputSlider
+                                onChange={handleChangeValueVolume}
+                                min={MIN_VALUE_VOLUME}
+                                max={MAX_VALUE_VOLUME}
+                                value={valueVolume}
                                 className="h-[15px]"
                                 heigthSlider="4px"
                                 widthSlider="70px"
@@ -82,4 +123,4 @@ function HandlerPlayer({ data = {}, onShowPLaylistPLayer = () => {} }) {
     );
 }
 
-export default HandlerPlayer;
+export default PlayHandler;

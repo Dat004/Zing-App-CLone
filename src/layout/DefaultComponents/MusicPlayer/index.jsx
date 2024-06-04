@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 
 import { playlistRemainingSelector, historySelector } from '../../../redux/selector';
 import PlaylistPlayer from './PlaylistPlayer';
-import HandlerPlayer from './HandlerPlayer';
+import PlayHandler from './PlayHandler';
 
-function MusicPlayer({ showDefault = false, isShowDefault = false }) {
+function MusicPlayer({ showDefault = false }) {
     const [showPlaylistPlayer, setShowPlaylistPlayer] = useState(true);
 
     const playlistMusic = useSelector(playlistRemainingSelector);
@@ -32,7 +32,7 @@ function MusicPlayer({ showDefault = false, isShowDefault = false }) {
 
     return (
         <div className="relative z-999">
-            {isHasPlaylist && <HandlerPlayer data={data.playlistMusic} onShowPLaylistPLayer={handleShowMenuPlayer} />}
+            {isHasPlaylist && <PlayHandler data={data.playlistMusic} onShowPLaylistPLayer={handleShowMenuPlayer} />}
             <PlaylistPlayer data={data} showDefault={showDefault} showPlaylistPlayer={showPlaylistPlayer} />
         </div>
     );

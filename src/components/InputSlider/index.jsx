@@ -1,57 +1,55 @@
-import { useState } from 'react';
+import classNames from 'classnames';
 
 function InputSlider({
     className,
     onChange = () => {},
     heigthSlider = '2px',
+    hoverHeightSlider = '4px',
     widthSlider = '100%',
     borderSlider = '4px',
-    heigthSliderHover = '2px',
     heightThumb = '8px',
     widthThumb = '8px',
+    value = 0,
     min = 0,
     max = 100,
     step = 0.001,
+    ...props
 }) {
-    const [value, setValue] = useState(min);
+    const sliderWrapperStyles = classNames('group/items flex items-center cursor-pointer', {
+        [className]: className,
+    });
 
     const sliderStyles = {
         width: widthSlider,
         height: heigthSlider,
         borderRadius: borderSlider,
     };
-    
+
     const thumbStyles = {
         width: widthThumb,
         height: heightThumb,
         left: `calc(${(value / max) * 100}%)`,
     };
-    
+
     const trackStyles = {
         width: `calc(${(value / max) * 100}%)`,
         borderRadius: borderSlider,
     };
 
-    const handleChangeValue = (e) => {
-        setValue(e.target.value);
-    };
-
     return (
-        <div className={`${className || ''} group/items flex items-center`}>
+        <div className={sliderWrapperStyles}>
             <div style={sliderStyles} className="relative flex items-center bg-bg-slider">
                 <input
-                    onChange={(e) => {
-                        handleChangeValue(e);
-                        onChange(e);
-                    }}
+                    onChange={onChange}
                     className="h-full w-full"
                     type="range"
                     name="slider"
                     id="slider"
+                    value={value}
                     min={min}
                     max={max}
-                    value={value}
                     step={step}
+                    {...props}
                 />
                 <span
                     style={thumbStyles}

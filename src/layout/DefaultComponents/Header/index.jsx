@@ -147,7 +147,7 @@ function Header({ isSticky = false }) {
                 <div className="flex items-center">
                     <Button
                         large
-                        className="py-[10px] px-[24px] mr-[12px] gap-[4px] rounded-[999px] text-purple-text-btn-download bg-purple-bg-btn-alpha"
+                        className="py-[10px] px-[24px] mr-[12px] gap-[4px] rounded-[999px] !text-purple-text-btn-download bg-purple-bg-btn-alpha"
                     >
                         <DownLoadToPCIcon className="text-[14px]" />
                         <span className="flex items-center font-bold text-[14px] leading-[17px]">Tải bản Windows</span>

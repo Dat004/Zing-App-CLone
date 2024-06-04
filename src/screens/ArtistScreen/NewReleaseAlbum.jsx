@@ -8,13 +8,12 @@ import CustomLink from '../../components/CustomLink';
 import ArtistName from '../../components/ArtistName';
 
 function NewReleaseAlbum({ data = {} }) {
-    const { ADD_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
+    const { ADD_PLAYLIST } = MusicActions();
 
     const handleGetData = (data, id) => {
         const index = data.findIndex((items) => items.encodeId === id);
 
         ADD_PLAYLIST(data, index);
-        ADD_MUSIC_TO_HISTORY();
     };
 
     return (

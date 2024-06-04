@@ -11,7 +11,7 @@ import Button from '../../components/Button';
 function DetailsPlaylist({ data = {} }) {
     const [listSelected, setListSelected] = useState([]);
 
-    const { ADD_PLAYLIST, ADD_MUSIC_TO_PLAYLIST, ADD_MUSIC_TO_HISTORY } = MusicActions();
+    const { ADD_PLAYLIST, ADD_MUSIC_TO_PLAYLIST } = MusicActions();
 
     const handleAddMusicToPlaylist = (data, dataSelect) => {
         const newData = dataSelect.sort((a, b) => a - b).map((items) => data[items]);
@@ -43,7 +43,6 @@ function DetailsPlaylist({ data = {} }) {
         const index = data.findIndex((items) => items.encodeId === id);
 
         ADD_PLAYLIST(data, index);
-        ADD_MUSIC_TO_HISTORY();
     };
 
     return (

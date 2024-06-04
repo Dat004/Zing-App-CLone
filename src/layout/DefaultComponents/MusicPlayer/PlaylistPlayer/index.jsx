@@ -18,12 +18,11 @@ function PlaylistPlayer({ data = {}, showDefault = false, showPlaylistPlayer = f
     const { isHasPlaylist } = data.playlistMusic;
 
     const {
-        ADD_PLAYLIST,
         ADD_MUSIC_TO_PLAYLIST,
-        ADD_MUSIC_TO_HISTORY,
         UPDATE_CURRENT_PLAYLIST_MUSIC,
         REMOVE_PLAYLIST,
         REMOVE_MUSIC_FROM_PLAYLIST,
+        ON_DELETE_CURRENT_SRC,
     } = MusicActions();
     const { playlistMusic, historyMusic } = data;
     const { itemsPlaylist } = playlistMusic.dataPlaylist;
@@ -40,6 +39,8 @@ function PlaylistPlayer({ data = {}, showDefault = false, showPlaylistPlayer = f
 
     const handleDeletePlaylist = () => {
         REMOVE_PLAYLIST();
+        ON_DELETE_CURRENT_SRC();
+
         handleTogglePopup();
     };
 
@@ -47,13 +48,11 @@ function PlaylistPlayer({ data = {}, showDefault = false, showPlaylistPlayer = f
         switch (active) {
             case 1:
                 UPDATE_CURRENT_PLAYLIST_MUSIC(index, data[index]);
-                ADD_MUSIC_TO_HISTORY(currentDataMusic);
 
                 break;
             case 2:
                 UPDATE_CURRENT_PLAYLIST_MUSIC(itemsPlaylist.length, data[index]);
                 ADD_MUSIC_TO_PLAYLIST([data[index]]);
-                ADD_MUSIC_TO_HISTORY(currentDataMusic);
 
                 break;
             default:
@@ -86,7 +85,7 @@ function PlaylistPlayer({ data = {}, showDefault = false, showPlaylistPlayer = f
 
     return (
         <AnimatePresence>
-            {((showDefault || isHasPlaylist) && showPlaylistPlayer) ? (
+            {(showDefault || isHasPlaylist) && showPlaylistPlayer ? (
                 <section transition="duration-500" className={playerStyles}>
                     <motion.div
                         key="playlist-player"
